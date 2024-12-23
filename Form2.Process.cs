@@ -24,5 +24,6 @@ public partial class Form2 {
         WorkDataExclusive.Delete();
         Mode.SetCopy2();
         Close();
+        Form1.Activate();
     }
 }

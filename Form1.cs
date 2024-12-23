@@ -7,6 +7,12 @@ namespace WorkDataStudio;
 /// 加工ワークデータ作成フォーム
 /// </summary>
 public partial class Form1 : BasicForm {
+    private static bool _activate;
+
+    public new static void Activate() {
+        _activate = true;
+    }
+    
     /// <summary>
     /// Constructor
     /// </summary>

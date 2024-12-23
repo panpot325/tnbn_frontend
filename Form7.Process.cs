@@ -55,5 +55,6 @@ public partial class Form7  {
         WorkDataExclusive.Insert(WorkData.snoName); // Ins_排他中に更新(船番)
         Close();
         Owner.Close();
+        Form1.Activate();
     }
 }

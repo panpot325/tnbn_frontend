@@ -35,5 +35,6 @@ public partial class Form8 {
         WorkDataExclusive.Delete(); //@Del_排他情報
         WorkDataExclusive.Insert(WorkData.snoName); // Ins_排他中に更新(船番)
         Close();
+        Form1.Activate();
     }
 }

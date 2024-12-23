@@ -19,6 +19,7 @@ public partial class Form1 {
     /// <param name="e"></param>
     private void Form1_Load(object sender, EventArgs e) {
         Console.WriteLine(@"STEP1: Form1_Load");
+        _activate = true;
         WorkData.workDataCnt = 0;
         WorkData.copyDataCnt = 0;
         WorkData.copySelectCnt = 0;
@@ -33,6 +34,9 @@ public partial class Form1 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void Form1_Activated(object sender, EventArgs e) {
+        if (!_activate) return;
+        _activate = false;
+        
         Console.WriteLine(@"STEP2: Form1_Activated");
         switch (Mode.Value) {
             case Mode.NEW_1 or Mode.NEW_2: //新規 新規2
