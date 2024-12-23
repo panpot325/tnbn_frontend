@@ -294,7 +294,7 @@ public class DataGridView3 : CustomDataGridView {
                 }
 
                 var dec = DecNullZero(text);
-                if (dec != 0 || DataType.ZeroEntry == WorkDataType.ZERO_ENTRY_NG) {
+                if (dec == 0 && DataType.ZeroEntry == WorkDataType.ZERO_ENTRY_OK) {
                     break;
                 }
 
