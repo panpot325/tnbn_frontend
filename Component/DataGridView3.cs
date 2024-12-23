@@ -211,9 +211,7 @@ public class DataGridView3 : CustomDataGridView {
                     text = @"0";
                 }
 
-                if (Mode.Value != Mode.NEW_1
-                    && Mode.Value != Mode.NEW_2
-                   ) {
+                if (!Mode.IsNew1 && !Mode.IsNew2) {
                     return this;
                 }
 
@@ -233,8 +231,8 @@ public class DataGridView3 : CustomDataGridView {
             CellBackColor = BgColor.DEFAULT;
             if (DataType.NyuMode == WorkDataType.NYU_MODE_NUM) {
                 StrValue = DataType.DecNyuTani switch {
-                    0.1m => $"{StrValue: 0.0}",
-                    1 => $"{StrValue: 0}",
+                    0.1m => DecimalFormat(text),
+                    1 => IntFormat(text),
                     _ => StrValue
                 };
             }
@@ -267,6 +265,13 @@ public class DataGridView3 : CustomDataGridView {
         return this;
     }
 
+    /// <summary>
+    /// 入力チェック前処理
+    /// </summary>
+    /// <param name="text"></param>
+    /// <param name="workData"></param>
+    /// <param name="textBox"></param>
+    /// <returns></returns>
     private bool InputCheck(string text, WorkData workData, TextBox textBox) {
         workData.ErrorValidation.Grid1 = "";
         workData.ErrorValidation.Grid3[RowIndex] = "";
@@ -283,6 +288,12 @@ public class DataGridView3 : CustomDataGridView {
         return false;
     }
 
+    /// <summary>
+    /// 入力チェック
+    /// </summary>
+    /// <param name="text"></param>
+    /// <param name="textBox"></param>
+    /// <returns></returns>
     private bool InputCheck(string text, TextBox textBox) {
         var a = RowIndex;
         switch (DataType.NyuMode) {
@@ -297,7 +308,6 @@ public class DataGridView3 : CustomDataGridView {
                 if (dec == 0 && DataType.ZeroEntry == WorkDataType.ZERO_ENTRY_OK) {
                     break;
                 }
-
 
                 if (DataType.Dm == "W72C") {
                     //[SP1]か否か判定
@@ -325,7 +335,7 @@ public class DataGridView3 : CustomDataGridView {
 
                 break;
             case WorkDataType.NYU_MODE_A:
-                if (int.TryParse(text, out var num3)) {
+                if (int.TryParse(text, out _)) {
                     textBox.Text = @"入力値エラー：数値不可";
                     textBox.ForeColor = FgColor.INVALID;
                     return false;
@@ -337,6 +347,11 @@ public class DataGridView3 : CustomDataGridView {
         return true;
     }
 
+    /// <summary>
+    /// Exclude_Check1
+    /// </summary>
+    /// <param name="workData"></param>
+    /// <returns></returns>
     private bool Exclude_Check1(WorkData workData) {
         if (workData.Sno == "") {
             return true;
@@ -355,6 +370,12 @@ public class DataGridView3 : CustomDataGridView {
         return false;
     }
 
+    /// <summary>
+    /// Exclude_Check2
+    /// </summary>
+    /// <param name="workData"></param>
+    /// <param name="text"></param>
+    /// <returns></returns>
     private bool Exclude_Check2(WorkData workData, string text) {
         if (Mode.Value != Mode.COPY_2 || RowIndex != 0) {
             return true;
@@ -372,7 +393,40 @@ public class DataGridView3 : CustomDataGridView {
         return false;
     }
 
+    /// <summary>
+    /// DecNullZero
+    /// </summary>
+    /// <param name="str"></param>
+    /// <returns></returns>
     private decimal DecNullZero(string str) {
         return str is null || str.Length == 0 ? 0m : decimal.Parse(str);
+    }
+
+    /// <summary>
+    /// DecimalFormat
+    /// </summary>
+    /// <param name="str"></param>
+    /// <param name="format"></param>
+    /// <returns></returns>
+    private string DecimalFormat(string str, string format = "F1") {
+        if (decimal.TryParse(str, out _)) {
+            return Convert.ToDecimal(str).ToString(format);
+        }
+
+        return str;
+    }
+
+    /// <summary>
+    /// IntFormat
+    /// </summary>
+    /// <param name="str"></param>
+    /// <param name="format"></param>
+    /// <returns></returns>
+    private string IntFormat(string str, string format = "0") {
+        if (int.TryParse(str, out _)) {
+            return Convert.ToInt16(str).ToString(format);
+        }
+
+        return str;
     }
 }
