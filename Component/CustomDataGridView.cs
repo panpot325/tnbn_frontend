@@ -124,9 +124,8 @@ public class CustomDataGridView : DataGridView {
     /// <param name="row"></param>
     /// <returns></returns>
     public int IntData(int row) {
-        return Rows[row].Cells[0].Value is null
-            ? 0
-            : Convert.ToInt32(Rows[row].Cells[0].Value);
+        var value = StrData(row);
+        return int.TryParse(value, out _) ? Convert.ToInt32(value) : 0;
     }
 
     /// <summary>
@@ -135,8 +134,7 @@ public class CustomDataGridView : DataGridView {
     /// <param name="row"></param>
     /// <returns></returns>
     public decimal DecData(int row) {
-        return Rows[row].Cells[0].Value is null
-            ? 0
-            : Convert.ToDecimal(Rows[row].Cells[0].Value);
+        var value = StrData(row);
+        return decimal.TryParse(value, out _) ? Convert.ToDecimal(value) : 0;
     }
 }
