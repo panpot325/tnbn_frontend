@@ -227,6 +227,7 @@ public class DataGridView3 : CustomDataGridView {
 
         //入力チェック前処理
         if (InputCheck(text, workData, textBox)) {
+            //入力チェック排他処理
             if (!Exclude_Check1(workData)
                 || !Exclude_Check2(workData, text)) {
                 textBox.Text = @"排他中のため変更できません";
