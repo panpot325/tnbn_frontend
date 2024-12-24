@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using WorkDataStudio.Model;
-using WorkDataStudio.share;
 using G = WorkDataStudio.share.Globals;
 
 // ReSharper disable InvertIf
@@ -20,8 +18,7 @@ public partial class Form1 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     /// <exception cref="NotImplementedException"></exception>
-    private void DataGrid3_KeyDown(object sender, KeyEventArgs e) {
-        G.Out("DataGrid3_KeyDown Event");
+    private void DataGrid3_KeyDown(object sender, KeyEventArgs e) { G.Out("DataGrid3_KeyDown Event");
         Grid_Edit(e.KeyValue);
     }
 

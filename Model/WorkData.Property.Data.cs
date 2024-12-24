@@ -138,26 +138,26 @@ public partial class WorkData {
 
     //it1 numeric(8, 1)
     public decimal It1 {
-        get => Ft1.Data;
-        set => Ft1.Data = value;
+        get => Fit1.Data;
+        set => Fit1.Data = value;
     }
 
     //it2 numeric(8, 1)
     public decimal It2 {
-        get => Ft2.Data;
-        set => Ft2.Data = value;
+        get => Fit2.Data;
+        set => Fit2.Data = value;
     }
 
     //it3 numeric(8, 1)
     public decimal It3 {
-        get => Ft3.Data;
-        set => Ft3.Data = value;
+        get => Fit3.Data;
+        set => Fit3.Data = value;
     }
 
     //it4 numeric(8, 1)
     public decimal It4 {
-        get => Ft4.Data;
-        set => Ft4.Data = value;
+        get => Fit4.Data;
+        set => Fit4.Data = value;
     }
 
     //Sp1 numeric(8, 1)

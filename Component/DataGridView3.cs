@@ -190,7 +190,7 @@ public class DataGridView3 : CustomDataGridView {
             default:
                 Text = ((char)keyAscii).ToString();
                 BeginEdit(false);
-                CurrentCell.Value = "A";
+                //CurrentCell.Value = "A";
                 break;
         }
 
@@ -203,8 +203,6 @@ public class DataGridView3 : CustomDataGridView {
     public DataGridView3 TextEdit(DataGridView1 dataGridView1, TextBox textBox) {
         var text = StrValue;
         var workData = dataGridView1.WorkData;
-        Console.WriteLine($@"tag============================================={Tag}");
-        Console.WriteLine($@"text============================================={text}");
 
         switch (DataType.Keishiki) {
             case WorkDataType.KEISHIKI_ASCII:
@@ -270,7 +268,6 @@ public class DataGridView3 : CustomDataGridView {
         }
 
         StrValue = Tag.ToString();
-        Console.WriteLine($@"StrValue============================================={StrValue}");
 
         return this;
     }
