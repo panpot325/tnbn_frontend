@@ -203,16 +203,23 @@ public class DataGridView3 : CustomDataGridView {
     public DataGridView3 TextEdit(DataGridView1 dataGridView1, TextBox textBox) {
         var text = StrValue;
         var workData = dataGridView1.WorkData;
+        Console.WriteLine($@"tag============================================={Tag}");
+        Console.WriteLine($@"text============================================={text}");
+
         switch (DataType.Keishiki) {
             case WorkDataType.KEISHIKI_ASCII:
                 break;
             default:
-                if (text == "") {
-                    text = @"0";
-                }
+                text = string.IsNullOrEmpty(text) ? @"0" : text;
+                switch (Mode.Value) {
+                    case Mode.NEW_1 or Mode.NEW_2:
+                        break;
+                    default:
+                        if (text == Tag.ToString()) {
+                            return this;
+                        }
 
-                if (!Mode.IsNew1 && !Mode.IsNew2) {
-                    return this;
+                        break;
                 }
 
                 break;
@@ -240,7 +247,7 @@ public class DataGridView3 : CustomDataGridView {
                 StrValue = text.ToUpper();
             }
 
-            if (DataType.Dm == "W71E") {
+            if (DataType.Dm == "W71E") { //MAX(皮板最大板厚)
                 this[ColIndex, RowIndex + 1].Value = text;
             }
 
@@ -262,6 +269,8 @@ public class DataGridView3 : CustomDataGridView {
         }
 
         StrValue = Tag.ToString();
+        Console.WriteLine($@"StrValue============================================={StrValue}");
+
         return this;
     }
 
@@ -277,7 +286,7 @@ public class DataGridView3 : CustomDataGridView {
         workData.ErrorValidation.Grid3[RowIndex] = "";
         if (text == "") {
             CellBackColor = BgColor.DEFAULT;
-            return false;
+            return true;
         }
 
         if (InputCheck(text, textBox)) {
@@ -357,11 +366,11 @@ public class DataGridView3 : CustomDataGridView {
             return true;
         }
 
-        if (WorkDataExclusive.Count(G.staffId, G.pcName, workData.Sno) == 0) {
+        if (WorkDataExclusive.Count(workData.Sno) == 0) {
             //他の人が使用中でない場合
-            if (WorkDataExclusive.Count(G.staffId, G.pcName, workData.Sno, 1) == 0) {
+            if (WorkDataExclusive.Count(workData.Sno, 1) == 0) {
                 //自分が排他中でない場合
-                WorkDataExclusive.Insert(G.staffId, G.pcName, workData.Sno); //排他中に更新
+                WorkDataExclusive.Insert(workData.Sno); //排他中に更新
             }
 
             return true;
@@ -381,10 +390,10 @@ public class DataGridView3 : CustomDataGridView {
             return true;
         }
 
-        WorkDataExclusive.Delete(G.staffId, G.pcName, text);
-        if (WorkDataExclusive.Count(G.staffId, G.pcName, text, 0) == 0) {
-            if (WorkDataExclusive.Count(G.staffId, G.pcName, text, 1) == 0) {
-                WorkDataExclusive.Insert(G.staffId, G.pcName, text); //排他中に更新
+        WorkDataExclusive.Delete(text);
+        if (WorkDataExclusive.Count(text, 0) == 0) {
+            if (WorkDataExclusive.Count(text, 1) == 0) {
+                WorkDataExclusive.Insert(text); //排他中に更新
             }
 
             return true;
