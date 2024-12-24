@@ -45,7 +45,7 @@ public partial class WorkData {
         Check(ref errCnt, Tgr5, Gr5); //GR5 規格（材質）8
 
         Check(ref errCnt, Tlk1, Lk1); //LK1 ロンジ形状（第１ロンジ）9
-        Check(ref errCnt, Tlk2, Ll2); //LK2 ロンジ形状（第２ロンジ）10
+        Check(ref errCnt, Tlk2, Lk2); //LK2 ロンジ形状（第２ロンジ）10
         Check(ref errCnt, Tlk3, Lk3); //LK3 ロンジ形状（第３ロンジ）11
         Check(ref errCnt, Tlk4, Lk4); //LK4 ロンジ形状（第４ロンジ）12
         Check(ref errCnt, Tlk5, Lk5); //LK5 ロンジ形状（第５ロンジ）13
