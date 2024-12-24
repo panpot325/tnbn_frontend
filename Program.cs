@@ -17,6 +17,7 @@ internal static class Program {
 
     /// <summary>
     /// The main entry point for the application.
+    /// コミットテスト1111
     /// </summary>
     [STAThread]
     private static void Main() {
