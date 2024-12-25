@@ -3,7 +3,6 @@ using System.Windows.Forms;
 using WorkDataStudio.Model;
 using WorkDataStudio.share;
 using WorkDataStudio.type;
-using G = WorkDataStudio.share.Globals;
 
 namespace WorkDataStudio;
 
@@ -132,13 +131,15 @@ public partial class Form1 {
                     }
                 }
 
-                DataGrid1.RowBackColor = BgColor.DELETED;
-
+                //DataGrid1.RowBackColor = BgColor.DELETED;
+                DataGrid1.SelectRowBackColor(BgColor.DELETED);
                 break;
 
             default:
                 WorkDataExclusive.Delete(workData.Sno);
-                DataGrid1.RowBackColor = BgColor.DEFAULT;
+                //DataGrid1.RowBackColor = BgColor.DEFAULT;
+                DataGrid1.SelectRowBackColor(BgColor.DEFAULT);
+
 
                 break;
         }

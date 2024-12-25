@@ -32,10 +32,14 @@ public class DataGridView1 : CustomDataGridView {
         MultiSelect = false;
         ScrollBars = ScrollBars.Vertical;
         SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-        DefaultCellStyle.SelectionBackColor = BgColor.SELECTED;
+        DefaultCellStyle.SelectionBackColor = Color.Transparent;
         DefaultCellStyle.SelectionForeColor = FgColor.DEFAULT;
         ColumnHeadersDefaultCellStyle.BackColor = Color.White;
         ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+        
+        RowHeadersVisible = true;
+        RowHeadersWidth = 21;
+        RowHeadersDefaultCellStyle.SelectionBackColor = BgColor.SELECTED;
     }
 
     /// <summary>

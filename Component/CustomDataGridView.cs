@@ -100,6 +100,15 @@ public class CustomDataGridView : DataGridView {
     }
 
     /// <summary>
+    /// SelectionRowBackColor
+    /// </summary>
+    /// <param name="color"></param>
+    public void SelectRowBackColor(Color color) {
+        RowBackColor = color;
+        DefaultCellStyle.SelectionBackColor = color;
+    }
+
+    /// <summary>
     /// 入力文字数の設定
     /// </summary>
     public int MaxInputLength {
