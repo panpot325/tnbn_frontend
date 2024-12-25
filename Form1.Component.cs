@@ -176,6 +176,7 @@ public partial class Form1 {
         DataGrid1 = new DataGridView1();
         DataGrid1.MouseClick += DataGrid1_MouseClick;
         DataGrid1.DoubleClick += DataGrid1_DoubleClick;
+        DataGrid1.SelectionChanged += DataGrid1_SelectionChanged;
         Controls.Add(DataGrid1);
     }
 

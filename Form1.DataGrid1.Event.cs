@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using WorkDataStudio.Model;
 using WorkDataStudio.share;
@@ -49,5 +50,14 @@ public partial class Form1 {
                 //DataGrid1.SetPData();//グリッド1_Pデータ作成色設定_読込時
                 break;
         }
+    }
+    
+    /// <summary>
+    /// SelectionChanged
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void DataGrid1_SelectionChanged(object sender, EventArgs e) {
+        DataGrid1.DefaultCellStyle.SelectionBackColor = Color.Transparent;
     }
 }
