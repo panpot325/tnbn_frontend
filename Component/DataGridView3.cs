@@ -431,7 +431,7 @@ public class DataGridView3 : CustomDataGridView {
     /// <returns></returns>
     private string IntFormat(string str, string format = "0") {
         if (int.TryParse(str, out _)) {
-            return Convert.ToInt16(str).ToString(format);
+            return Convert.ToInt32(str).ToString(format);
         }
 
         return str;
