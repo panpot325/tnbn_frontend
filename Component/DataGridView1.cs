@@ -32,7 +32,7 @@ public class DataGridView1 : CustomDataGridView {
         MultiSelect = false;
         ScrollBars = ScrollBars.Vertical;
         SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-        DefaultCellStyle.SelectionBackColor = Color.Transparent;
+        DefaultCellStyle.SelectionBackColor = BgColor.CLEARED;
         DefaultCellStyle.SelectionForeColor = FgColor.DEFAULT;
         ColumnHeadersDefaultCellStyle.BackColor = Color.White;
         ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
@@ -101,6 +101,7 @@ public class DataGridView1 : CustomDataGridView {
     public DataGridView1 Add(string sno = "") {
         WorkData.Add(sno);
         RowIndex = Rows.Add();
+        SelectRowBackColor(BgColor.DEFAULT);
         ShowWorkData();
         return this;
     }

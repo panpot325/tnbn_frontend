@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows.Forms;
 using WorkDataStudio.Model;
 using WorkDataStudio.share;
+using G = WorkDataStudio.share.Globals;
 
 namespace WorkDataStudio;
 
@@ -58,6 +58,7 @@ public partial class Form1 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void DataGrid1_SelectionChanged(object sender, EventArgs e) {
-        DataGrid1.DefaultCellStyle.SelectionBackColor = Color.Transparent;
+        G.Out("DataGrid1_SelectionChanged Event");
+        DataGrid1.DefaultCellStyle.SelectionBackColor = BgColor.CLEARED;
     }
 }
