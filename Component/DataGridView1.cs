@@ -127,6 +127,7 @@ public class DataGridView1 : CustomDataGridView {
         this[3, RowIndex].Value = workData.Pcs;
         this[4, RowIndex].Value = workData.YoteibiKari;
         this[5, RowIndex].Value = workData.ChgFlg;
+        SelectRowBackColor(RowBackColor);
         Enabled = true;
         return this;
     }
@@ -165,6 +166,7 @@ public class DataGridView1 : CustomDataGridView {
                      workData.ChgFlg
                  ))) {
             Rows[row].DefaultCellStyle.BackColor = Color.RosyBrown;
+            SelectRowBackColor(Color.RosyBrown);
         }
 
         Enabled = true;
@@ -259,6 +261,7 @@ public class DataGridView1 : CustomDataGridView {
                 2 => BgColor.S_GUNWALE_E, //Sを作成(東) 薄紫
                 _ => BgColor.DEFAULT
             };
+            SelectRowBackColor(RowBackColor);
         }
 
         Visible = true;
@@ -279,6 +282,7 @@ public class DataGridView1 : CustomDataGridView {
                 2 => BgColor.P_GUNWALE_E, //Pを作成(東) 濃青
                 _ => BgColor.DEFAULT
             };
+            SelectRowBackColor(RowBackColor);
         }
 
         Visible = true;
