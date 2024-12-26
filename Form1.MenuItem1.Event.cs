@@ -17,7 +17,7 @@ public partial class Form1 {
         Mode.SetNew1();
         Process_New();
         Frame2.Enabled = true;
-        Option1_0.Checked = true;
+        Option1_0.Checked = false;
     }
 
     /// <summary>
@@ -30,7 +30,7 @@ public partial class Form1 {
         Mode.SetNew2(); //新規2
         Process_New();
         Frame2.Enabled = false;
-        Option1_1.Checked = true;
+        Option1_1.Checked = false;
     }
 
     /// <summary>
