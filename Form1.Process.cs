@@ -43,7 +43,7 @@ public partial class Form1 {
         WorkDataExclusive.Delete();
 
         Frame2.Enabled = true;
-        Option1_0.Checked = true;
+        Option1_0.Checked = false;
         Text6.Text = "";
         Text4.Text = "";
         Text3.Text = "";
