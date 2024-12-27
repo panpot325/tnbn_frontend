@@ -90,11 +90,11 @@ public partial class Form1 {
                 return;
 
             case Mode.EDIT_1: //船番指定
-                Save_Edit_1();
+                Save_Edit_Copy_1();
                 return;
 
             case Mode.COPY_1: //船番コピー
-                Save_Copy_1();
+                Save_Edit_Copy_1();
                 return;
 
             case Mode.COPY_2: //キーコピー

@@ -15,7 +15,7 @@ public partial class Form1 {
     /// </summary>
     private void Save_New_1() {
         if (!WorkData.ValidAll()) {
-            ValidMessage();
+            ValidMessage(); //入力エラーのデータを表示
             return;
         }
 
@@ -24,42 +24,39 @@ public partial class Form1 {
             return;
         }
 
-        WorkData.UpdateAll(true);
+        WorkData.UpdateAll(true); //加工ワークデータの更新
         WorkData_S_Create(); // @Sデータの作成と登録
         WorkData_S_Update(); // @加工ワークデータSの更新
         WorkData_P_Create(); // @Pデータの作成と登録
         WorkData_PS_Update(); // @CrePSFlgの更新
-        WorkDataExclusive.Delete();
+        WorkDataExclusive.Delete();//Del_排他情報
         Mode.SetNew1();
         Process_New();
     }
 
     /// <summary>
-    ///  船番指定
+    ///  船番指定 船番コピー
     /// </summary>
-    private void Save_Edit_1() {
-        WorkData.DeleteOfSno(WorkData.snoName);
-        WorkData.UpdateAll(false);
-        WorkData_S_Create(); // @Sデータの作成と登録
-        WorkData_S_Update(); // @加工ワークデータSの更新
-        WorkData_P_Create(); // @Pデータの作成と登録
-        WorkData_PS_Update(); // @CrePSFlgの更新
-        WorkDataExclusive.Delete();
-        Mode.SetNew1();
-        Process_New();
-    }
+    private void Save_Edit_Copy_1() {
+        if (!WorkData.ValidAll()) {
+            WorkData.DeleteOfSno(WorkData.snoName); //加工ワークデータの削除_船番
+            WorkData.UpdateAll(false); //加工ワークデータの更新
+            WorkData_S_Create(); // @Sデータの作成と登録
+            WorkData_S_Update(); // @加工ワークデータSの更新
+            WorkData_P_Create(); // @Pデータの作成と登録
+            WorkData_PS_Update(); // @CrePSFlgの更新
+            WorkDataExclusive.Delete();//Del_排他情報
+            Mode.SetNew1();
+            return;
+        }
 
-    /// <summary>
-    ///  船番コピー
-    /// </summary>
-    private void Save_Copy_1() {
-        WorkData.DeleteOfSno(WorkData.snoName);
-        WorkData.UpdateAll(false);
+        WorkData.DeleteOfSno(WorkData.snoName); //加工ワークデータの削除_船番
+        WorkData.UpdateAll(false); //加工ワークデータの更新
         WorkData_S_Create(); // @Sデータの作成と登録
         WorkData_S_Update(); // @加工ワークデータSの更新
         WorkData_P_Create(); // @Pデータの作成と登録
         WorkData_PS_Update(); // @CrePSFlgの更新
-        WorkDataExclusive.Delete();
+        WorkDataExclusive.Delete();//Del_排他情報
         Mode.SetNew1();
         Process_New();
     }
@@ -78,8 +75,8 @@ public partial class Form1 {
             return;
         }
 
-        WorkData.InsertAll();
-        WorkDataExclusive.Delete();
+        WorkData.InsertAll(); //Ins_加工ワークデータ(i)
+        WorkDataExclusive.Delete();//Del_排他情報
         Mode.SetNew1();
         Process_New();
     }
@@ -93,8 +90,8 @@ public partial class Form1 {
             return;
         }
 
-        WorkData.UpdateAll(true);
-        WorkDataExclusive.Delete();
+        WorkData.UpdateAll(true); //加工ワークデータの更新
+        WorkDataExclusive.Delete();//Del_排他情報
         Mode.SetNew1();
         Process_New();
     }
