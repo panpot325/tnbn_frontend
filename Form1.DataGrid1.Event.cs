@@ -38,20 +38,16 @@ public partial class Form1 {
 
         switch (Mode.Value) {
             case Mode.EDIT_1 or Mode.COPY_1:
-                //case SMode.NEW_1:
-                //|| G.selMode == SMode.NEW_1 は仮
-                //WorkData.Add(WorkData.snoName);
-                //WorkData.List.Last().Sno = WorkData.snoName;
                 DataGrid1.Add(WorkData.snoName);
                 DataGrid1.ShowWorkData(); //グリッド1の表示
                 DataGrid1.Select(WorkData.Count - 1);
                 DataGrid3.ShowWorkData(DataGrid1.WorkData);
-                //DataGrid1.SetSData(); //グリッド1_Sデータ作成色設定_読込時
-                //DataGrid1.SetPData();//グリッド1_Pデータ作成色設定_読込時
+                DataGrid1.SetSData(); //グリッド1_Sデータ作成色設定_読込時
+                DataGrid1.SetPData(); //グリッド1_Pデータ作成色設定_読込時
                 break;
         }
     }
-    
+
     /// <summary>
     /// SelectionChanged
     /// </summary>
