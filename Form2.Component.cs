@@ -30,6 +30,7 @@ public partial class Form2 {
         DataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
         DataGridView4.TabIndex = 0;
         DataGridView4.MouseClick += DataGrid4_MouseClick;
+        DataGridView4.SelectionChanged += DataGrid4_SelectionChanged;
         DataGridView4.Width = 800;
         // 
         // Form2
