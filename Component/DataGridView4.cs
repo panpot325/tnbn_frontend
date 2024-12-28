@@ -85,6 +85,7 @@ public class DataGridView4 : CustomDataGridView {
     public void ShowWorkDataList() {
         Console.WriteLine(@"@グリッド4 データ表示");
         Rows.Clear();
+        if (!WorkData.Exists) return;
         foreach (var row in WorkData.List.Select(workData => Rows.Add(
                      workData.Sno, workData.Blk, workData.Bzi, workData.Pcs + $"[{workData.ChgFlg}]", //For Debug
                      workData.Gr1, workData.Gr2, workData.Gr3, workData.Gr4, workData.Gr5,
@@ -102,7 +103,7 @@ public class DataGridView4 : CustomDataGridView {
                      workData.Org, workData.YoteibiKari
                  ))) {
         }
-
+        SelectRowBackColor(BgColor.DEFAULT);
         Enabled = true;
     }
 
@@ -112,8 +113,9 @@ public class DataGridView4 : CustomDataGridView {
     public void ShowWorkData() {
         Row.SetValues(WorkData.GetValues().ToArray());
         this[3, RowIndex].Value = WorkData.Pcs + $"[{WorkData.ChgFlg}]"; //For Debug
-        RowBackColor = WorkData.ChgFlg == WorkData.UPDATE
+        SelectRowBackColor(WorkData.ChgFlg == WorkData.UPDATE
             ? BgColor.UPDATED
-            : BgColor.DEFAULT;
+            : BgColor.DEFAULT
+        );
     }
 }
