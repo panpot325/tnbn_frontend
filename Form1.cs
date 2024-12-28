@@ -33,8 +33,8 @@ public partial class Form1 : BasicForm {
     protected override void FormPosition() {
         Left = (PRect.Right - PRect.Left - Width) / 2 + PRect.Left;
         Top = (PRect.Bottom - PRect.Left - Height) / 2 + PRect.Top;
-        Left = 20; //仮設定
-        Top = 20; //仮設定
+        Left = 0; //仮設定
+        Top = 0; //仮設定
     }
 
     /// <summary>
