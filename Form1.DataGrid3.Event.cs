@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using WorkDataStudio.Component;
+using WorkDataStudio.share;
 using G = WorkDataStudio.share.Globals;
 
 // ReSharper disable InvertIf
@@ -60,6 +62,7 @@ public partial class Form1 {
     /// <exception cref="NotImplementedException"></exception>
     private void DataGrid3_SelectionChanged(object sender, EventArgs e) {
         G.Out("DataGrid3_SelectionChanged Event");
+        DataGrid3.DefaultCellStyle.SelectionBackColor = BgColor.CLEARED;
         Grid_Change();
     }
 

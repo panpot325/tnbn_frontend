@@ -102,7 +102,8 @@ public class DataGridView3 : CustomDataGridView {
             case Mode.NEW_1:
                 RowIndex = 1;
                 Rows[0].DefaultCellStyle.BackColor = BgColor.DISABLED; //薄灰
-                Rows[0].DefaultCellStyle.SelectionBackColor = BgColor.CLEARED;
+                //Rows[0].DefaultCellStyle.SelectionBackColor = BgColor.DISABLED;
+                //Rows[0].DefaultCellStyle.SelectionBackColor = BgColor.CLEARED;
                 break;
             case Mode.EDIT_1 or Mode.COPY_1:
                 this[0, 0].Style.BackColor = BgColor.DISABLED;
@@ -115,6 +116,7 @@ public class DataGridView3 : CustomDataGridView {
                 break;
         }
 
+        Rows[0].DefaultCellStyle.SelectionBackColor = Rows[0].DefaultCellStyle.BackColor;
         return this;
     }
 
@@ -127,10 +129,18 @@ public class DataGridView3 : CustomDataGridView {
         Console.WriteLine(@"@グリッド3バックカラー設定");
         foreach (var data in WorkDataType.List
                      .Select((value, index) => new { value, index })) {
+            var backColor = workData.ErrorValidation.Grid3[data.index] == WorkDataType.CROSS
+                ? BgColor.INVALID
+                : BgColor.DEFAULT;
+
+            Rows[data.index].DefaultCellStyle.BackColor = backColor;
+            Rows[data.index].DefaultCellStyle.SelectionBackColor = backColor;
+            /*
             this[0, data.index].Style.BackColor =
                 workData.ErrorValidation.Grid3[data.index] == WorkDataType.CROSS
                     ? BgColor.INVALID
                     : BgColor.DEFAULT;
+            */
         }
 
         return this;
@@ -246,7 +256,8 @@ public class DataGridView3 : CustomDataGridView {
                 StrValue = text.ToUpper();
             }
 
-            if (DataType.Dm == "W71E") { //MAX(皮板最大板厚)
+            if (DataType.Dm == "W71E") {
+                //MAX(皮板最大板厚)
                 this[ColIndex, RowIndex + 1].Value = text;
             }
 
@@ -261,7 +272,7 @@ public class DataGridView3 : CustomDataGridView {
                 && Mode.Value != Mode.NEW_2
                 && Mode.Value != Mode.EDIT_1
                 && Mode.Value != Mode.COPY_1) {
-                dataGridView1.CellBackColor = BgColor.SELECTED;
+                //dataGridView1.CellBackColor = BgColor.SELECTED;
             }
 
             return this;
