@@ -19,6 +19,7 @@ public partial class Form1 {
     /// <param name="e"></param>
     private void Form1_Load(object sender, EventArgs e) {
         Console.WriteLine(@"STEP1: Form1_Load");
+        FormPosition(); 
         _activate = true;
         WorkData.workDataCnt = 0;
         WorkData.copyDataCnt = 0;

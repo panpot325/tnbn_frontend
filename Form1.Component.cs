@@ -143,9 +143,9 @@ public partial class Form1 {
 
         // Form1
         Name = "Form1";
-        //AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
+        AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        //ClientSize = new System.Drawing.Size(2374, 1429);
+        ClientSize = new System.Drawing.Size(2374, 1429);
 
         Controls.Add(Text1);
         Controls.Add(Text2);
