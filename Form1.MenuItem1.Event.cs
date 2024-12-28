@@ -17,7 +17,7 @@ public partial class Form1 {
         Mode.SetNew1();
         Process_New();
         Frame2.Enabled = true;
-        Option1_0.Checked = false;
+        Option1_1.Checked = true;
     }
 
     /// <summary>

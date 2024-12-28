@@ -20,6 +20,7 @@ public partial class Form1 {
     private void Form1_Load(object sender, EventArgs e) {
         Console.WriteLine(@"STEP1: Form1_Load");
         FormPosition(); 
+        Option1_1.Checked = true;
         _activate = true;
         WorkData.workDataCnt = 0;
         WorkData.copyDataCnt = 0;
