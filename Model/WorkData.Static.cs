@@ -120,14 +120,14 @@ public partial class WorkData {
     /// @更新チェック
     /// </summary>
     /// <returns></returns>
-    public static bool ValidAll() {
+    public static int ValidAll() {
         var cnt = 0;
         foreach (var workData in List.Where(workData => workData.ChgFlg == WorkData.UPDATE)) {
             cnt += workData.Valid();
             workData.Err1Flg = cnt > 0 ? 1 : 0; //入力ﾁｪｯｸｴﾗｰﾌﾗｸﾞ
         }
 
-        return cnt == 0;
+        return cnt;
     }
 
     /// <summary>
@@ -136,7 +136,7 @@ public partial class WorkData {
     /// </summary>
     /// <param name="error2"></param>
     /// <returns></returns>
-    public static bool DuplicateAll(bool error2 = false) {
+    public static int DuplicateAll(bool error2 = false) {
         var cnt = 0;
         foreach (var workData in List.Where(workData => workData.ChgFlg == WorkData.UPDATE)) {
             var duplicate = workData.Duplicate();
@@ -144,7 +144,7 @@ public partial class WorkData {
             cnt += duplicate;
         }
 
-        return cnt == 0;
+        return cnt;
     }
 
     /// <summary>

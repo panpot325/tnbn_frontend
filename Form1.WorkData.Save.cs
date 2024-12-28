@@ -14,12 +14,12 @@ public partial class Form1 {
     ///  新規登録
     /// </summary>
     private void Save_New_1() {
-        if (!WorkData.ValidAll()) {
+        if (WorkData.ValidAll() > 0) {
             ValidMessage(); //入力エラーのデータを表示
             return;
         }
 
-        if (!WorkData.DuplicateAll()) {
+        if (WorkData.DuplicateAll() > 0) {
             DuplicateMessage();
             return;
         }
@@ -29,7 +29,7 @@ public partial class Form1 {
         WorkData_S_Update(); // @加工ワークデータSの更新
         WorkData_P_Create(); // @Pデータの作成と登録
         WorkData_PS_Update(); // @CrePSFlgの更新
-        WorkDataExclusive.Delete();//Del_排他情報
+        WorkDataExclusive.Delete(); //Del_排他情報
         Mode.SetNew1();
         Process_New();
     }
@@ -44,7 +44,7 @@ public partial class Form1 {
         WorkData_S_Update(); // @加工ワークデータSの更新
         WorkData_P_Create(); // @Pデータの作成と登録
         WorkData_PS_Update(); // @CrePSFlgの更新
-        WorkDataExclusive.Delete();//Del_排他情報
+        WorkDataExclusive.Delete(); //Del_排他情報
         Mode.SetNew1();
         Process_New();
     }
@@ -53,18 +53,18 @@ public partial class Form1 {
     /// キーコピー
     /// </summary>
     private void Save_Copy_2() {
-        if (!WorkData.ValidAll()) {
+        if (WorkData.ValidAll() > 0) {
             ValidMessage();
             return;
         }
 
-        if (!WorkData.DuplicateAll()) {
+        if (WorkData.DuplicateAll(true) > WorkData.Count) {
             DuplicateMessage();
             return;
         }
 
         WorkData.InsertAll(); //Ins_加工ワークデータ(i)
-        WorkDataExclusive.Delete();//Del_排他情報
+        WorkDataExclusive.Delete(); //Del_排他情報
         Mode.SetNew1();
         Process_New();
     }
@@ -73,13 +73,13 @@ public partial class Form1 {
     /// 今日予定
     /// </summary>
     private void Save_Edit_3() {
-        if (!WorkData.ValidAll()) {
+        if (WorkData.ValidAll() > 0) {
             ValidMessage();
             return;
         }
 
         WorkData.UpdateAll(true); //加工ワークデータの更新
-        WorkDataExclusive.Delete();//Del_排他情報
+        WorkDataExclusive.Delete(); //Del_排他情報
         Mode.SetNew1();
         Process_New();
     }
