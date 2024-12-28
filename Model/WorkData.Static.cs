@@ -151,7 +151,7 @@ public partial class WorkData {
     /// UpdateAll
     /// @更新/削除
     /// </summary>
-    /// <param name="delete"></param>
+    /// <param name="delete" 削除を実行></param>
     public static void UpdateAll(bool delete = false) {
         foreach (var workData in List) {
             switch (workData.ChgFlg) {
