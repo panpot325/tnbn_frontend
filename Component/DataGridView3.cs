@@ -90,6 +90,7 @@ public class DataGridView3 : CustomDataGridView {
                 ? DataGridViewContentAlignment.TopLeft
                 : DataGridViewContentAlignment.TopRight;
         }
+        SelectRowBackColor(Color.White);
 
         return this;
     }
