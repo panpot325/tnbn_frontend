@@ -19,10 +19,7 @@ public partial class Form1 {
         WorkData.copySelectCnt = 0;
         WorkDataExclusive.Delete();
 
-        Text1.Text = "";
-        Text2.Text = "";
-        Text3.Text = "";
-        Text6.Text = "";
+        MessageClear();
         Text4.Text = @"新規登録は、そのまま右側の明細を入力して下さい。";
         Text4.ForeColor = FgColor.VALID;
 
@@ -37,29 +34,22 @@ public partial class Form1 {
     /// 今日予定
     /// </summary>
     private void Process_Yotei() {
-        WorkData.Clear();
-        Mode.SetEdit3();
-        ViewNameText();
-        WorkDataExclusive.Delete();
-
-        Frame2.Enabled = true;
-        Option1_0.Checked = false;
-        Text6.Text = "";
-        Text4.Text = "";
-        Text3.Text = "";
-        Text2.Text = "";
-        Text1.Text = "";
-
         WorkData.Filter._Yotei(Convert.ToInt32(DateTime.Now.ToString("yyyyMMdd")));
-        WorkData.GetAll();
-        DataGrid1.Clear();
-        if (WorkData.Exists) {
-            DataGrid1.ShowWorkDataList();
-            DataGrid3.ShowWorkData(DataGrid1.WorkData).Focus();
+        if (WorkData.GetCount() < 1) {
+            Text4.Text = $@"{DateTime.Now:MM/dd}の予定データはありません。";
             return;
         }
 
-        Text4.Text = $@"{DateTime.Now:MM/dd}の予定データはありません。";
+        WorkData.Clear();
+        Mode.SetEdit3();
+        OptionSet(false);
+        ViewNameText();
+        MessageClear();
+        WorkDataExclusive.Delete();
+        WorkData.GetAll();
+        DataGrid1.Clear();
+        DataGrid1.ShowWorkDataList();
+        DataGrid3.ShowWorkData(DataGrid1.WorkData).Focus();
     }
 
     /// <summary>

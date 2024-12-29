@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using WorkDataStudio.Component;
 using WorkDataStudio.share;
 using G = WorkDataStudio.share.Globals;
 

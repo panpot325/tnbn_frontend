@@ -9,6 +9,10 @@ namespace WorkDataStudio;
 /// Form1.DataGrid
 /// </summary>
 public partial class Form1 {
+    /// <summary>
+    /// Call From DataGrid3_KeyDown
+    /// </summary>
+    /// <param name="key"></param>
     private void Grid_Edit(int key) {
         if (DataGrid3.ColIndex != 0) {
             return;
@@ -36,7 +40,7 @@ public partial class Form1 {
     }
 
     /// <summary>
-    /// Grid_Edit
+    /// Call From DataGrid3_KeyPress
     /// </summary>
     /// <param name="key"></param>
     private void Grid_Edit(char key) {
@@ -90,6 +94,7 @@ public partial class Form1 {
 
     /// <summary>
     /// Grid_Shift
+    /// Grid3からGrid1にデータを移行
     /// </summary>
     private void Grid_Shift() {
         switch (Mode.Value) {
@@ -127,6 +132,9 @@ public partial class Form1 {
 
     /// <summary>
     /// Grid_Change
+    /// Call From DataGrid3_SelectionChanged
+    /// Call From Grid_Shift
+    /// Call From Grid_Shift
     /// </summary>
     private void Grid_Change() {
         DataGrid2.Select(DataGrid3.RowIndex);
@@ -136,6 +144,8 @@ public partial class Form1 {
 
     /// <summary>
     /// Grid_Scroll
+    /// Grid2をGrid3に追従させる
+    /// Call From DataGrid3_Scroll
     /// </summary>
     private void Grid_Scroll() {
         DataGrid2.Visible = false;
