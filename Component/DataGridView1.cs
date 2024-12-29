@@ -277,12 +277,16 @@ public class DataGridView1 : CustomDataGridView {
 
         Visible = false;
         foreach (var data in WorkData.List.Select((value, index) => new { value, index })) {
-            Rows[data.index].DefaultCellStyle.BackColor = data.value.CreSFlg switch {
-                1 => BgColor.S_GUNWALE_N, //Sを作成しない 薄橙
-                2 => BgColor.S_GUNWALE_E, //Sを作成(東) 薄紫
-                _ => BgColor.DEFAULT
-            };
-            SelectRowBackColor(RowBackColor);
+            switch (data.value.CreSFlg) {
+                case 1:
+                    Rows[data.index].DefaultCellStyle.BackColor = BgColor.S_GUNWALE_N; //Sを作成しない 薄橙
+                    SelectRowBackColor(RowBackColor);
+                    break;
+                case 2:
+                    Rows[data.index].DefaultCellStyle.BackColor = BgColor.S_GUNWALE_E; //Sを作成(東) 薄紫
+                    SelectRowBackColor(RowBackColor);
+                    break;
+            }
         }
 
         Visible = true;
@@ -298,12 +302,16 @@ public class DataGridView1 : CustomDataGridView {
 
         Visible = false;
         foreach (var data in WorkData.List.Select((value, index) => new { value, index })) {
-            Rows[data.index].DefaultCellStyle.BackColor = data.value.CrePFlg switch {
-                0 => BgColor.P_GUNWALE_W, //Pを作成(西) 濃橙
-                2 => BgColor.P_GUNWALE_E, //Pを作成(東) 濃青
-                _ => BgColor.DEFAULT
-            };
-            SelectRowBackColor(RowBackColor);
+            switch (data.value.CrePFlg) {
+                case 0:
+                    Rows[data.index].DefaultCellStyle.BackColor = BgColor.P_GUNWALE_W; //Pを作成(西) 濃橙
+                    SelectRowBackColor(RowBackColor);
+                    break;
+                case 2:
+                    Rows[data.index].DefaultCellStyle.BackColor = BgColor.P_GUNWALE_E; //Pを作成(東) 濃青
+                    SelectRowBackColor(RowBackColor);
+                    break;
+            }
         }
 
         Visible = true;
