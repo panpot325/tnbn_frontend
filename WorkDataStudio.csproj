@@ -148,9 +148,6 @@
         <Compile Include="Form1.Menu.cs">
           <DependentUpon>Form1.cs</DependentUpon>
         </Compile>
-        <Compile Include="Form1.MenuItem.cs">
-          <DependentUpon>Form1.Menu.cs</DependentUpon>
-        </Compile>
         <Compile Include="Form1.MenuItem4.Event.cs">
           <DependentUpon>Form1.MenuItem4.cs</DependentUpon>
         </Compile>
@@ -164,19 +161,19 @@
           <DependentUpon>Form1.MenuItem3.cs</DependentUpon>
         </Compile>
         <Compile Include="Form1.MenuItem1.cs">
-          <DependentUpon>Form1.MenuItem.cs</DependentUpon>
+          <DependentUpon>Form1.Menu.cs</DependentUpon>
         </Compile>
         <Compile Include="Form1.MenuItem2.cs">
-          <DependentUpon>Form1.MenuItem.cs</DependentUpon>
+          <DependentUpon>Form1.Menu.cs</DependentUpon>
         </Compile>
         <Compile Include="Form1.MenuItem3.cs">
-          <DependentUpon>Form1.MenuItem.cs</DependentUpon>
+          <DependentUpon>Form1.Menu.cs</DependentUpon>
         </Compile>
         <Compile Include="Form1.MenuItem4.cs">
-          <DependentUpon>Form1.MenuItem.cs</DependentUpon>
+          <DependentUpon>Form1.Menu.cs</DependentUpon>
         </Compile>
         <Compile Include="Form1.MenuItem5.cs">
-          <DependentUpon>Form1.MenuItem.cs</DependentUpon>
+          <DependentUpon>Form1.Menu.cs</DependentUpon>
         </Compile>
         <Compile Include="Form1.MenuItem5.Event.cs">
           <DependentUpon>Form1.MenuItem5.cs</DependentUpon>

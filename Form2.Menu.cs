@@ -1,5 +1,4 @@
 ﻿using System.Windows.Forms;
-using WorkDataStudio.Component;
 
 namespace WorkDataStudio;
 
@@ -43,9 +42,9 @@ public partial class Form2 {
         menuItem.DropDownItems.AddRange(
             new ToolStripItem[] {
                 CreateMenuItem("船番→新船番", MenuItem_SM2_1_Click),
-                CreateMenuItem("全データを表示", MenuItem_SM2_2_Click),
+                CreateMenuItem("全データを表示", MenuItem_SM2_2_Click, false),
                 CreateMenuItem("船番を指定して表示", MenuItem_SM2_3_Click),
-                CreateMenuItem("仮付予定日指定して表示", MenuItem_SM2_4_Click),
+                CreateMenuItem("仮付予定日指定して表示", MenuItem_SM2_4_Click, false),
             });
 
         return menuItem;

@@ -37,13 +37,16 @@ public class BasicForm : Form {
     /// </summary>
     /// <param name="text"></param>
     /// <param name="handler"></param>
+    /// <param name="enabled"></param>
     /// <returns></returns>
-    protected ToolStripMenuItem CreateMenuItem(string text, EventHandler handler) {
-        return new ToolStripMenuItem(
+    protected ToolStripMenuItem CreateMenuItem(string text, EventHandler handler, bool enabled = true) {
+        var toolStripMenuItem = new ToolStripMenuItem(
             text,
             null,
             handler
         );
+        toolStripMenuItem.Enabled = enabled;
+        return toolStripMenuItem;
     }
 
     // @virtual
