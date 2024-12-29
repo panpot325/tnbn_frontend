@@ -220,12 +220,12 @@ public class DataGridView1 : CustomDataGridView {
                 _ => workData.CreSFlg
             };
 
-            RowBackColor = pIdx switch {
+            SelectRowBackColor(pIdx switch {
                 1 => BgColor.S_GUNWALE_N,
                 2 => BgColor.S_GUNWALE_W,
                 3 => BgColor.S_GUNWALE_E,
                 _ => RowBackColor
-            };
+            });
 
             Visible = true;
         }
@@ -253,12 +253,12 @@ public class DataGridView1 : CustomDataGridView {
                 _ => workData.CrePFlg
             };
 
-            RowBackColor = pIdx switch {
+            SelectRowBackColor(pIdx switch {
                 1 => BgColor.P_GUNWALE_N,
                 2 => BgColor.P_GUNWALE_W,
                 3 => BgColor.P_GUNWALE_E,
                 _ => RowBackColor
-            };
+            });
 
             Visible = true;
         }
