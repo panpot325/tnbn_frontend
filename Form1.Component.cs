@@ -1,4 +1,5 @@
-﻿using WorkDataStudio.Component;
+﻿using System.Windows.Forms;
+using WorkDataStudio.Component;
 using WorkDataStudio.share;
 
 // ReSharper disable InconsistentNaming
@@ -82,15 +83,15 @@ public partial class Form1 {
 
         Text1 = new CustomTextBox(1, "Text1", 1634, 350, 645, 146, true);
         Text2 = new CustomTextBox(2, "Text2", 1634, 226, 268, 62, true);
-        Text3 = new CustomTextBox(3, "Text3", 1634, 126, 150, 36);
+        Text3 = new CustomTextBox(3, "Text3", 1634, 120, 150, 36);
         Text4 = new CustomTextBox(4, "Text4", 1634, 519, 645, 146, true);
-        Text6 = new CustomTextBox(6, "Text6", 1825, 124, 150, 36);
+        Text6 = new CustomTextBox(6, "Text6", 1825, 120, 150, 36);
 
         Frame1 = new CustomGroupBox(0, "Frame1", 1634, 696, 645, 571, @"バックカラーの説明");
-        Frame2 = new CustomGroupBox(0, "Frame2", 2039, 124, 248, 173, @"対象データ");
+        Frame2 = new CustomGroupBox(0, "Frame2", 2039, 90, 248, 173, @"対象データ");
 
-        Option1_0 = new CustomRadioButton(0, "Option1_0", 0, 27, 281, 69, @"作成する");
-        Option1_1 = new CustomRadioButton(1, "Option1_1", 0, 83, 281, 55, @"作成しない");
+        Option1_0 = new CustomRadioButton(0, "Option1_0", 0, 36, 290, 80, @"作成する");
+        Option1_1 = new CustomRadioButton(1, "Option1_1", 0, 110, 290, 80, @"作成しない");
 
         timer1 = new System.Timers.Timer();
         timer2 = new System.Timers.Timer();
@@ -130,8 +131,8 @@ public partial class Form1 {
         // 
         Frame2.Controls.Add(Option1_0);
         Frame2.Controls.Add(Option1_1);
-        Frame2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-
+        Frame2.FlatStyle = FlatStyle.Standard;
+        
         // timer1
         timer1.SynchronizingObject = this;
         timer1.Elapsed += timer1_Elapsed;
@@ -144,7 +145,7 @@ public partial class Form1 {
         // Form1
         Name = "Form1";
         AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
-        AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+        AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new System.Drawing.Size(2374, 1429);
 
         Controls.Add(Text1);
