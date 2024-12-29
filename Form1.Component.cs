@@ -76,8 +76,8 @@ public partial class Form1 {
         label18 = new CustomLabel("label18", 191, 399, 436, 38, @"：Ｐ舷を作成(東基準)");
         label19 = new CustomLabel("label19", 191, 448, 436, 38, @"：Ｓ舷を作成(西)/Ｐ舷を作成しない");
         label20 = new CustomLabel("label20", 191, 501, 436, 38, @"選択行");
-        label21 = new CustomLabel("label21", 1634, 82, 175, 38, @"入力単位");
-        label22 = new CustomLabel("label22", 1825, 82, 175, 38, @"ゼロの入力");
+        label21 = new CustomLabel("label21", 1634, 80, 175, 38, @"入力単位");
+        label22 = new CustomLabel("label22", 1825, 80, 175, 38, @"ゼロの入力");
         label23 = new CustomLabel("label23", 1634, 182, 436, 38, @"入力範囲");
         label24 = new CustomLabel("label24", 1634, 306, 175, 38, @"備考");
 

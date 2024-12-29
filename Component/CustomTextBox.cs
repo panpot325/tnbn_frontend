@@ -6,7 +6,7 @@ namespace WorkDataStudio.Component;
 /// <summary>
 /// CustomTextBox
 /// </summary>
-public class CustomTextBox : System.Windows.Forms.TextBox {
+public class CustomTextBox : TextBox {
     /// <summary>
     /// Constructor
     /// </summary>
@@ -25,6 +25,7 @@ public class CustomTextBox : System.Windows.Forms.TextBox {
         SetFont();
         Margin = new System.Windows.Forms.Padding(6);
         SetMultiLine(multiline);
+        BorderColor = Color.Gray;
     }
 
     /// <summary>
@@ -40,5 +41,36 @@ public class CustomTextBox : System.Windows.Forms.TextBox {
     /// </summary>
     private void SetMultiLine(bool multiline) {
         Multiline = multiline;
+    }
+
+
+    /// <summary>
+    /// 枠線
+    /// </summary>
+    public Color BorderColor { get; set; }
+
+    /// <summary>
+    /// OnPaint イベント。
+    /// </summary>
+    /// <param name="pe">イベントデータ。</param>
+    protected override void OnPaint(PaintEventArgs pe) {
+        base.OnPaint(pe);
+    }
+
+    /// <summary>
+    /// Windowsメッセージを処理する。
+    /// </summary>
+    /// <param name="m">処理するメッセージ。</param>
+    protected override void WndProc(ref Message m) {
+        if (m.Msg == 0x85) //WM_NCPAINT
+        {
+            var graphics = Parent.CreateGraphics();
+            var rectangle = new Rectangle(Location, Size);
+            rectangle.Inflate(1, 1);
+
+            ControlPaint.DrawBorder(graphics, rectangle, BorderColor, ButtonBorderStyle.Solid);
+        }
+
+        base.WndProc(ref m);
     }
 }
