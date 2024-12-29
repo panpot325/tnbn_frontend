@@ -148,6 +148,9 @@
         <Compile Include="Form1.Menu.cs">
           <DependentUpon>Form1.cs</DependentUpon>
         </Compile>
+        <Compile Include="Form1.MenuItem.cs">
+          <DependentUpon>Form1.Menu.cs</DependentUpon>
+        </Compile>
         <Compile Include="Form1.MenuItem4.Event.cs">
           <DependentUpon>Form1.MenuItem4.cs</DependentUpon>
         </Compile>

@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using WorkDataStudio.Model;
 using WorkDataStudio.share;
 using WorkDataStudio.type;
-using G = WorkDataStudio.share.Globals;
 
 // ReSharper disable MemberCanBeMadeStatic.Local
 // ReSharper disable InvertIf
@@ -90,34 +89,9 @@ public class DataGridView3 : CustomDataGridView {
                 ? DataGridViewContentAlignment.TopLeft
                 : DataGridViewContentAlignment.TopRight;
         }
+
         SelectRowBackColor(Color.White);
-
-        return this;
-    }
-
-    /// <summary>
-    /// @グリッド3入力不可バックカラー設定()
-    /// </summary>
-    public DataGridView3 SetBackColorGray() {
-        switch (Mode.Value) {
-            case Mode.NEW_1:
-                RowIndex = 1;
-                Rows[0].DefaultCellStyle.BackColor = BgColor.DISABLED; //薄灰
-                //Rows[0].DefaultCellStyle.SelectionBackColor = BgColor.DISABLED;
-                //Rows[0].DefaultCellStyle.SelectionBackColor = BgColor.CLEARED;
-                break;
-            case Mode.EDIT_1 or Mode.COPY_1:
-                this[0, 0].Style.BackColor = BgColor.DISABLED;
-                break;
-            case Mode.EDIT_2 or Mode.EDIT_3:
-                this[0, 0].Style.BackColor = BgColor.DISABLED;
-                this[0, 1].Style.BackColor = BgColor.DISABLED;
-                this[0, 2].Style.BackColor = BgColor.DISABLED;
-                this[0, 3].Style.BackColor = BgColor.DISABLED;
-                break;
-        }
-
-        Rows[0].DefaultCellStyle.SelectionBackColor = Rows[0].DefaultCellStyle.BackColor;
+        SetBackColor(workData);
         return this;
     }
 
@@ -142,8 +116,36 @@ public class DataGridView3 : CustomDataGridView {
                     ? BgColor.INVALID
                     : BgColor.DEFAULT;
             */
+
+            DisabledBackColor();
         }
 
+        return this;
+    }
+
+    /// <summary>
+    /// @グリッド3入力不可バックカラー設定()
+    /// </summary>
+    /// <returns></returns>
+    private DataGridView3 DisabledBackColor() {
+        switch (Mode.Value) {
+            case Mode.NEW_1:
+                RowIndex = 1;
+                if (WorkData.Count > 1)
+                    Rows[0].DefaultCellStyle.BackColor = BgColor.DISABLED;
+                break;
+            case Mode.EDIT_1 or Mode.COPY_1:
+                Rows[0].DefaultCellStyle.BackColor = BgColor.DISABLED;
+                break;
+            case Mode.EDIT_2 or Mode.EDIT_3:
+                Rows[0].DefaultCellStyle.BackColor = BgColor.DISABLED;
+                Rows[1].DefaultCellStyle.BackColor = BgColor.DISABLED;
+                Rows[2].DefaultCellStyle.BackColor = BgColor.DISABLED;
+                Rows[3].DefaultCellStyle.BackColor = BgColor.DISABLED;
+                break;
+        }
+
+        Rows[0].DefaultCellStyle.SelectionBackColor = Rows[0].DefaultCellStyle.BackColor;
         return this;
     }
 

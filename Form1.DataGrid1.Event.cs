@@ -20,8 +20,6 @@ public partial class Form1 {
         Console.WriteLine(@"MouseClick");
         if (DataGrid1.RowCount == 0) return;
         DataGrid3.ShowWorkData(DataGrid1.WorkData);
-        //DataGrid1.WorkData.Valid();
-        DataGrid3.SetBackColor(DataGrid1.WorkData);
     }
 
     /// <summary>

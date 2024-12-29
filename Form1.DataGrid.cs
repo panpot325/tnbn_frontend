@@ -111,7 +111,7 @@ public partial class Form1 {
 
                 DataGrid1.SetValidation();
                 DataGrid3.ShowWorkData(DataGrid1.WorkData);
-                DataGrid3.SetBackColorGray();
+                //DataGrid3.DisabledBackColor();
                 Grid_Change();
 
                 return;
@@ -120,7 +120,7 @@ public partial class Form1 {
                 DataGrid1.ShowWorkData();
                 DataGrid1.SetValidation();
                 DataGrid3.ShowWorkData(DataGrid1.WorkData);
-                DataGrid3.SetBackColorGray();
+                //DataGrid3.DisabledBackColor();
                 Grid_Change();
                 break;
             case Mode.EMode.NEW_3:

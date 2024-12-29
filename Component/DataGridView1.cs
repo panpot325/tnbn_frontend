@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -13,6 +14,26 @@ namespace WorkDataStudio.Component;
 /// DataGridView1
 /// </summary>
 public class DataGridView1 : CustomDataGridView {
+    private static List<Color> _tmpRowColor = [];
+
+    /// <summary>
+    /// GetTmpRowBackColor
+    /// </summary>
+    /// <returns></returns>
+    public Color GetTmpRowBackColor() {
+        return _tmpRowColor.Any() ? _tmpRowColor[RowIndex] : BgColor.DEFAULT;
+    }
+
+    /// <summary>
+    /// SetTmpRowBackColor
+    /// </summary>
+    public void SetTmpRowBackColor() {
+        _tmpRowColor = [];
+        foreach (DataGridViewRow row in Rows) {
+            _tmpRowColor.Add(row.DefaultCellStyle.BackColor);
+        }
+    }
+
     /// <summary>
     /// プロパティのセット
     /// </summary>
@@ -36,7 +57,7 @@ public class DataGridView1 : CustomDataGridView {
         DefaultCellStyle.SelectionForeColor = FgColor.DEFAULT;
         ColumnHeadersDefaultCellStyle.BackColor = Color.White;
         ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
-        
+
         RowHeadersVisible = true;
         RowHeadersWidth = 21;
         RowHeadersDefaultCellStyle.SelectionBackColor = BgColor.SELECTED;

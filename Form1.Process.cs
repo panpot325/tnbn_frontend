@@ -61,6 +61,7 @@ public partial class Form1 {
             .ShowWorkDataList() //グリッド1の表示
             .SetSData() //グリッド1_Sデータ作成色設定_読込時
             .SetPData(); //グリッド1_Pデータ作成色設定_読込時
+        DataGrid1.SetTmpRowBackColor();
         DataGrid3.ShowWorkData(DataGrid1.WorkData);
     }
 
@@ -128,7 +129,7 @@ public partial class Form1 {
             default:
                 WorkDataExclusive.Delete(workData.Sno);
                 //DataGrid1.RowBackColor = BgColor.DEFAULT;
-                DataGrid1.SelectRowBackColor(BgColor.DEFAULT);
+                DataGrid1.SelectRowBackColor(DataGrid1.GetTmpRowBackColor());
 
 
                 break;
