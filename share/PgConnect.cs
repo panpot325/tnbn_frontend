@@ -11,8 +11,7 @@ public class PgConnect {
     }
 
     private static string GetConnectionString() {
-        return $"Host={
-            Settings.Default.DB_Host};" +
+        return $"Host={Settings.Default.DB_Host};" +
                $"Port={Settings.Default.DB_Port};" +
                $"Username={Settings.Default.DB_User};" +
                $"Password={Settings.Default.DB_Pass};" +
