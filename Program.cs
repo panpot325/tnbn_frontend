@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using WorkDataStudio.Model;
 using WorkDataStudio.Properties;
 using WorkDataStudio.share;
+using WorkDataStudio.type;
 using G = WorkDataStudio.share.Globals;
 
 // ReSharper disable InvertIf
@@ -20,7 +21,7 @@ internal static class Program {
     /// </summary>
     [STAThread]
     private static void Main() {
-        G.Sub_LogWrite(@$"プログラム起動開始 {Settings.Default.Prg_Ver}");
+        Log.Sub_LogWrite(@$"プログラム起動開始 {Settings.Default.Prg_Ver}");
         using var mutex = new Mutex(false, Application.ProductName);
         if (!mutex.WaitOne(0, false)) {
             MessageBox.Show(@"既に起動中です。二重起動できません。");
@@ -46,7 +47,7 @@ internal static class Program {
         _mainForm = new ApplicationContext();
         _mainForm.MainForm = FormType.Form1;
         Application.Run(_mainForm);
-        G.Sub_LogWrite(@"Main終了");
+        Log.Sub_LogWrite(@"Main終了");
     }
 
     public static void ShowForm(Form form) {

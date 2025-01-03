@@ -473,6 +473,7 @@
         <Compile Include="share\Mode.cs" />
         <Compile Include="type\index\SnoIndex.cs" />
         <Compile Include="type\index\WorkInfo.cs" />
+        <Compile Include="type\Log.cs" />
         <Compile Include="type\Position.cs" />
         <Compile Include="type\PRect.cs" />
         <Compile Include="type\WorkDataExclusive.cs" />
