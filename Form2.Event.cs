@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using WorkDataStudio.Model;
 using WorkDataStudio.share;
+using WorkDataStudio.type;
 using G = WorkDataStudio.share.Globals;
 
 namespace WorkDataStudio;
@@ -16,7 +17,7 @@ public partial class Form2 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void Form2_Load(object sender, EventArgs e) {
-        Console.WriteLine(@"Form2_Load");
+        Log.WriteLine(@"Form2_Load");
         WorkData.Clear();
         WorkData.copyDataCnt = 0;
         //ScreenInit();
@@ -28,7 +29,7 @@ public partial class Form2 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void Form2_Activated(object sender, EventArgs e) {
-        Console.WriteLine(@"Form2_Activated");
+        Log.WriteLine(@"Form2_Activated");
         DataGridView4.ShowWorkDataList();
     }
 
@@ -38,7 +39,7 @@ public partial class Form2 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void DataGrid4_MouseClick(object sender, MouseEventArgs e) {
-        Console.WriteLine(@"MouseClick");
+        Log.WriteLine(@"MouseClick");
         var workData = DataGridView4.WorkData;
         if (workData is null) {
             return;

@@ -3,6 +3,7 @@ using System.Timers;
 using System.Windows.Forms;
 using WorkDataStudio.Model;
 using WorkDataStudio.share;
+using WorkDataStudio.type;
 
 // ReSharper disable ConvertIfStatementToSwitchStatement
 // ReSharper disable MemberCanBeMadeStatic.Local
@@ -18,7 +19,7 @@ public partial class Form1 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void Form1_Load(object sender, EventArgs e) {
-        Console.WriteLine(@"STEP1: Form1_Load");
+        Log.WriteLine(@"STEP1: Form1_Load");
         FormPosition(); 
         OptionSet(false);
         _activate = true;
@@ -39,7 +40,7 @@ public partial class Form1 {
         if (!_activate) return;
         _activate = false;
         
-        Console.WriteLine(@"STEP2: Form1_Activated");
+        Log.WriteLine(@"STEP2: Form1_Activated");
         switch (Mode.Value) {
             case Mode.NEW_1 or Mode.NEW_2: //新規 新規2
                 Process_New();

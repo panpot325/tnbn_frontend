@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using WorkDataStudio.Model;
 using WorkDataStudio.share;
+using WorkDataStudio.type;
 using G = WorkDataStudio.share.Globals;
 
 namespace WorkDataStudio;
@@ -17,7 +18,7 @@ public partial class Form1 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void DataGrid1_MouseClick(object sender, MouseEventArgs e) {
-        Console.WriteLine(@"MouseClick");
+        Log.WriteLine(@"MouseClick");
         if (DataGrid1.RowCount == 0) return;
         DataGrid3.ShowWorkData(DataGrid1.WorkData);
     }

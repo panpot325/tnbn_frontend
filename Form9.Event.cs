@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using WorkDataStudio.type;
 
 namespace WorkDataStudio;
 
@@ -13,7 +14,7 @@ public partial class Form9 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void Form9_Load(object sender, EventArgs e) {
-        Console.WriteLine(@"Form9_Load");
+        Log.WriteLine(@"Form9_Load");
     }
 
     /// <summary>
@@ -22,7 +23,7 @@ public partial class Form9 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void Form9_Activated(object sender, EventArgs e) {
-        Console.WriteLine(@"Form9_Activated");
+        Log.WriteLine(@"Form9_Activated");
     }
 
     /// <summary>

@@ -3,6 +3,7 @@ using System.Data;
 using System.Windows.Forms;
 using Npgsql;
 using WorkDataStudio.Properties;
+using WorkDataStudio.type;
 
 namespace WorkDataStudio.share;
 
@@ -25,12 +26,12 @@ public class PgOpen {
             return true;
         }
         catch (Exception e) {
-            Console.WriteLine(e.Message);
+            Log.WriteLine(e.Message);
             return false;
         }
         finally {
             _instance.Close();
-            Console.WriteLine(@"データベースに接続しました。");
+            Log.WriteLine(@"データベースに接続しました。");
         }
     }
 

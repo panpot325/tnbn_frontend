@@ -1,4 +1,5 @@
 ﻿using System;
+using WorkDataStudio.type;
 
 namespace WorkDataStudio;
 
@@ -12,7 +13,7 @@ public partial class Form7 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void MenuItem_Cancel_Click(object sender, EventArgs e) {
-        Console.WriteLine(@"「戻る」が選択されました。");
+        Log.WriteLine(@"「戻る」が選択されました。");
         Close();
     }
 
@@ -22,7 +23,7 @@ public partial class Form7 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void MenuItem_Enter_Click(object sender, EventArgs e) {
-        Console.WriteLine(@"「決定」が選択されました。");
+        Log.WriteLine(@"「決定」が選択されました。");
         Process();
     }
 }

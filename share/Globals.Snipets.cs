@@ -1,6 +1,7 @@
 using System;
 using System.Net;
 using System.Net.Sockets;
+using WorkDataStudio.type;
 
 namespace WorkDataStudio.share;
 
@@ -45,6 +46,6 @@ public static partial class Globals {
     /// </summary>
     /// <param name="message"></param>
     public static void Out(string message) {
-        Console.WriteLine(message);
+        Log.WriteLine(message);
     }
 }

@@ -82,7 +82,7 @@ public class DataGridView3 : CustomDataGridView {
     /// </summary>
     /// <param name="workData"></param>
     public DataGridView3 ShowWorkData(WorkData workData) {
-        Console.WriteLine(@"ShowWorkData");
+        Log.WriteLine(@"ShowWorkData");
         Rows.Clear();
         foreach (var row in workData.GetValues().Select(value => Rows.Add(value))) {
             Rows[row].Cells[0].Style.Alignment = WorkDataType.List[row].Keishiki == WorkDataType.KEISHIKI_ASCII
@@ -101,7 +101,7 @@ public class DataGridView3 : CustomDataGridView {
     /// </summary>
     /// <param name="workData"></param>
     public DataGridView3 SetBackColor(WorkData workData) {
-        Console.WriteLine(@"@グリッド3バックカラー設定");
+        Log.WriteLine(@"@グリッド3バックカラー設定");
         foreach (var data in WorkDataType.List
                      .Select((value, index) => new { value, index })) {
             var backColor = workData.ErrorValidation.Grid3[data.index] == WorkDataType.CROSS

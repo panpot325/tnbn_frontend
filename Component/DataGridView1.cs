@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using WorkDataStudio.Model;
 using WorkDataStudio.share;
+using WorkDataStudio.type;
 using G = WorkDataStudio.share.Globals;
 
 // ReSharper disable ConvertIfStatementToReturnStatement
@@ -209,7 +209,7 @@ public class DataGridView1 : CustomDataGridView {
     /// <param name="pIdx"></param>
     /// <param name="text"></param>
     public DataGridView1 SetSData(int pIdx, TextBox text) {
-        Console.WriteLine(@"@グリッド1_Sデータ作成色設定");
+        Log.WriteLine(@"@グリッド1_Sデータ作成色設定");
         var workData = WorkData;
         if (workData.Pcs == "P") {
             Visible = false;
@@ -242,7 +242,7 @@ public class DataGridView1 : CustomDataGridView {
     /// <param name="pIdx"></param>
     /// <param name="text"></param>
     public DataGridView1 SetPData(int pIdx, TextBox text) {
-        Console.WriteLine(@"@グリッド1_Pデータ作成色設定");
+        Log.WriteLine(@"@グリッド1_Pデータ作成色設定");
         var workData = WorkData;
         if (workData.Pcs == "S") {
             Visible = false;
@@ -273,7 +273,7 @@ public class DataGridView1 : CustomDataGridView {
     /// @グリッド1_Sデータ作成色設定_読込時()
     /// </summary>
     public DataGridView1 SetSData() {
-        Console.WriteLine(@"@グリッド1_Sデータ作成色設定_読込時");
+        Log.WriteLine(@"@グリッド1_Sデータ作成色設定_読込時");
 
         Visible = false;
         foreach (var data in WorkData.List.Select((value, index) => new { value, index })) {
@@ -298,7 +298,7 @@ public class DataGridView1 : CustomDataGridView {
     /// グリッド1_Pデータ作成色設定_読込時()
     /// </summary>
     public DataGridView1 SetPData() {
-        Console.WriteLine(@"@グリッド1_Pデータ作成色設定_読込時");
+        Log.WriteLine(@"@グリッド1_Pデータ作成色設定_読込時");
 
         Visible = false;
         foreach (var data in WorkData.List.Select((value, index) => new { value, index })) {

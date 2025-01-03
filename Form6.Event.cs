@@ -1,4 +1,5 @@
 ﻿using System;
+using WorkDataStudio.type;
 
 namespace WorkDataStudio;
 
@@ -13,7 +14,7 @@ public partial class Form6  {
     /// <param name="e"></param>
     /// <exception cref="NotImplementedException"></exception>
     private void Form6_Load(object sender, EventArgs e) {
-        Console.WriteLine(@"Form6_Load");
+        Log.WriteLine(@"Form6_Load");
     }
 
     /// <summary>
@@ -23,6 +24,6 @@ public partial class Form6  {
     /// <param name="e"></param>
     /// <exception cref="NotImplementedException"></exception>
     private void Form6_Activated(object sender, EventArgs e) {
-        Console.WriteLine(@"Form6_Activated");
+        Log.WriteLine(@"Form6_Activated");
     }
 }

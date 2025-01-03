@@ -1,5 +1,6 @@
 ﻿using System;
 using WorkDataStudio.share;
+using WorkDataStudio.type;
 
 namespace WorkDataStudio;
 
@@ -13,7 +14,7 @@ public partial class Form1 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void MenuItem_SM1_1_Click(object sender, EventArgs e) {
-        Console.WriteLine(@"「新規・登録」が選択されました。");
+        Log.WriteLine(@"「新規・登録」が選択されました。");
         Mode.SetNew1();
         Process_New();
         Frame2.Enabled = true;
@@ -26,7 +27,7 @@ public partial class Form1 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void MenuItem_SM1_2_Click(object sender, EventArgs e) {
-        Console.WriteLine(@"「新規・登録（対象）」が選択されました。");
+        Log.WriteLine(@"「新規・登録（対象）」が選択されました。");
         Mode.SetNew2(); //新規2
         Process_New();
         Frame2.Enabled = false;
@@ -39,7 +40,7 @@ public partial class Form1 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void MenuItem_SM1_3_Click(object sender, EventArgs e) {
-        Console.WriteLine(@"「終了」が選択されました。");
+        Log.WriteLine(@"「終了」が選択されました。");
         Close();
     }
 }

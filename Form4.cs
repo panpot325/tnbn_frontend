@@ -1,5 +1,5 @@
-﻿using System;
-using WorkDataStudio.Component;
+﻿using WorkDataStudio.Component;
+using WorkDataStudio.type;
 using WorkDataStudio.type.index;
 
 namespace WorkDataStudio;
@@ -20,7 +20,7 @@ public partial class Form4 : BasicForm {
         comboBox1.Items.Clear();
         comboBox2.Items.Clear();
         foreach (var sno in SnoIndex.GetAll("asc")) {
-            Console.WriteLine(sno);
+            Log.WriteLine(sno);
             comboBox1.Items.Add(sno.Trim());
             comboBox2.Items.Add(sno.Trim());
         }

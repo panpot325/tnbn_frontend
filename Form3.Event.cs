@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using WorkDataStudio.share;
+using WorkDataStudio.type;
 using G = WorkDataStudio.share.Globals;
 
 // ReSharper disable InvertIf
@@ -13,7 +14,7 @@ public partial class Form3 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void Form3_Load(object sender, EventArgs e) {
-        Console.WriteLine(@"STEP1: Form3_Load");
+        Log.WriteLine(@"STEP1: Form3_Load");
     }
 
     /// <summary>

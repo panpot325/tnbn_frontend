@@ -14,7 +14,7 @@ public partial class Form1 {
     /// Process_New
     /// </summary>
     private void Process_New() {
-        Console.WriteLine(@"Process_New");
+        Log.WriteLine(@"Process_New");
         WorkData.Clear();
         WorkData.copySelectCnt = 0;
         WorkDataExclusive.Delete();

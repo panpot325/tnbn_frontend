@@ -1,9 +1,9 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using WorkDataStudio.Model;
 using WorkDataStudio.share;
+using WorkDataStudio.type;
 
 namespace WorkDataStudio.Component;
 
@@ -83,7 +83,7 @@ public class DataGridView4 : CustomDataGridView {
     /// @グリッド4の表示()
     /// </summary>
     public void ShowWorkDataList() {
-        Console.WriteLine(@"@グリッド4 データ表示");
+        Log.WriteLine(@"@グリッド4 データ表示");
         Rows.Clear();
         if (!WorkData.Exists) return;
         foreach (var row in WorkData.List.Select(workData => Rows.Add(

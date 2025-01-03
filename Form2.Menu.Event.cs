@@ -1,5 +1,6 @@
 ﻿using System;
 using WorkDataStudio.share;
+using WorkDataStudio.type;
 
 namespace WorkDataStudio;
 
@@ -13,7 +14,7 @@ public partial class Form2 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void MenuItem_SM1_1_Click(object sender, EventArgs e) {
-        Console.WriteLine(@"「取消」が選択されました。");
+        Log.WriteLine(@"「取消」が選択されました。");
     }
 
     /// <summary>
@@ -22,7 +23,7 @@ public partial class Form2 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void MenuItem_SM1_2_Click(object sender, EventArgs e) {
-        Console.WriteLine(@"「戻る」が選択されました。");
+        Log.WriteLine(@"「戻る」が選択されました。");
         Close();
     }
 
@@ -32,7 +33,7 @@ public partial class Form2 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void MenuItem_SM2_1_Click(object sender, EventArgs e) {
-        Console.WriteLine(@"「船番→新船番」が選択されました。");
+        Log.WriteLine(@"「船番→新船番」が選択されました。");
         OpenDialog(FormType.Form7, true);
     }
 
@@ -42,7 +43,7 @@ public partial class Form2 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void MenuItem_SM2_2_Click(object sender, EventArgs e) {
-        Console.WriteLine(@"「全データを表示」が選択されました。");
+        Log.WriteLine(@"「全データを表示」が選択されました。");
     }
 
     /// <summary>
@@ -51,7 +52,7 @@ public partial class Form2 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void MenuItem_SM2_3_Click(object sender, EventArgs e) {
-        Console.WriteLine(@"「船番を指定して表示」が選択されました。");
+        Log.WriteLine(@"「船番を指定して表示」が選択されました。");
         OpenDialog(FormType.Form4, true);
     }
 
@@ -61,7 +62,7 @@ public partial class Form2 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void MenuItem_SM2_4_Click(object sender, EventArgs e) {
-        Console.WriteLine(@"「仮付予定日指定して表示」が選択されました。");
+        Log.WriteLine(@"「仮付予定日指定して表示」が選択されました。");
     }
 
     /// <summary>
@@ -70,7 +71,7 @@ public partial class Form2 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void MenuItem_Enter_Click(object sender, EventArgs e) {
-        Console.WriteLine(@"「決定」が選択されました。");
+        Log.WriteLine(@"「決定」が選択されました。");
         Process();
     }
 }

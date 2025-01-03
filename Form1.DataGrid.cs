@@ -1,7 +1,7 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using WorkDataStudio.Model;
 using WorkDataStudio.share;
+using WorkDataStudio.type;
 
 namespace WorkDataStudio;
 
@@ -21,19 +21,19 @@ public partial class Form1 {
         DataGrid3.Text = DataGrid3.StrValue;
         switch (key) {
             case (char)Keys.Delete: //vbKeyDelete
-                Console.WriteLine(@"[Delete]");
+                Log.WriteLine(@"[Delete]");
                 DataGrid3.CursorEdit((int)Keys.Back);
                 return;
             case (char)Keys.F2: // vbKeyF2
-                Console.WriteLine(@"[Enter]");
+                Log.WriteLine(@"[Enter]");
                 DataGrid3.CursorEdit((int)Keys.Enter);
                 return;
             case (char)Keys.F5: // vbKeyF5
-                Console.WriteLine(@"[F5]");
+                Log.WriteLine(@"[F5]");
                 Grid_Shift();
                 return;
             case > 127: //> 127
-                Console.WriteLine(@"[> 127]");
+                Log.WriteLine(@"[> 127]");
                 DataGrid3.CursorEdit((int)Keys.Space);
                 return;
         }

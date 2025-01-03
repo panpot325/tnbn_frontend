@@ -1,4 +1,5 @@
 ﻿using System;
+using WorkDataStudio.type;
 
 // ReSharper disable MemberCanBeMadeStatic.Local
 namespace WorkDataStudio;
@@ -13,7 +14,7 @@ public partial class Form1 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void MenuItem_SM5_1_Click(object sender, EventArgs e) {
-        Console.WriteLine(@"「[P]データ > 自動作成しない」が選択されました。");
+        Log.WriteLine(@"「[P]データ > 自動作成しない」が選択されました。");
         Process_SP(1, 1);
     }
 
@@ -23,7 +24,7 @@ public partial class Form1 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void MenuItem_SM5_2_Click(object sender, EventArgs e) {
-        Console.WriteLine(@"「[P]データ > 自動作成する（西基準）」が選択されました。");
+        Log.WriteLine(@"「[P]データ > 自動作成する（西基準）」が選択されました。");
         Process_SP(1, 2);
     }
 
@@ -33,7 +34,7 @@ public partial class Form1 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void MenuItem_SM5_3_Click(object sender, EventArgs e) {
-        Console.WriteLine(@"「[P]データ > 自動作成する（東基準）」が選択されました。");
+        Log.WriteLine(@"「[P]データ > 自動作成する（東基準）」が選択されました。");
         Process_SP(1, 3);
     }
 }
