@@ -1,11 +1,12 @@
 ﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace WorkDataStudio.Component;
 
 /// <summary>
 /// CustomLabel
 /// </summary>
-public class CustomLabel : System.Windows.Forms.Label {
+public class CustomLabel : Label {
     /// <summary>
     /// Constructor
     /// </summary>

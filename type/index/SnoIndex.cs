@@ -62,10 +62,10 @@ public class SnoIndex {
     /// <returns></returns>
     public static int GetCount(string sno) {
         var sql = " SELECT COUNT(*) AS count FROM tnbn_kakowk_data" +
-              $" WHERE sno = '{sno.Trim()}'";
+                  $" WHERE sno = '{sno.Trim()}'";
         return PgOpen.PgCount(sql);
     }
-    
+
     /// <summary>
     /// GetExist
     /// </summary>

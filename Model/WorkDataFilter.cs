@@ -64,7 +64,7 @@ public class WorkDataFilter {
         _sno = sno;
         return this;
     }
-    
+
     /// <summary>
     /// SetBlk
     /// </summary>
@@ -104,7 +104,7 @@ public class WorkDataFilter {
         _yotei = yotei;
         return this;
     }
-    
+
     /// <summary>
     /// Private Constructor
     /// </summary>

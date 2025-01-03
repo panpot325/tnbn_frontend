@@ -7,7 +7,7 @@ namespace WorkDataStudio;
 /// <summary>
 /// 船番単位フォーム
 /// </summary>
-public partial class Form8  {
+public partial class Form8 {
     /// <summary>
     /// @Form_Load()
     /// </summary>

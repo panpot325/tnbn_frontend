@@ -39,6 +39,7 @@ public partial class Form4 {
         foreach (var workData in WorkData.List) {
             workData.ChgFlg = WorkData.DRAFT;
         }
+
         WorkData.selected = true; //条件選択 = True @Deprecated
         Close();
     }

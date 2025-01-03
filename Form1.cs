@@ -1,6 +1,4 @@
-﻿using System;
-using System.Drawing;
-using WorkDataStudio.Component;
+﻿using WorkDataStudio.Component;
 using WorkDataStudio.type;
 
 namespace WorkDataStudio;

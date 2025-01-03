@@ -5,7 +5,7 @@ namespace WorkDataStudio;
 /// <summary>
 /// 完了情報フォーム
 /// </summary>
-public partial class Form11  {
+public partial class Form11 {
     /// <summary>
     /// メニュー項目配列
     /// </summary>

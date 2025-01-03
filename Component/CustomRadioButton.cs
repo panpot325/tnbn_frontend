@@ -1,11 +1,12 @@
 ﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace WorkDataStudio.Component;
 
 /// <summary>
 /// CustomRadioButton
 /// </summary>
-public class CustomRadioButton : System.Windows.Forms.RadioButton{
+public class CustomRadioButton : RadioButton {
     /// <summary>
     /// Constructor
     /// </summary>
@@ -25,9 +26,9 @@ public class CustomRadioButton : System.Windows.Forms.RadioButton{
         SetText(text);
         TabStop = true;
         UseVisualStyleBackColor = true;
-        Padding = new System.Windows.Forms.Padding(10);
+        Padding = new Padding(10);
     }
-    
+
     /// <summary>
     /// Virtual member call in constructor
     /// </summary>

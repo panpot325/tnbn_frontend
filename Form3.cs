@@ -14,7 +14,7 @@ public partial class Form3 : BasicForm {
         InitComponent();
         Init(@"社員番号入力");
     }
-    
+
     /// <summary>
     /// FormSize
     /// </summary>

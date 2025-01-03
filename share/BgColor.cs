@@ -6,7 +6,7 @@ namespace WorkDataStudio.share;
 /// BgColor
 /// </summary>
 public static class BgColor {
-    public static readonly Color CLEARED = Color.FromArgb(0,255, 255, 255); //透明
+    public static readonly Color CLEARED = Color.FromArgb(0, 255, 255, 255); //透明
     public static readonly Color DEFAULT = Color.FromArgb(255, 255, 255); //Default
     public static readonly Color UPDATED = Color.FromArgb(192, 255, 192); //更新対象データ
     public static readonly Color DELETED = Color.FromArgb(255, 255, 192); //削除対象データ

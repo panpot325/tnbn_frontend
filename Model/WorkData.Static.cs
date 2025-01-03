@@ -122,7 +122,7 @@ public partial class WorkData {
     /// <returns></returns>
     public static int ValidAll() {
         var cnt = 0;
-        foreach (var workData in List.Where(workData => workData.ChgFlg == WorkData.UPDATE)) {
+        foreach (var workData in List.Where(workData => workData.ChgFlg == UPDATE)) {
             cnt += workData.Valid();
             workData.Err1Flg = cnt > 0 ? 1 : 0; //入力ﾁｪｯｸｴﾗｰﾌﾗｸﾞ
         }
@@ -138,7 +138,7 @@ public partial class WorkData {
     /// <returns></returns>
     public static int DuplicateAll(bool error2 = false) {
         var cnt = 0;
-        foreach (var workData in List.Where(workData => workData.ChgFlg == WorkData.UPDATE)) {
+        foreach (var workData in List.Where(workData => workData.ChgFlg == UPDATE)) {
             var duplicate = workData.Duplicate();
             workData.Err2Flg = error2 && duplicate > 0 ? 1 : 0;
             cnt += duplicate;

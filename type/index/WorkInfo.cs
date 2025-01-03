@@ -12,7 +12,7 @@ namespace WorkDataStudio.type.index;
 public class WorkInfo {
     public string Sno { get; private set; }
     public string Ret { get; set; }
-    public int Date { get;  set; }
+    public int Date { get; set; }
     public int Syain { get; set; }
 
     /// <summary>

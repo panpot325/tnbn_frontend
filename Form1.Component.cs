@@ -1,6 +1,9 @@
-﻿using System.Windows.Forms;
+﻿using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
 using WorkDataStudio.Component;
 using WorkDataStudio.share;
+using Timer = System.Timers.Timer;
 
 // ReSharper disable InconsistentNaming
 namespace WorkDataStudio;
@@ -38,8 +41,8 @@ public partial class Form1 {
     private CustomLabel label23;
     private CustomLabel label24;
 
-    private System.Timers.Timer timer2;
-    private System.Timers.Timer timer1;
+    private Timer timer2;
+    private Timer timer1;
 
     private CustomTextBox Text1;
     private CustomTextBox Text2;
@@ -93,13 +96,13 @@ public partial class Form1 {
         Option1_0 = new CustomRadioButton(0, "Option1_0", 0, 36, 290, 80, @"作成する");
         Option1_1 = new CustomRadioButton(1, "Option1_1", 0, 110, 290, 80, @"作成しない");
 
-        timer1 = new System.Timers.Timer();
-        timer2 = new System.Timers.Timer();
+        timer1 = new Timer();
+        timer2 = new Timer();
 
         Frame1.SuspendLayout();
         Frame2.SuspendLayout();
-        ((System.ComponentModel.ISupportInitialize)(timer1)).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)(timer2)).BeginInit();
+        ((ISupportInitialize)(timer1)).BeginInit();
+        ((ISupportInitialize)(timer2)).BeginInit();
         SuspendLayout();
 
         // 
@@ -132,7 +135,7 @@ public partial class Form1 {
         Frame2.Controls.Add(Option1_0);
         Frame2.Controls.Add(Option1_1);
         Frame2.FlatStyle = FlatStyle.Standard;
-        
+
         // timer1
         timer1.SynchronizingObject = this;
         timer1.Elapsed += timer1_Elapsed;
@@ -144,9 +147,9 @@ public partial class Form1 {
 
         // Form1
         Name = "Form1";
-        AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
+        AutoScaleDimensions = new SizeF(13F, 24F);
         AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new System.Drawing.Size(2374, 1429);
+        ClientSize = new Size(2374, 1429);
 
         Controls.Add(Text1);
         Controls.Add(Text2);
@@ -166,13 +169,13 @@ public partial class Form1 {
 
         Frame2.ResumeLayout(false);
         Frame1.ResumeLayout(false);
-        ((System.ComponentModel.ISupportInitialize)(timer1)).EndInit();
-        ((System.ComponentModel.ISupportInitialize)(timer2)).EndInit();
+        ((ISupportInitialize)(timer1)).EndInit();
+        ((ISupportInitialize)(timer2)).EndInit();
 
         ResumeLayout(false);
         PerformLayout();
     }
-    
+
     private void DataGrid1_Initialize() {
         DataGrid1 = new DataGridView1();
         DataGrid1.MouseClick += DataGrid1_MouseClick;

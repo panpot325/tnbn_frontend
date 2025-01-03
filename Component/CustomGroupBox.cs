@@ -1,11 +1,12 @@
 ﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace WorkDataStudio.Component;
 
 /// <summary>
 /// CustomGroupBox
 /// </summary>
-public class CustomGroupBox :System.Windows.Forms.GroupBox{
+public class CustomGroupBox : GroupBox {
     /// <summary>
     /// Constructor
     /// </summary>
@@ -24,10 +25,11 @@ public class CustomGroupBox :System.Windows.Forms.GroupBox{
         SetFont();
         SetText(text);
         TabStop = false;
-        Padding = new System.Windows.Forms.Padding(10);
+        Padding = new Padding(10);
         SetBackColor(SystemColors.ButtonFace);
         //FlatStyle = System.Windows.Forms.FlatStyle.System;
     }
+
     /// <summary>
     /// Virtual member call in constructor
     /// </summary>
@@ -42,12 +44,11 @@ public class CustomGroupBox :System.Windows.Forms.GroupBox{
     private void SetText(string text) {
         Text = text;
     }
-    
+
     /// <summary>
     /// Virtual member call in constructor
     /// </summary>
     private void SetBackColor(Color color) {
         BackColor = color;
     }
-
 }

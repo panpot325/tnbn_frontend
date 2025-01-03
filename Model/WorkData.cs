@@ -4,7 +4,6 @@
 /// @WorkData
 /// </summary>
 public partial class WorkData {
-    
     //Globals
     public static string snoName; //@船番 
     public static int workDataCnt; //@加工ワークデータ数

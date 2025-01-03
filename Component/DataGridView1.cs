@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using WorkDataStudio.Model;
 using WorkDataStudio.share;
 using WorkDataStudio.type;
-using G = WorkDataStudio.share.Globals;
 
 // ReSharper disable ConvertIfStatementToReturnStatement
 namespace WorkDataStudio.Component;
@@ -176,7 +175,7 @@ public class DataGridView1 : CustomDataGridView {
     /// @グリッド1の表示()
     /// </summary>
     public DataGridView1 ShowWorkDataList() {
-        G.Out(@"@グリッド1 データ表示");
+        Log.WriteLine(@"@グリッド1 データ表示");
         Rows.Clear();
         foreach (var row in WorkData.List.Select(workData => Rows.Add(
                      workData.Sno,

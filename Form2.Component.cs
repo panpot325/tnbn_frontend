@@ -12,7 +12,7 @@ namespace WorkDataStudio;
 /// </summary>
 public partial class Form2 {
     private DataGridView4 DataGridView4;
-    
+
     /// <summary>
     /// InitComponent
     /// </summary>

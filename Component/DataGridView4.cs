@@ -103,6 +103,7 @@ public class DataGridView4 : CustomDataGridView {
                      workData.Org, workData.YoteibiKari
                  ))) {
         }
+
         SelectRowBackColor(BgColor.DEFAULT);
         Enabled = true;
     }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using WorkDataStudio.Model;
-using G = WorkDataStudio.share.Globals;
+using WorkDataStudio.type;
 
 // ReSharper disable InterpolatedStringExpressionIsNotIFormattable
 // ReSharper disable InvertIf
@@ -19,7 +19,7 @@ public partial class Form1 {
     /// <param name="sender"></param>   
     /// <param name="e"></param>
     private void DataGridViewTextBox_GotFocus(object sender, EventArgs e) {
-        G.Out("dataGridViewTextBox_GotFocus EVENT");
+        Log.WriteLine("dataGridViewTextBox_GotFocus EVENT");
         ((DataGridViewTextBoxEditingControl)sender).ImeMode = ImeMode.Disable;
     }
 
@@ -29,7 +29,7 @@ public partial class Form1 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void DataGridViewTextBox_TextChanged(object sender, EventArgs e) {
-        G.Out("dataGridViewTextBox_TextChanged EVENT");
+        Log.WriteLine("dataGridViewTextBox_TextChanged EVENT");
         if (DataGrid3.DataType.NyuMode == WorkDataType.NYU_MODE_NUM) {
             Grid3_TextBox_Value_Check((DataGridViewTextBoxEditingControl)sender);
         }

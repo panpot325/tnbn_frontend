@@ -23,7 +23,7 @@ public class CustomTextBox : TextBox {
         Location = new Point(x, y);
         Size = new Size(width, height);
         SetFont();
-        Margin = new System.Windows.Forms.Padding(6);
+        Margin = new Padding(6);
         SetMultiLine(multiline);
         BorderColor = Color.Gray;
     }
@@ -32,7 +32,7 @@ public class CustomTextBox : TextBox {
     /// Virtual member call in constructor
     /// </summary>
     private void SetFont() {
-        Font = new Font("ＭＳ Ｐゴシック", 10.875F, System.Drawing.FontStyle.Regular,
+        Font = new Font("ＭＳ Ｐゴシック", 10.875F, FontStyle.Regular,
             GraphicsUnit.Point, ((byte)(128)));
     }
 

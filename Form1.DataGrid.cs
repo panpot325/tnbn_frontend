@@ -115,7 +115,7 @@ public partial class Form1 {
                 Grid_Change();
 
                 return;
-            case Mode.EDIT_1 or  Mode.COPY_1 or  Mode.COPY_2 or  Mode.EMode.EDIT_3:
+            case Mode.EDIT_1 or Mode.COPY_1 or Mode.COPY_2 or Mode.EMode.EDIT_3:
                 DataGrid1.SetGridData(DataGrid3);
                 DataGrid1.ShowWorkData();
                 DataGrid1.SetValidation();

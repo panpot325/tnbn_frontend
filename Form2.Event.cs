@@ -3,7 +3,6 @@ using System.Windows.Forms;
 using WorkDataStudio.Model;
 using WorkDataStudio.share;
 using WorkDataStudio.type;
-using G = WorkDataStudio.share.Globals;
 
 namespace WorkDataStudio;
 
@@ -57,7 +56,7 @@ public partial class Form2 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void DataGrid4_SelectionChanged(object sender, EventArgs e) {
-        G.Out("DataGrid4_SelectionChanged Event");
+        Log.WriteLine("DataGrid4_SelectionChanged Event");
         DataGridView4.DefaultCellStyle.SelectionBackColor = BgColor.CLEARED;
     }
 

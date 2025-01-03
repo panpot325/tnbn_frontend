@@ -7,6 +7,7 @@ public partial class WorkDataType {
     public const string NYU_MODE_ANUM = "ANUM"; //Nyu_Mode_ANUM
     public const string NYU_MODE_NUM = "NUM"; //Nyu_Mode_NUM
     public const string NYU_MODE_A = "A"; //Nyu_Mode_A
+
     // ReSharper disable once MemberCanBePrivate.Global
     public const string ZERO_ENTRY_OK = "OK"; //Zero_Entry_OK
     public const string ZERO_ENTRY_NG = "NG"; //Zero_Entry_NG

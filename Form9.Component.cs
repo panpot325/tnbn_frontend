@@ -7,7 +7,7 @@ namespace WorkDataStudio;
 /// <summary>
 /// 船番単位削除フォーム
 /// </summary>
-public partial class Form9  {
+public partial class Form9 {
     private Label label1;
     private ComboBox comboBox1;
 
