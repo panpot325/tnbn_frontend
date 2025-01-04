@@ -75,7 +75,7 @@ public partial class Form1 {
     /// <param name="e"></param>
     private void MenuItem_SM2_5_Click(object sender, EventArgs e) {
         Log.WriteLine(@"「データ > 削除クリア」が選択されました。");
-        Process_Delete(WorkData.DRAFT);
+        Process_Delete(WorkData.UPDATE);
     }
 
     /// <summary>

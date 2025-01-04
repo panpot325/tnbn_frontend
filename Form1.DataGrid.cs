@@ -108,7 +108,7 @@ public partial class Form1 {
                 if (DataGrid1.IsLast) {
                     DataGrid1.Add(DataGrid1.WorkData.Sno);
                 }
-
+                DataGrid1.SetTmpRowBackColor();
                 DataGrid1.SetValidation();
                 DataGrid3.ShowWorkData(DataGrid1.WorkData);
                 //DataGrid3.DisabledBackColor();

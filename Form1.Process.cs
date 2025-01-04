@@ -31,6 +31,32 @@ public partial class Form1 {
     }
 
     /// <summary>
+    /// 船番指定
+    /// </summary>
+    private void Process_Edit() {
+        if (!WorkData.Exists) return;
+        DataGrid1
+            .ShowWorkDataList() //グリッド1の表示
+            .SetSData() //グリッド1_Sデータ作成色設定_読込時
+            .SetPData(); //グリッド1_Pデータ作成色設定_読込時
+        DataGrid1.SetTmpRowBackColor();
+        DataGrid3.ShowWorkData(DataGrid1.WorkData);
+    }
+
+    /// <summary>
+    /// 船番コピー キーコピー
+    /// </summary>
+    private void Process_Copy() {
+        if (!WorkData.Exists) return;
+        DataGrid1.ShowWorkDataList(); //グリッド1の表示
+        DataGrid1.SetTmpRowBackColor();
+        DataGrid3.ShowWorkData(DataGrid1.WorkData);
+
+        //Frame2.Enabled = false;
+        //Option1_1.Checked = true;
+    }
+
+    /// <summary>
     /// 今日予定
     /// </summary>
     private void Process_Yotei() {
@@ -50,19 +76,6 @@ public partial class Form1 {
         DataGrid1.Clear();
         DataGrid1.ShowWorkDataList();
         DataGrid3.ShowWorkData(DataGrid1.WorkData).Focus();
-    }
-
-    /// <summary>
-    /// Process_Edit
-    /// </summary>
-    private void Process_Edit() {
-        if (!WorkData.Exists) return;
-        DataGrid1
-            .ShowWorkDataList() //グリッド1の表示
-            .SetSData() //グリッド1_Sデータ作成色設定_読込時
-            .SetPData(); //グリッド1_Pデータ作成色設定_読込時
-        DataGrid1.SetTmpRowBackColor();
-        DataGrid3.ShowWorkData(DataGrid1.WorkData);
     }
 
     /// <summary>
@@ -114,6 +127,18 @@ public partial class Form1 {
         }
 
         var workData = DataGrid1.WorkData;
+
+        switch (workData.ChgFlg) {
+            case WorkData.UPDATE:
+                if (deleteMode != WorkData.DELETE) return;
+                break;
+            case WorkData.DELETE:
+                if (deleteMode != WorkData.UPDATE) return;
+                break;
+            default:
+                return;
+        }
+
         switch (deleteMode) {
             case WorkData.DELETE:
                 if (WorkDataExclusive.Count(workData.Sno) == 0) {
@@ -137,18 +162,6 @@ public partial class Form1 {
 
         workData.ChgFlg = deleteMode;
         DataGrid1.ShowWorkData();
-    }
-
-    /// <summary>
-    /// Process_Copy
-    /// </summary>
-    private void Process_Copy() {
-        if (!WorkData.Exists) return;
-        DataGrid1.ShowWorkDataList(); //グリッド1の表示
-        DataGrid3.ShowWorkData(DataGrid1.WorkData);
-
-        //Frame2.Enabled = false;
-        //Option1_1.Checked = true;
     }
 
     /// <summary>
