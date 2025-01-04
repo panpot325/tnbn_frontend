@@ -130,22 +130,29 @@ public class DataGridView3 : CustomDataGridView {
     private DataGridView3 DisabledBackColor() {
         switch (Mode.Value) {
             case Mode.NEW_1:
-                RowIndex = 1;
-                if (WorkData.Count > 1)
+                if (WorkData.Count > 1) {
+                    RowIndex = 1;
                     Rows[0].DefaultCellStyle.BackColor = BgColor.DISABLED;
+                    Rows[0].DefaultCellStyle.SelectionBackColor = Rows[0].DefaultCellStyle.BackColor;
+                }
+
                 break;
             case Mode.EDIT_1 or Mode.COPY_1:
                 Rows[0].DefaultCellStyle.BackColor = BgColor.DISABLED;
+                Rows[0].DefaultCellStyle.SelectionBackColor = Rows[0].DefaultCellStyle.BackColor;
                 break;
             case Mode.EDIT_2 or Mode.EDIT_3:
                 Rows[0].DefaultCellStyle.BackColor = BgColor.DISABLED;
                 Rows[1].DefaultCellStyle.BackColor = BgColor.DISABLED;
                 Rows[2].DefaultCellStyle.BackColor = BgColor.DISABLED;
                 Rows[3].DefaultCellStyle.BackColor = BgColor.DISABLED;
+                Rows[0].DefaultCellStyle.SelectionBackColor = Rows[0].DefaultCellStyle.BackColor;
+                Rows[1].DefaultCellStyle.SelectionBackColor = Rows[1].DefaultCellStyle.BackColor;
+                Rows[2].DefaultCellStyle.SelectionBackColor = Rows[2].DefaultCellStyle.BackColor;
+                Rows[3].DefaultCellStyle.SelectionBackColor = Rows[3].DefaultCellStyle.BackColor;
                 break;
         }
 
-        Rows[0].DefaultCellStyle.SelectionBackColor = Rows[0].DefaultCellStyle.BackColor;
         return this;
     }
 
@@ -449,5 +456,53 @@ public class DataGridView3 : CustomDataGridView {
         }
 
         return str;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="dataGrid1"></param>
+    /// <returns></returns>
+    public bool IsEditable(DataGridView1 dataGrid1) {
+        switch (Mode.Value) {
+            //新規, 新規2 新規入力＋1件目の時は、全項目入力可
+            case Mode.NEW_1 or Mode.NEW_2:
+                if (WorkData.Count <= 1 || RowIndex > 0) {
+                    return true;
+                }
+
+                break;
+            //船番指定, 船番コピー 船番指定修正または、船番単位コピー時、船番以外を入力可
+            case Mode.EDIT_1 or Mode.COPY_1:
+                if (RowIndex > 0) {
+                    return true;
+                }
+
+                break;
+            //今日以降, 今日予定 今日以降修正または、今日予定修正時、キー項目以外のみ入力可
+            case Mode.EDIT_2 or Mode.EDIT_3:
+                if (RowIndex > 3) {
+                    return true;
+                }
+
+                break;
+            //キーコピー キーコピー時は、全項目入力可。但し、優先的にキー項目を変更させる。
+            case Mode.COPY_2:
+                if (dataGrid1[0, RowIndex].Value.ToString() == "") {
+                    return false;
+                }
+
+                if (WorkData.List[dataGrid1.RowIndex].ErrorValidation.Change) {
+                    return true;
+                }
+
+                if (RowIndex < 4) {
+                    return true;
+                }
+
+                break;
+        }
+
+        return false;
     }
 }
