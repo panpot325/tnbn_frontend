@@ -137,7 +137,7 @@ public partial class WorkData {
     private void Check(ref int errCnt, WorkDataType type, bool pattern) {
         // ReSharper disable once InvertIf
         if (pattern) {
-            ErrorValidation.Grid3[type.Index] =true;
+            ErrorValidation.Grid3[type.Index] = true;
             errCnt++;
         }
     }

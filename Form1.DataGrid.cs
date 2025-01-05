@@ -1,6 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
-using WorkDataStudio.Model;
+﻿using System.Windows.Forms;
 using WorkDataStudio.share;
 using WorkDataStudio.type;
 
