@@ -104,18 +104,12 @@ public class DataGridView3 : CustomDataGridView {
         Log.WriteLine(@"@グリッド3バックカラー設定");
         foreach (var data in WorkDataType.List
                      .Select((value, index) => new { value, index })) {
-            var backColor = workData.ErrorValidation.Grid3[data.index] == WorkDataType.CROSS
+            var backColor = workData.ErrorValidation.Grid3[data.index]
                 ? BgColor.INVALID
                 : BgColor.DEFAULT;
 
             Rows[data.index].DefaultCellStyle.BackColor = backColor;
             Rows[data.index].DefaultCellStyle.SelectionBackColor = backColor;
-            /*
-            this[0, data.index].Style.BackColor =
-                workData.ErrorValidation.Grid3[data.index] == WorkDataType.CROSS
-                    ? BgColor.INVALID
-                    : BgColor.DEFAULT;
-            */
 
             DisabledBackColor();
         }
@@ -300,8 +294,8 @@ public class DataGridView3 : CustomDataGridView {
     /// <param name="textBox"></param>
     /// <returns></returns>
     private bool InputCheck(string text, WorkData workData, TextBox textBox) {
-        workData.ErrorValidation.Grid1 = "";
-        workData.ErrorValidation.Grid3[RowIndex] = "";
+        workData.ErrorValidation.Grid1 = false;
+        workData.ErrorValidation.Grid3[RowIndex] = false;
         if (text == "") {
             CellBackColor = BgColor.DEFAULT;
             return true;

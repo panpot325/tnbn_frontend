@@ -14,5 +14,4 @@ public partial class WorkDataType {
     public const string KEISHIKI_ASCII = "ASCII"; //Keishiki_Ascii
     public const string KEISHIKI_M16_B = "m16bitB"; //Keishiki_m16B
     public const string HYPHEN = "-"; //Hyphen
-    public const string CROSS = "×"; //Batu
 }

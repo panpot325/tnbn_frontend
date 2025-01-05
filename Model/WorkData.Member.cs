@@ -22,7 +22,7 @@ public partial class WorkData {
     /// </summary>
     public struct Validation() {
         public bool Change = false;
-        public string Grid1 = "";
-        public string[] Grid3 = new string[WorkDataType.Count];
+        public bool Grid1 = false;
+        public readonly bool[] Grid3 = new bool[WorkDataType.Count];
     }
 }

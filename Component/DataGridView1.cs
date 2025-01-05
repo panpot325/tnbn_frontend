@@ -293,7 +293,7 @@ public class DataGridView1 : CustomDataGridView {
     /// </summary>
     public DataGridView1 SetValidation() {
         foreach (var workData in WorkData.List.Select((value, index) => new { value, index })) {
-            if (workData.value.ErrorValidation.Grid1 == WorkDataType.CROSS) {
+            if (workData.value.ErrorValidation.Grid1) {
                 Rows[workData.index].DefaultCellStyle.BackColor = BgColor.INVALID;
             }
         }

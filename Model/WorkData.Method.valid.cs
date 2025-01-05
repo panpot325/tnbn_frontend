@@ -15,11 +15,11 @@ public partial class WorkData {
         var existsCount = Find();
         // ReSharper disable once InvertIf
         if (existsCount > 0) {
-            ErrorValidation.Grid1 = WorkDataType.CROSS;
-            ErrorValidation.Grid3[0] = WorkDataType.CROSS;
-            ErrorValidation.Grid3[1] = WorkDataType.CROSS;
-            ErrorValidation.Grid3[2] = WorkDataType.CROSS;
-            ErrorValidation.Grid3[3] = WorkDataType.CROSS;
+            ErrorValidation.Grid1 = true;
+            ErrorValidation.Grid3[0] = true;
+            ErrorValidation.Grid3[1] = true;
+            ErrorValidation.Grid3[2] = true;
+            ErrorValidation.Grid3[3] = true;
         }
 
         return existsCount;
@@ -128,7 +128,7 @@ public partial class WorkData {
         Check(ref errCnt, TyoteibiKari, YoteibiKari); //YOTEIBI_KARI 仮付け予定日
 
         if (errCnt > 0) {
-            ErrorValidation.Grid1 = WorkDataType.CROSS;
+            ErrorValidation.Grid1 = true;
         }
 
         return errCnt;
@@ -137,7 +137,7 @@ public partial class WorkData {
     private void Check(ref int errCnt, WorkDataType type, bool pattern) {
         // ReSharper disable once InvertIf
         if (pattern) {
-            ErrorValidation.Grid3[type.Index] = WorkDataType.CROSS;
+            ErrorValidation.Grid3[type.Index] =true;
             errCnt++;
         }
     }
