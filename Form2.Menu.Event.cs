@@ -1,6 +1,7 @@
 ﻿using System;
 using WorkDataStudio.share;
 using WorkDataStudio.type;
+// ReSharper disable MemberCanBeMadeStatic.Local
 
 namespace WorkDataStudio;
 
