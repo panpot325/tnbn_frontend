@@ -210,7 +210,6 @@ public class DataGridView3 : CustomDataGridView {
             default:
                 Text = ((char)keyAscii).ToString();
                 BeginEdit(false);
-                //CurrentCell.Value = "A";
                 break;
         }
 
@@ -459,11 +458,11 @@ public class DataGridView3 : CustomDataGridView {
     }
 
     /// <summary>
-    /// 
+    /// 編集が可能か
     /// </summary>
-    /// <param name="dataGrid1"></param>
+    /// <param name="workData"></param>
     /// <returns></returns>
-    public bool IsEditable(DataGridView1 dataGrid1) {
+    public bool CanEdit(WorkData workData) {
         switch (Mode.Value) {
             //新規, 新規2 新規入力＋1件目の時は、全項目入力可
             case Mode.NEW_1 or Mode.NEW_2:
@@ -488,11 +487,7 @@ public class DataGridView3 : CustomDataGridView {
                 break;
             //キーコピー キーコピー時は、全項目入力可。但し、優先的にキー項目を変更させる。
             case Mode.COPY_2:
-                if (dataGrid1[0, RowIndex].Value.ToString() == "") {
-                    return false;
-                }
-
-                if (WorkData.List[dataGrid1.RowIndex].ErrorValidation.Change) {
+                if (workData.ErrorValidation.Change) {
                     return true;
                 }
 
