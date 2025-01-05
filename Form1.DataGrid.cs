@@ -20,6 +20,10 @@ public partial class Form1 {
 
         DataGrid3.Text = DataGrid3.StrValue;
         switch (key) {
+            case (char)Keys.F5: // vbKeyF5
+                Log.WriteLine(@"[F5]");
+                Grid_Shift();
+                return;
             case (char)Keys.Delete: //vbKeyDelete
                 Log.WriteLine(@"[Delete]");
                 DataGrid3.CursorEdit((int)Keys.Back);
@@ -27,10 +31,6 @@ public partial class Form1 {
             case (char)Keys.F2: // vbKeyF2
                 Log.WriteLine(@"[Enter]");
                 DataGrid3.CursorEdit((int)Keys.Enter);
-                return;
-            case (char)Keys.F5: // vbKeyF5
-                Log.WriteLine(@"[F5]");
-                Grid_Shift();
                 return;
             case > 127: //> 127
                 Log.WriteLine(@"[> 127]");

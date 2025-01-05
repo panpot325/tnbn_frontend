@@ -131,7 +131,6 @@ public partial class WorkData {
     }
 
     /// <summary>
-    /// DuplicateAll
     /// @重複チェック
     /// </summary>
     /// <param name="error2"></param>

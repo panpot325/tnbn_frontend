@@ -11,7 +11,7 @@ public partial class WorkData {
     /// @キー重複チェック
     /// </summary>
     /// <returns></returns>
-    public int Duplicate() {
+    private int Duplicate() {
         var existsCount = Find();
         // ReSharper disable once InvertIf
         if (existsCount > 0) {
