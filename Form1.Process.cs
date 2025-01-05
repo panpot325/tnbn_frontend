@@ -35,10 +35,10 @@ public partial class Form1 {
     /// </summary>
     private void Process_Edit() {
         if (!WorkData.Exists) return;
-        DataGrid1
-            .ShowWorkDataList() //グリッド1の表示
-            .SetSData() //グリッド1_Sデータ作成色設定_読込時
-            .SetPData(); //グリッド1_Pデータ作成色設定_読込時
+        DataGrid1.ShowWorkDataList(); //グリッド1の表示
+        //グリッド1_Sデータ作成色設定_読込時
+        //グリッド1_Pデータ作成色設定_読込時
+        DataGrid1.SP_BackColor();
         DataGrid1.SetTmpRowBackColor();
         DataGrid3.ShowWorkData(DataGrid1.WorkData);
     }
@@ -173,10 +173,10 @@ public partial class Form1 {
         if (Frame2.Enabled) {
             switch (sp) {
                 case 0:
-                    DataGrid1.SetSData(index, Text4);
+                    DataGrid1.S_BackColor(index, Text4);
                     break;
                 case 1:
-                    DataGrid1.SetPData(index, Text4);
+                    DataGrid1.P_BackColor(index, Text4);
                     break;
             }
 

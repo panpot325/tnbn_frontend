@@ -40,8 +40,9 @@ public partial class Form1 {
                 DataGrid1.ShowWorkData(); //グリッド1の表示
                 DataGrid1.Select(WorkData.Count - 1);
                 DataGrid3.ShowWorkData(DataGrid1.WorkData);
-                DataGrid1.SetSData(); //グリッド1_Sデータ作成色設定_読込時
-                DataGrid1.SetPData(); //グリッド1_Pデータ作成色設定_読込時
+                //グリッド1_Sデータ作成色設定_読込時
+                //グリッド1_Pデータ作成色設定_読込時
+                DataGrid1.SP_BackColor();
                 break;
         }
     }

@@ -185,8 +185,8 @@ public class DataGridView1 : CustomDataGridView {
                      workData.YoteibiKari,
                      workData.ChgFlg
                  ))) {
-            Rows[row].DefaultCellStyle.BackColor = Color.RosyBrown;
-            SelectRowBackColor(Color.RosyBrown);
+            Rows[row].DefaultCellStyle.BackColor = BgColor.DEFAULT;
+            SelectRowBackColor(RowBackColor);
         }
 
         Enabled = true;
@@ -207,7 +207,7 @@ public class DataGridView1 : CustomDataGridView {
     /// </summary>
     /// <param name="pIdx"></param>
     /// <param name="text"></param>
-    public DataGridView1 SetSData(int pIdx, TextBox text) {
+    public DataGridView1 S_BackColor(int pIdx, TextBox text) {
         Log.WriteLine(@"@グリッド1_Sデータ作成色設定");
         var workData = WorkData;
         if (workData.Pcs == "P") {
@@ -240,7 +240,7 @@ public class DataGridView1 : CustomDataGridView {
     /// </summary>
     /// <param name="pIdx"></param>
     /// <param name="text"></param>
-    public DataGridView1 SetPData(int pIdx, TextBox text) {
+    public DataGridView1 P_BackColor(int pIdx, TextBox text) {
         Log.WriteLine(@"@グリッド1_Pデータ作成色設定");
         var workData = WorkData;
         if (workData.Pcs == "S") {
@@ -271,49 +271,19 @@ public class DataGridView1 : CustomDataGridView {
     /// <summary>
     /// @グリッド1_Sデータ作成色設定_読込時()
     /// </summary>
-    public DataGridView1 SetSData() {
+    public DataGridView1 SP_BackColor() {
         Log.WriteLine(@"@グリッド1_Sデータ作成色設定_読込時");
-
-        Visible = false;
-        foreach (var data in WorkData.List.Select((value, index) => new { value, index })) {
-            switch (data.value.CreSFlg) {
-                case 1:
-                    Rows[data.index].DefaultCellStyle.BackColor = BgColor.S_GUNWALE_N; //Sを作成しない 薄橙
-                    SelectRowBackColor(RowBackColor);
-                    break;
-                case 2:
-                    Rows[data.index].DefaultCellStyle.BackColor = BgColor.S_GUNWALE_E; //Sを作成(東) 薄紫
-                    SelectRowBackColor(RowBackColor);
-                    break;
-            }
-        }
-
-        Visible = true;
-
-        return this;
-    }
-
-    /// <summary>
-    /// グリッド1_Pデータ作成色設定_読込時()
-    /// </summary>
-    public DataGridView1 SetPData() {
         Log.WriteLine(@"@グリッド1_Pデータ作成色設定_読込時");
-
-        Visible = false;
         foreach (var data in WorkData.List.Select((value, index) => new { value, index })) {
-            switch (data.value.CrePFlg) {
-                case 0:
-                    Rows[data.index].DefaultCellStyle.BackColor = BgColor.P_GUNWALE_W; //Pを作成(西) 濃橙
-                    SelectRowBackColor(RowBackColor);
-                    break;
-                case 2:
-                    Rows[data.index].DefaultCellStyle.BackColor = BgColor.P_GUNWALE_E; //Pを作成(東) 濃青
-                    SelectRowBackColor(RowBackColor);
-                    break;
-            }
+            Rows[data.index].DefaultCellStyle.BackColor = (data.value.CreSFlg, data.value.CrePFlg) switch {
+                (_, 0) => BgColor.P_GUNWALE_W, //Sを作成しない 薄橙
+                (_, 2) => BgColor.P_GUNWALE_E, //Sを作成(東) 薄紫
+                (1, _) => BgColor.S_GUNWALE_N, //Sを作成しない 薄橙
+                (2, _) => BgColor.S_GUNWALE_E, //Sを作成(東) 薄紫
+                _ => Rows[data.index].DefaultCellStyle.BackColor
+            };
+            SelectRowBackColor(RowBackColor);
         }
-
-        Visible = true;
 
         return this;
     }
