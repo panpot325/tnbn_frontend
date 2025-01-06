@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Configuration;
+using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using WorkDataStudio.Model;
@@ -21,6 +23,7 @@ internal static class Program {
     /// </summary>
     [STAThread]
     private static void Main() {
+        AppConfig();
         Log.Sub_LogWrite(@$"プログラム起動開始 {Settings.Default.Prg_Ver}");
         using var mutex = new Mutex(false, Application.ProductName);
         if (!mutex.WaitOne(0, false)) {
@@ -50,6 +53,45 @@ internal static class Program {
         Log.Sub_LogWrite(@"Main終了");
     }
 
+    /// <summary>
+    /// ConfigurationManager.AppSettings
+    /// </summary>
+    private static void AppConfig() {
+        var keys = ConfigurationManager.AppSettings.AllKeys;
+
+        if (keys.Contains("DB_Host")) {
+            Settings.Default.DB_Host = ConfigurationManager.AppSettings["DB_Host"];
+        }
+
+        if (keys.Contains("DB_Name")) {
+            Settings.Default.DB_Name = ConfigurationManager.AppSettings["DB_Name"];
+        }
+
+        if (keys.Contains("DB_User")) {
+            Settings.Default.DB_User = ConfigurationManager.AppSettings["DB_User"];
+        }
+
+        if (keys.Contains("DB_Pass")) {
+            Settings.Default.DB_Pass = ConfigurationManager.AppSettings["DB_Pass"];
+        }
+
+        if (keys.Contains("Log_Path")) {
+            Settings.Default.Log_Path = ConfigurationManager.AppSettings["Log_Path"];
+        }
+
+        if (keys.Contains("Dev_Path")) {
+            Settings.Default.Dev_Path = ConfigurationManager.AppSettings["Dev_Path"];
+        }
+
+        if (keys.Contains("Log_File_Path")) {
+            Settings.Default.Log_File_Path = ConfigurationManager.AppSettings["Log_File_Path"];
+        }
+    }
+
+    /// <summary>
+    /// ShowForm
+    /// </summary>
+    /// <param name="form"></param>
     public static void ShowForm(Form form) {
         _mainForm.MainForm = form;
         _mainForm.MainForm.Show();
