@@ -9,25 +9,26 @@ namespace WorkDataStudio.share;
 /// </summary>
 public partial class Globals {
     /// <summary>
-    /// LogWrite
+    /// DebugWrite
     /// </summary>
     /// <param name="message"></param>
-    public static void LogWrite(string message) {
-        using var sw = new StreamWriter($"{Settings.Default.Dev_Path}/Logs.txt", true, Encoding.UTF8);
+    public static void DebugWrite(string message) {
+        using var sw = new StreamWriter($"{Settings.Default.Dev_Path}/{Settings.Default.Dev_File}", true,
+            Encoding.UTF8);
         sw.WriteLine(message);
     }
 
     /// <summary>
-    /// ファイルの内容をクリアする
+    /// ClearDebugFile
     /// </summary>
     public static void ClearDebugFile() {
-        var fileName = $"{Settings.Default.Dev_Path}/Data.txt";
+        var fileName = $"{Settings.Default.Dev_Path}/{Settings.Default.Dev_File}";
         if (!File.Exists(fileName)) {
             using (File.Create(fileName)) {
             }
         }
 
-        using var fs = new FileStream($"{Settings.Default.Dev_Path}/Data.txt", FileMode.Open);
+        using var fs = new FileStream(fileName, FileMode.Open);
         fs.SetLength(0);
     }
 }
