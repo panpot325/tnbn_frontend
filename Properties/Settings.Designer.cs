@@ -204,7 +204,7 @@ namespace WorkDataStudio.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("//Mac/Home/Documents/ONOZO/RiderProjects/Debug")]
+        [global::System.Configuration.DefaultSettingValueAttribute("//Mac/Home/Documents/ONOZO/RiderProjects/Dev")]
         public string Dev_Path {
             get {
                 return ((string)(this["Dev_Path"]));
