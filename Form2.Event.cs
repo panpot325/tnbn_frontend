@@ -17,6 +17,7 @@ public partial class Form2 {
     /// <param name="e"></param>
     private void Form2_Load(object sender, EventArgs e) {
         Log.WriteLine(@"Form2_Load");
+        _activate = true;
         WorkData.Clear();
         WorkData.copyDataCnt = 0;
         //ScreenInit();
@@ -28,6 +29,9 @@ public partial class Form2 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void Form2_Activated(object sender, EventArgs e) {
+        if (!_activate) return;
+        _activate = false;
+
         Log.WriteLine(@"Form2_Activated");
         DataGridView4.ShowWorkDataList();
     }

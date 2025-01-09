@@ -29,6 +29,7 @@ public class DataGridView4 : CustomDataGridView {
         ColumnHeadersDefaultCellStyle.BackColor = Color.White;
         ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
         ColumnCount = WorkDataType.Count;
+        DoubleBuffered = true;
     }
 
     /// <summary>
