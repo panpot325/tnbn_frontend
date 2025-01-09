@@ -21,6 +21,8 @@ public partial class Form1 {
 
         if (WorkData.DuplicateAll() > 0) {
             DuplicateMessage();
+            //DataGrid1.RowIndex = 0;
+            //DataGrid3.ShowWorkData(DataGrid1.WorkData);
             return;
         }
 
