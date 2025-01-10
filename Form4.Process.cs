@@ -40,7 +40,6 @@ public partial class Form4 {
             workData.ChgFlg = WorkData.DRAFT;
         }
 
-        WorkData.selected = true; //条件選択 = True @Deprecated
         Close();
         Form2.Activate();
     }

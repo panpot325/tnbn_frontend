@@ -19,7 +19,6 @@ public partial class Form2 {
         Log.WriteLine(@"Form2_Load");
         _activate = true;
         WorkData.Clear();
-        WorkData.copyDataCnt = 0;
         //ScreenInit();
     }
 
@@ -68,7 +67,6 @@ public partial class Form2 {
     /// 画面初期化
     /// </summary>
     private void ScreenInit() {
-        WorkData.selected = false; //@Deprecated
         DataGridView4.Init();
     }
 }

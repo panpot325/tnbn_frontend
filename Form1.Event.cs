@@ -23,8 +23,6 @@ public partial class Form1 {
         FormPosition();
         OptionSet(false);
         _activate = true;
-        WorkData.workDataCnt = 0;
-        WorkData.copyDataCnt = 0;
         WorkData.copySelectCnt = 0;
         Mode.SetNew1();
         ViewNameText();
