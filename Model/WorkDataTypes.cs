@@ -2,6 +2,7 @@
 using System.Data;
 using System.IO;
 using System.Text;
+using WorkDataStudio.Properties;
 using WorkDataStudio.share;
 
 // ReSharper disable MemberCanBePrivate.Global
@@ -75,7 +76,7 @@ public class WorkDataTypes {
     /// Dump List
     /// </summary>
     public static void Dump() {
-        using var sw = new StreamWriter($"{Constants.DEBUG_PATH}/KakoWkDataType.txt", false, Encoding.UTF8);
+        using var sw = new StreamWriter($"{Settings.Default.Dev_Path}/KakoWkDataType.txt", false, Encoding.UTF8);
         var i = 1;
         foreach (var data in List) {
             sw.Write($"{i++:000} {data.Dm} {data.Ryaku} {data.Meisyo} {data.NyuMode} ");
