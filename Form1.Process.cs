@@ -28,6 +28,10 @@ public partial class Form1 {
             .ShowWorkData(DataGrid1.WorkData)
             .Select(0)
             .Focus();
+        
+        Frame2.Enabled = true;
+        Option1_0.Checked = false;
+        Option1_1.Checked = true;
     }
 
     /// <summary>
@@ -41,6 +45,10 @@ public partial class Form1 {
         DataGrid1.SP_BackColor();
         DataGrid1.SetTmpRowBackColor();
         DataGrid3.ShowWorkData(DataGrid1.WorkData);
+
+        Frame2.Enabled = true;
+        Option1_0.Checked = false;
+        Option1_1.Checked = true;
     }
 
     /// <summary>
@@ -52,8 +60,9 @@ public partial class Form1 {
         DataGrid1.SetTmpRowBackColor();
         DataGrid3.ShowWorkData(DataGrid1.WorkData);
 
-        //Frame2.Enabled = false;
-        //Option1_1.Checked = true;
+        Frame2.Enabled = false;
+        Option1_0.Checked = false;
+        Option1_1.Checked = true;
     }
 
     /// <summary>
@@ -76,6 +85,10 @@ public partial class Form1 {
         DataGrid1.Clear();
         DataGrid1.ShowWorkDataList();
         DataGrid3.ShowWorkData(DataGrid1.WorkData).Focus();
+
+        Frame2.Enabled = false;
+        Option1_0.Checked = false;
+        Option1_1.Checked = true;
     }
 
     /// <summary>
