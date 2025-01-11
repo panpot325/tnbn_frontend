@@ -28,7 +28,14 @@ public partial class Form1 {
             .ShowWorkData(DataGrid1.WorkData)
             .Select(0)
             .Focus();
-        
+
+        if (Mode.IsNew2) {
+            Frame2.Enabled = false;
+            Option1_0.Checked = false;
+            Option1_1.Checked = true;
+            return;
+        }
+
         Frame2.Enabled = true;
         Option1_0.Checked = false;
         Option1_1.Checked = true;

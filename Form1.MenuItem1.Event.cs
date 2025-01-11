@@ -28,8 +28,6 @@ public partial class Form1 {
         Log.WriteLine(@"「新規・登録（対象）」が選択されました。");
         Mode.SetNew2(); //新規2
         Process_New();
-        Frame2.Enabled = false;
-        Option1_1.Checked = true;
     }
 
     /// <summary>
