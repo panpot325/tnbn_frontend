@@ -67,8 +67,9 @@ public partial class Form1 {
                 return;
 
             case Mode.NEW_1:
-                DataGrid1.SetGridData(DataGrid3); //ワークデータにgrid3をセットしてgrid1に表示
-                DataGrid1.ShowWorkData();
+                //ワークデータにgrid3をセットしてgrid1に表示
+                DataGrid1.SetGridData(DataGrid3);
+                //DataGrid1.ShowWorkData();
                 if (DataGrid1.IsLast) {
                     DataGrid1.Add(DataGrid1.WorkData.Sno);
                 }
@@ -80,8 +81,9 @@ public partial class Form1 {
 
                 return;
             case Mode.EDIT_1 or Mode.COPY_1 or Mode.COPY_2 or Mode.EMode.EDIT_3:
+                //ワークデータにgrid3をセットしてgrid1に表示
                 DataGrid1.SetGridData(DataGrid3);
-                DataGrid1.ShowWorkData();
+                //DataGrid1.ShowWorkData();
                 DataGrid1.SetValidation();
                 DataGrid3.ShowWorkData(DataGrid1.WorkData);
                 Grid_Change();

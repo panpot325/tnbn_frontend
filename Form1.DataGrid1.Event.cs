@@ -37,7 +37,7 @@ public partial class Form1 {
         switch (Mode.Value) {
             case Mode.EDIT_1 or Mode.COPY_1:
                 DataGrid1.Add(WorkData.snoName);
-                DataGrid1.ShowWorkData(); //グリッド1の表示
+                //DataGrid1.ShowWorkData(); //グリッド1の表示
                 DataGrid1.Select(WorkData.Count - 1);
                 DataGrid3.ShowWorkData(DataGrid1.WorkData);
                 //グリッド1_Sデータ作成色設定_読込時
