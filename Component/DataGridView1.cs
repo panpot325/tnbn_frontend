@@ -66,7 +66,7 @@ public class DataGridView1 : CustomDataGridView {
     /// SetColumn
     /// </summary>
     protected override void SetColumn() {
-        ColumnCount = 6;
+        ColumnCount = 5;
         ColumnHeadersVisible = true; //列ヘッダー表示
         ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False; //見出し行ワードラップ無効
         Columns.With(col => {
@@ -80,9 +80,8 @@ public class DataGridView1 : CustomDataGridView {
             col[2].Width = 110;
             col[3].Width = 120;
             col[4].Width = 100;
-            col[5].Width = 20;
             col[0].DataGridView.Width =
-                col[0].Width + col[1].Width + col[2].Width + col[3].Width + col[4].Width + col[5].Width +
+                col[0].Width + col[1].Width + col[2].Width + col[3].Width + col[4].Width +
                 SystemInformation.VerticalScrollBarWidth;
         });
         foreach (DataGridViewColumn c in Columns) {
@@ -140,13 +139,24 @@ public class DataGridView1 : CustomDataGridView {
     /// </summary>
     /// <param name="workData"></param>
     // ReSharper disable once MemberCanBePrivate.Global
-    public DataGridView1 ShowWorkData(WorkData workData) {
+    private DataGridView1 ShowWorkData(WorkData workData) {
         this[0, RowIndex].Value = workData.Sno;
         this[1, RowIndex].Value = workData.Blk;
         this[2, RowIndex].Value = workData.Bzi;
         this[3, RowIndex].Value = workData.Pcs;
-        this[4, RowIndex].Value = workData.YoteibiKari;
-        this[5, RowIndex].Value = workData.ChgFlg;
+        this[4, RowIndex].Value = $"{WorkData.YoteibiKari}({WorkData.ChgFlg})";
+
+        this[4, RowIndex].Style.ForeColor = WorkData.ChgFlg switch {
+            WorkData.UPDATE => Color.Red,
+            WorkData.DELETE => Color.Blue,
+            _ => FgColor.DEFAULT
+        };
+
+        this[4, RowIndex].Style.SelectionForeColor = WorkData.ChgFlg switch {
+            WorkData.UPDATE => Color.Red,
+            WorkData.DELETE => Color.Blue,
+            _ => FgColor.DEFAULT
+        };
         SelectRowBackColor(RowBackColor);
         Enabled = true;
         return this;
@@ -165,8 +175,20 @@ public class DataGridView1 : CustomDataGridView {
         this[1, row].Value = WorkData.Blk;
         this[2, row].Value = WorkData.Bzi;
         this[3, row].Value = WorkData.Pcs;
-        this[4, row].Value = WorkData.YoteibiKari;
-        this[5, row].Value = WorkData.ChgFlg;
+        this[4, row].Value = $"{WorkData.YoteibiKari}({WorkData.ChgFlg})";
+
+        this[4, row].Style.ForeColor = WorkData.ChgFlg switch {
+            WorkData.UPDATE => Color.Red,
+            WorkData.DELETE => Color.Blue,
+            _ => FgColor.DEFAULT
+        };
+
+        this[4, row].Style.SelectionForeColor = WorkData.ChgFlg switch {
+            WorkData.UPDATE => Color.Red,
+            WorkData.DELETE => Color.Blue,
+            _ => FgColor.DEFAULT
+        };
+
         Enabled = true;
         return this;
     }
@@ -182,9 +204,21 @@ public class DataGridView1 : CustomDataGridView {
                      workData.Blk,
                      workData.Bzi,
                      workData.Pcs,
-                     workData.YoteibiKari,
-                     workData.ChgFlg
+                     $"{WorkData.YoteibiKari}({WorkData.ChgFlg})"
                  ))) {
+
+            this[4, row].Style.ForeColor = WorkData.ChgFlg switch {
+                WorkData.UPDATE => Color.Red,
+                WorkData.DELETE => Color.Yellow,
+                _ => FgColor.DEFAULT
+            };
+
+            this[4, row].Style.SelectionForeColor = WorkData.ChgFlg switch {
+                WorkData.UPDATE => Color.Red,
+                WorkData.DELETE => Color.Yellow,
+                _ => FgColor.DEFAULT
+            };
+
             Rows[row].DefaultCellStyle.BackColor = BgColor.DEFAULT;
             SelectRowBackColor(RowBackColor);
         }
