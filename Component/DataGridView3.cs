@@ -90,6 +90,16 @@ public class DataGridView3 : CustomDataGridView {
                 : DataGridViewContentAlignment.TopRight;
         }
 
+        if (Mode.IsNew2) {
+            foreach (var dataType in WorkDataType.List) {
+                this[0, dataType.Index].Value = dataType.Index switch {
+                    15 => 2400.0.ToString("F1"),
+                    28 or 29 or 30 => 0,
+                    _ => this[0, dataType.Index].Value
+                };
+            }
+        }
+
         SelectRowBackColor(Color.White);
         SetBackColor(workData);
         return this;
