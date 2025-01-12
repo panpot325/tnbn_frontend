@@ -113,6 +113,10 @@ public partial class Form1 {
                 Save_New_1();
                 return;
 
+            case Mode.NEW_2: //新規登録2
+                Save_New_2();
+                return;
+
             case Mode.EDIT_1: //船番指定
                 Save_Edit_Copy_1();
                 return;
@@ -129,7 +133,6 @@ public partial class Form1 {
                 Save_Edit_3();
                 return;
 
-            case Mode.EMode.NEW_2:
             case Mode.EMode.NEW_3:
             case Mode.EMode.EDIT_2:
             default:
