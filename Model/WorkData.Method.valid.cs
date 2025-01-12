@@ -30,7 +30,7 @@ public partial class WorkData {
     /// @DB更新前各項目チェック
     /// </summary>
     /// <returns></returns>
-    public int Valid() {
+    private int Valid() {
         var errCnt = 0;
 
         Check(ref errCnt, Tsno, string.IsNullOrEmpty(Sno)); //船番(半角ｽﾍﾟｰｽ6桁はｴﾗｰ)0
@@ -57,7 +57,7 @@ public partial class WorkData {
             Check(ref errCnt, Tb, Tb.ZeroEntry == WorkDataType.ZERO_ENTRY_NG);
         }
         else {
-            if (Mode.Value == Mode.NEW_2) {
+            if (Mode.IsNew2) {
                 Check(ref errCnt, Tb, B > 2400);
             }
             else {
