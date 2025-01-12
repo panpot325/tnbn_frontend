@@ -76,7 +76,7 @@ public partial class Form1 {
     ///  船番指定 船番コピー
     /// </summary>
     private void Save_Edit_Copy_1() {
-        WorkData.DeleteOfSno(WorkData.snoName); //加工ワークデータの削除_船番
+        WorkData.DeleteAll(WorkData.snoName); //加工ワークデータの削除_船番
         WorkData.UpdateAll(); //加工ワークデータの更新
         WorkData_S_Create(); // @Sデータの作成と登録
         WorkData_S_Update(); // @加工ワークデータSの更新

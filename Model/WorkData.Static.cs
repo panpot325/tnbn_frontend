@@ -165,10 +165,10 @@ public partial class WorkData {
     }
 
     /// <summary>
-    /// DeleteOfSno
+    /// DeleteAll
     /// @加工ワークデータの削除_船番
     /// </summary>
-    public static void DeleteOfSno(string sno) {
+    public static void DeleteAll(string sno) {
         var sql = "DELETE FROM tnbn_kakowk_data" +
                   $" WHERE sno = '{sno}';";
         PgOpen.PgUpdate(sql);
