@@ -40,6 +40,7 @@ public partial class Form1 {
     ///  新規登録2
     /// </summary>
     private void Save_New_2() {
+        DataGrid1.SetGridData(DataGrid3);
         WorkData_E_W_Edit(); // 西東対象データ編集
         WorkData.List[0].ChgFlg = WorkData.UPDATE;
         WorkData.List[0].Err1Flg = 0;
