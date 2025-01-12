@@ -14,8 +14,7 @@ public partial class Form2 {
     /// Process
     /// </summary>
     private void Process() {
-        WorkData.copySelectCnt = WorkData.List.Count(workData => workData.ChgFlg == WorkData.UPDATE);
-        if (WorkData.copySelectCnt == 0) {
+        if (WorkData.List.Count(workData => workData.ChgFlg == WorkData.UPDATE) == 0) {
             MessageBox.Show(@"コピー元を選択してください。");
             return;
         }

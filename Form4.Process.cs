@@ -29,8 +29,7 @@ public partial class Form4 {
             where = $"{where} sno <= '{comboBox2.Text.Trim()}'";
         }
 
-        WorkData.copySelectCnt = WorkData.GetCount(where);
-        if (WorkData.copySelectCnt > 5000) {
+        if (WorkData.GetCount(where) > 5000) {
             MessageBox.Show(@"５０００件オーバーです。範囲を絞って下さい。");
             return;
         }

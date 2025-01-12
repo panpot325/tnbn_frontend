@@ -32,15 +32,13 @@ public partial class Form7 {
         }
 
         var where = $"sno = '{comboBox1.Text.Trim()}'";
-        WorkData.copySelectCnt = WorkData.GetCount(where);
-        if (WorkData.copySelectCnt > 5000) {
-            MessageBox.Show(@"５０００件オーバーです。範囲を絞って下さい。");
-            return;
-        }
-
-        if (WorkData.copySelectCnt == 0) {
-            MessageBox.Show(@"コピー元の船番を選択して下さい。");
-            return;
+        switch (WorkData.GetCount(where)) {
+            case > 5000:
+                MessageBox.Show(@"５０００件オーバーです。範囲を絞って下さい。");
+                return;
+            case 0:
+                MessageBox.Show(@"コピー元の船番を選択して下さい。");
+                return;
         }
 
         WorkData.GetAll(where);

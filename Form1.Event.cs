@@ -23,7 +23,6 @@ public partial class Form1 {
         FormPosition();
         OptionSet(false);
         _activate = true;
-        WorkData.copySelectCnt = 0;
         Mode.SetNew1();
         ViewNameText();
         timer1.Interval = 200;
