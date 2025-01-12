@@ -89,6 +89,8 @@ public partial class Form1 {
         Text3 = new CustomTextBox(3, "Text3", 1634, 120, 150, 36);
         Text4 = new CustomTextBox(4, "Text4", 1634, 519, 645, 146, true);
         Text6 = new CustomTextBox(6, "Text6", 1825, 120, 150, 36);
+        Text2.ForeColor = Color.Red;
+        Text3.ForeColor = Color.Blue;
 
         Frame1 = new CustomGroupBox(0, "Frame1", 1634, 696, 645, 571, @"バックカラーの説明");
         Frame2 = new CustomGroupBox(0, "Frame2", 2039, 90, 248, 173, @"対象データ");
