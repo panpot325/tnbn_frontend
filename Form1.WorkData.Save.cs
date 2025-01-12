@@ -37,6 +37,41 @@ public partial class Form1 {
     }
 
     /// <summary>
+    ///  新規登録2
+    /// </summary>
+    private void Save_New_2() {
+        WorkData_E_W_Edit(); // 西東対象データ編集
+        WorkData.List[0].ChgFlg = WorkData.UPDATE;
+        WorkData.List[0].Err1Flg = 0;
+        WorkData.List[0].Err2Flg = 0;
+        //WorkData.List[0].E_W_Edit();
+        
+        if (WorkData.ValidAll() > 0) {
+            ValidMessage(); //入力エラーのデータを表示
+            return;
+        }
+
+        if (WorkData.DuplicateAll() > 0) {
+            DuplicateMessage();
+            //DataGrid1.RowIndex = 0;
+            //DataGrid3.ShowWorkData(DataGrid1.WorkData);
+            return;
+        }
+
+        WorkData.UpdateAll(true); //加工ワークデータの更新
+        WorkData_S_Create(); // @Sデータの作成と登録
+        WorkData_S_Update(); // @加工ワークデータSの更新
+        WorkData_P_Create(); // @Pデータの作成と登録
+        WorkData_PS_Update(); // @CrePSFlgの更新
+        WorkDataExclusive.Delete(); //Del_排他情報
+        Mode.SetNew2();
+
+        
+        
+        Process_New();
+    }
+
+    /// <summary>
     ///  船番指定 船番コピー
     /// </summary>
     private void Save_Edit_Copy_1() {
