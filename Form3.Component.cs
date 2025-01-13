@@ -23,8 +23,8 @@ public partial class Form3 {
         // 
         label1.Name = @"label1";
         label1.Text = @"社員番号入力";
-        label1.Location = new Point(27, 50);
-        label1.Size = new Size(253, 78);
+        label1.Location = new Point(27, 104);
+        label1.Size = new Size(240, 78);
         label1.TabIndex = 0;
         label1.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Bold,
             GraphicsUnit.Point, ((byte)(128)));
@@ -32,8 +32,8 @@ public partial class Form3 {
         // textBox1
         // 
         textBox1.Name = @"textBox1";
-        textBox1.Location = new Point(327, 50);
-        textBox1.Size = new Size(287, 37);
+        textBox1.Location = new Point(300, 100);
+        textBox1.Size = new Size(360, 60);
         textBox1.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Regular,
             GraphicsUnit.Point, ((byte)(128)));
         textBox1.TabIndex = 1;
