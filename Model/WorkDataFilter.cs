@@ -10,48 +10,50 @@ public class WorkDataFilter {
     private static readonly WorkDataFilter _instance = new();
 
     /// <summary>
-    /// 
+    /// Property
     /// </summary>
     public static string Sno => _instance._sno;
 
     public static bool HasSno => !string.IsNullOrEmpty(_instance._sno);
 
     /// <summary>
-    /// 
+    /// Property
     /// </summary>
     public static string Blk => _instance._blk;
 
     public static bool HasBlk => !string.IsNullOrEmpty(_instance._blk);
 
     /// <summary>
-    /// 
+    /// Property
     /// </summary>
     public static string Bzi => _instance._bzi;
 
     public static bool HasBzi => !string.IsNullOrEmpty(_instance._bzi);
 
     /// <summary>
-    /// 
+    /// Property
     /// </summary>
     public static string Pcs => _instance._pcs;
 
     public static bool HasPcs => !string.IsNullOrEmpty(_instance._pcs);
 
     /// <summary>
-    /// 
+    /// Property
     /// </summary>
     public static int Yotei => _instance._yotei;
 
     public static bool HasYotei => _instance._yotei > 0;
 
     /// <summary>
-    /// 
+    /// Clear
     /// </summary>
     public static WorkDataFilter New() {
         _instance._sno = "";
         _instance._blk = "";
         _instance._bzi = "";
         _instance._pcs = "";
+        _instance._yotei = 0;
+
         return _instance;
     }
 
