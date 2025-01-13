@@ -71,17 +71,17 @@ public partial class Form1 {
         label8 = new CustomLabel("label8", 15, y += step, 159, 38, BgColor.P_GUNWALE_E, BorderStyle.FixedSingle);
         label9 = new CustomLabel("label9", 15, y += step, 159, 38, BgColor.S_GUNWALE_W, BorderStyle.FixedSingle);
         label10 = new CustomLabel("label10", 15, y += step, 159, 38, BgColor.SELECTED, BorderStyle.FixedSingle);
-        y = 00;
-        label11 = new CustomLabel("label11", 191, y += step, 436, 38, @"：更新対象データ");
-        label12 = new CustomLabel("label12", 191, y += step, 436, 38, @"：削除対象データ");
-        label13 = new CustomLabel("label13", 191, y += step, 436, 38, @"：入力エラーまたはキー重複");
-        label14 = new CustomLabel("label14", 191, y += step, 436, 38, @"：入力不可");
-        label15 = new CustomLabel("label15", 191, y += step, 436, 38, @"：Ｓ舷を作成しない");
-        label16 = new CustomLabel("label16", 191, y += step, 436, 38, @"：Ｓ舷を作成(東基準)");
-        label17 = new CustomLabel("label17", 191, y += step, 436, 38, @"：Ｐ舷を作成(西基準)");
-        label18 = new CustomLabel("label18", 191, y += step, 436, 38, @"：Ｐ舷を作成(東基準)");
-        label19 = new CustomLabel("label19", 191, y += step, 436, 38, @"：Ｓ舷を作成(西)/Ｐ舷を作成しない");
-        label20 = new CustomLabel("label20", 191, y += step, 436, 38, @"選択行");
+        y = 0;
+        label11 = new CustomLabel("label11", 191, y += step, 490, 38, @"：更新対象データ");
+        label12 = new CustomLabel("label12", 191, y += step, 490, 38, @"：削除対象データ");
+        label13 = new CustomLabel("label13", 191, y += step, 490, 38, @"：入力エラーまたはキー重複");
+        label14 = new CustomLabel("label14", 191, y += step, 490, 38, @"：入力不可");
+        label15 = new CustomLabel("label15", 191, y += step, 490, 38, @"：Ｓ舷を作成しない");
+        label16 = new CustomLabel("label16", 191, y += step, 490, 38, @"：Ｓ舷を作成(東基準)");
+        label17 = new CustomLabel("label17", 191, y += step, 490, 38, @"：Ｐ舷を作成(西基準)");
+        label18 = new CustomLabel("label18", 191, y += step, 490, 38, @"：Ｐ舷を作成(東基準)");
+        label19 = new CustomLabel("label19", 191, y += step, 490, 38, @"：Ｓ舷を作成(西)/Ｐ舷を作成しない");
+        label20 = new CustomLabel("label20", 191, y += step, 490, 38, @"選択行");
        
         label21 = new CustomLabel("label21", 1634, 80, 175, 38, @"入力単位");
         label22 = new CustomLabel("label22", 1825, 80, 175, 38, @"ゼロの入力");
