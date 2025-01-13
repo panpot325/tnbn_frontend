@@ -22,7 +22,7 @@ public partial class Form2 : BasicForm {
     /// FormSize
     /// </summary>
     protected override void FormSize() {
-        Width = 800;
-        Height = 600;
+        Width = 770;
+        Height = 560;
     }
 }
