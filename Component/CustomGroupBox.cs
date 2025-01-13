@@ -7,6 +7,8 @@ namespace WorkDataStudio.Component;
 /// CustomGroupBox
 /// </summary>
 public class CustomGroupBox : GroupBox {
+    private readonly Color _borderColor = Color.Black;
+
     /// <summary>
     /// Constructor
     /// </summary>
@@ -26,8 +28,33 @@ public class CustomGroupBox : GroupBox {
         SetText(text);
         TabStop = false;
         Padding = new Padding(10);
+        FlatStyle = FlatStyle.Standard;
         SetBackColor(SystemColors.ButtonFace);
         //FlatStyle = System.Windows.Forms.FlatStyle.System;
+        // グループボックスの描画をオーナードローにする
+        SetStyle(ControlStyles.UserPaint, true);
+    }
+
+    // OnPrintイベント
+    protected override void OnPaint(PaintEventArgs e) {
+        // テキストサイズを取得
+        var tTextSize = TextRenderer.MeasureText(this.Text, this.Font);
+
+        // グループボックスの領域を取得
+        var tBorderRect = e.ClipRectangle;
+
+        // テキストを考慮（グループボックス枠線がテキスト（高さ）の真ん中に来るように）して枠を描画
+        tBorderRect.Y += tTextSize.Height / 2;
+        tBorderRect.Height -= tTextSize.Height / 2;
+        ControlPaint.DrawBorder(e.Graphics, tBorderRect, _borderColor, ButtonBorderStyle.Solid);
+
+        // テキストを描画
+        var tTextRect = e.ClipRectangle;
+        tTextRect.X += 6; // テキストの描画開始位置(X)をグループボックスの領域から6ドットずらす
+        tTextRect.Width = tTextSize.Width;
+        tTextRect.Height = tTextSize.Height;
+        e.Graphics.FillRectangle(new SolidBrush(this.BackColor), tTextRect);
+        e.Graphics.DrawString(this.Text, this.Font, new SolidBrush(this.ForeColor), tTextRect);
     }
 
     /// <summary>
