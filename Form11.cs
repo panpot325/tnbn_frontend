@@ -17,7 +17,7 @@ public partial class Form11 : BasicForm {
     /// FormSize
     /// </summary>
     protected override void FormSize() {
-        Width = 320;
+        Width = 360;
         Height = 720;
     }
 
