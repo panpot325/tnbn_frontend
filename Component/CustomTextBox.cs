@@ -104,7 +104,7 @@ public sealed class CustomTextBox : TextBox {
         base.OnEnabledChanged(e);
         //EnabledがFalseの時だけ自分で描画する
         SetStyle(ControlStyles.UserPaint, !Enabled);
-        
+
         //再描画
         Invalidate();
     }
@@ -117,11 +117,6 @@ public sealed class CustomTextBox : TextBox {
         base.OnPaint(e);
         Brush brush = new SolidBrush(this.ForeColor);
 
-        RectangleF rect1 = new Rectangle(-4, 0, Width, Height);
-
-        Console.WriteLine(Name + Multiline);
-
-        //e.Graphics.DrawString(this.Text, this.Font,brush, 4, 4);
         if (Multiline) {
             e.Graphics.DrawString(this.Text, this.Font, brush, new Rectangle(4, 4, Width - 6, Height - 6));
         }
