@@ -6,7 +6,7 @@ namespace WorkDataStudio.Component;
 /// <summary>
 /// CustomLabel
 /// </summary>
-public class CustomLabel : Label {
+public sealed class CustomLabel : Label {
     /// <summary>
     /// Constructor
     /// </summary>
@@ -43,6 +43,26 @@ public class CustomLabel : Label {
         SetAlign();
         SetText(text);
         SetBackColor(color);
+    }
+
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
+    /// <param name="width"></param>
+    /// <param name="height"></param>
+    /// <param name="backColor"></param>
+    /// <param name="borderStyle"></param>
+    public CustomLabel(string name, int x, int y, int width, int height, Color backColor, BorderStyle borderStyle) {
+        Name = name;
+        Location = new Point(x, y);
+        Size = new Size(width, height);
+        SetFont();
+        SetAlign();
+        SetBackColor(backColor);
+        BorderStyle = borderStyle;
     }
 
     /// <summary>
