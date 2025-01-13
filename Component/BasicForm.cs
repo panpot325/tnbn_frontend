@@ -52,7 +52,7 @@ public class BasicForm : Form {
     // @virtual
     protected virtual void FormSize() {
         Width = 400;
-        Height = 200;
+        Height = 160;
     }
 
     // @virtual

@@ -27,25 +27,23 @@ public partial class Form4 {
         // 
         label1.Name = @"label1";
         label1.Text = @"船番";
-        label1.Location = new Point(41, 127);
-        label1.Size = new Size(112, 38);
-        label1.TextAlign = ContentAlignment.MiddleRight;
+        label1.Location = new Point(24, 104);
+        label1.Size = new Size(80, 60);
         label1.TabIndex = 2;
         // 
         // label2
         // 
         label2.Name = @"label2";
         label2.Text = @"～";
-        label2.Location = new Point(449, 130);
-        label2.Size = new Size(52, 29);
-        label2.TextAlign = ContentAlignment.MiddleCenter;
+        label2.Location = new Point(449, 104);
+        label2.Size = new Size(54, 23);
         label2.TabIndex = 3;
         // 
         // comboBox1
         // 
         comboBox1.Name = @"comboBox1";
-        comboBox1.Location = new Point(168, 127);
-        comboBox1.Size = new Size(275, 32);
+        comboBox1.Location = new Point(118, 100);
+        comboBox1.Size = new Size(275, 60);
         comboBox1.FormattingEnabled = true;
         comboBox1.TabIndex = 0;
         comboBox1.KeyUp += comboBox1_KeyUp;
@@ -53,8 +51,8 @@ public partial class Form4 {
         // comboBox2
         // 
         comboBox2.Name = @"comboBox2";
-        comboBox2.Location = new Point(507, 124);
-        comboBox2.Size = new Size(278, 32);
+        comboBox2.Location = new Point(507, 100);
+        comboBox2.Size = new Size(278, 60);
         comboBox2.FormattingEnabled = true;
         comboBox2.TabIndex = 1;
         comboBox2.KeyUp += comboBox2_KeyUp;

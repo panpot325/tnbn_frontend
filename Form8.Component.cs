@@ -22,16 +22,16 @@ public partial class Form8 {
         // label1
         // 
         label1.Name = @"label1";
-        label1.Text = @"label1";
-        label1.Location = new Point(56, 81);
-        label1.Size = new Size(177, 52);
+        label1.Text = @"船番";
+        label1.Location = new Point(160, 104);
+        label1.Size = new Size(100, 60);
         label1.TabIndex = 1;
         // 
         // comboBox1
         // 
         comboBox1.Name = @"comboBox1";
-        comboBox1.Location = new Point(239, 81);
-        comboBox1.Size = new Size(330, 32);
+        comboBox1.Location = new Point(280, 100);
+        comboBox1.Size = new Size(330, 60);
         comboBox1.FormattingEnabled = true;
         comboBox1.TabIndex = 0;
         comboBox1.KeyUp += comboBox1_KeyUp;
