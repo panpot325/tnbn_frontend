@@ -23,15 +23,15 @@ public partial class Form9 {
         // 
         label1.Name = @"label1";
         label1.Text = @"船番";
-        label1.Location = new Point(105, 121);
-        label1.Size = new Size(128, 27);
+        label1.Location = new Point(160, 104);
+        label1.Size = new Size(100, 60);
         label1.TabIndex = 1;
         // 
         // comboBox1
         // 
         comboBox1.Name = @"comboBox1";
-        comboBox1.Location = new Point(217, 116);
-        comboBox1.Size = new Size(280, 32);
+        comboBox1.Location = new Point(280, 100);
+        comboBox1.Size = new Size(330, 60);
         comboBox1.FormattingEnabled = true;
         comboBox1.TabIndex = 0;
         comboBox1.KeyUp += comboBox1_KeyUp;
