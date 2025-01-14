@@ -19,6 +19,7 @@ public partial class Form1 {
     private void DataGrid1_MouseClick(object sender, MouseEventArgs e) {
         Log.WriteLine(@"MouseClick");
         if (DataGrid1.RowCount == 0) return;
+        if (DataGrid1.WorkData is null) return;
         DataGrid3.ShowWorkData(DataGrid1.WorkData);
     }
 
