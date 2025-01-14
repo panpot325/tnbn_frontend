@@ -10,7 +10,7 @@ public partial class WorkData {
     /// 検索
     /// </summary>
     /// <returns>int</returns>
-    public int Find() {
+    private int Find() {
         var sql = "SELECT COUNT(*) AS count FROM tnbn_kakowk_data" +
                   $"{SqlWhere()};";
 
@@ -30,7 +30,7 @@ public partial class WorkData {
     /// <summary>
     /// 更新
     /// </summary>
-    public void Update() {
+    private void Update() {
         var sql = "UPDATE tnbn_kakowk_data" +
                   $" SET({SqlColumns()}) = " +
                   $" ({SqlValues()}) {SqlWhere()};";

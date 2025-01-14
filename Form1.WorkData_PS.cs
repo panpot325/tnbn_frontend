@@ -83,11 +83,13 @@ public partial class Form1 {
         sp.Blk = data.Blk;
         sp.Bzi = data.Bzi;
         sp.Pcs = pcs;
+
         sp.Gr1 = data.Gr1;
         sp.Gr2 = data.Gr2;
         sp.Gr3 = data.Gr3;
         sp.Gr4 = data.Gr4;
         sp.Gr5 = data.Gr5;
+
         sp.L = data.L;
         sp.B = data.B;
         sp.Tmax = data.Tmax;
@@ -186,14 +188,18 @@ public partial class Form1 {
         sp.Wl3 = (short)(pos[2].B_Wl + 0.04m);
         sp.Wl4 = (short)(pos[3].B_Wl + 0.04m);
         sp.Wl5 = (short)(pos[4].B_Wl + 0.04m);
+
         sp.Is1 = data.Is1;
+
         sp.Stp1 = data.Stp1;
         sp.Stp2 = data.Stp2;
         sp.Stp3 = data.Stp3;
         sp.Stp4 = data.Stp4;
         sp.Stp5 = data.Stp5;
+
         sp.Org = 0;
         sp.YoteibiKari = data.YoteibiKari;
+
         sp.YoteibiHon = data.YoteibiHon;
         sp.YoteibiKyosei = data.YoteibiKyosei;
         sp.JissibiKari = data.JissibiKari;
