@@ -206,7 +206,6 @@ public class DataGridView1 : CustomDataGridView {
                      workData.Pcs,
                      $"{WorkData.YoteibiKari}({WorkData.ChgFlg})"
                  ))) {
-
             this[4, row].Style.ForeColor = WorkData.ChgFlg switch {
                 WorkData.UPDATE => Color.Red,
                 WorkData.DELETE => Color.Yellow,

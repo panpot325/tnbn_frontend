@@ -46,7 +46,7 @@ public partial class Form1 {
         WorkData.List[0].Err1Flg = 0;
         WorkData.List[0].Err2Flg = 0;
         //WorkData.List[0].E_W_Edit();
-        
+
         if (WorkData.ValidAll() > 0) {
             ValidMessage(); //入力エラーのデータを表示
             return;
@@ -67,8 +67,7 @@ public partial class Form1 {
         WorkDataExclusive.Delete(); //Del_排他情報
         Mode.SetNew2();
 
-        
-        
+
         Process_New();
     }
 
