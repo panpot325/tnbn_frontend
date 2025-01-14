@@ -59,6 +59,7 @@ public class BasicForm : Form {
     protected virtual void FormPosition() {
         Left = (PRect.Right - PRect.Left - Width) / 2 + PRect.Left;
         Top = (PRect.Bottom - PRect.Left - Height) / 2 + PRect.Top;
+        StartPosition = FormStartPosition.CenterScreen;
     }
 
     // @virtual

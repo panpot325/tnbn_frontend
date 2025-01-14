@@ -1,5 +1,4 @@
 ﻿using WorkDataStudio.Component;
-using WorkDataStudio.type;
 using WorkDataStudio.type.index;
 
 namespace WorkDataStudio;
@@ -14,14 +13,6 @@ public partial class Form8 : BasicForm {
     public Form8() {
         InitComponent();
         Init(@"船番単位");
-    }
-
-    /// <summary>
-    /// SetPosition
-    /// </summary>
-    protected override void FormPosition() {
-        Left = (((PRect.Right - PRect.Left) - Width) / 2) + PRect.Left;
-        Top = (((PRect.Bottom - PRect.Left) - Height) / 2) + PRect.Top;
     }
 
     /// <summary>

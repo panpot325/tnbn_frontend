@@ -16,7 +16,7 @@ public partial class Form1 {
             new ToolStripItem[] {
                 CreateMenuItem("新規・登録", MenuItem_SM1_1_Click),
                 CreateMenuItem("新規・登録（対象）", MenuItem_SM1_2_Click),
-                CreateMenuItem("終了）", MenuItem_SM1_3_Click)
+                CreateMenuItem("終了", MenuItem_SM1_3_Click)
             });
 
         return menuItem;
