@@ -1,7 +1,5 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using WorkDataStudio.Model;
-using WorkDataStudio.share;
 
 // ReSharper disable MemberCanBeMadeStatic.Local
 namespace WorkDataStudio;
@@ -29,7 +27,7 @@ public partial class Form1 {
             SetWorkData(sData, data, "S");
 
             //反転用WKへの編集(反転前)
-            var pos = GetPositions(data);
+            var pos = GetPositions(sData);
 
             //反転用WKへの編集(反転後);
             SetPositions(pos, width);
@@ -45,22 +43,6 @@ public partial class Form1 {
 
             //既存のSデータを削除
             sData.Delete();
-
-            sData.YoteibiHon = 0;
-            sData.YoteibiKyosei = 0;
-            sData.JissibiKari = 0;
-            sData.JissibiHon = 0;
-            sData.JissibiKyosei = 0;
-            sData.StatusKari = 0;
-            sData.StatusHon = 0;
-            sData.StatusKyosei = 0;
-            sData.CreateDate = Convert.ToInt32(DateTime.Now.ToString("yyyyMMdd"));
-            sData.CreateSyain = Globals.staffId;
-            sData.UpdateDate = 0;
-            sData.UpdateSyain = 0;
-            sData.JissijknKari = 0;
-            sData.JissijknHon = 0;
-            sData.JissijknKyosei = 0;
 
             //改めてSデータを登録
             sData.Insert();
