@@ -159,35 +159,35 @@ public partial class Form1 {
         sp.Lk4 = pos[3].B_Lk;
         sp.Lk5 = pos[4].B_Lk;
 
-        sp.Sp1 = pos[0].B_Sp + 0.04m;
-        sp.Sp2 = pos[1].B_Sp + 0.04m;
-        sp.Sp3 = pos[2].B_Sp + 0.04m;
-        sp.Sp4 = pos[3].B_Sp + 0.04m;
-        sp.Sp5 = pos[4].B_Sp + 0.04m;
+        sp.Sp1 = Math.Round(pos[0].B_Sp + 0.04m, 1, MidpointRounding.AwayFromZero);
+        sp.Sp2 = Math.Round(pos[1].B_Sp + 0.04m, 1, MidpointRounding.AwayFromZero);
+        sp.Sp3 = Math.Round(pos[2].B_Sp + 0.04m, 1, MidpointRounding.AwayFromZero);
+        sp.Sp4 = Math.Round(pos[3].B_Sp + 0.04m, 1, MidpointRounding.AwayFromZero);
+        sp.Sp5 = Math.Round(pos[4].B_Sp + 0.04m, 1, MidpointRounding.AwayFromZero);
 
-        sp.Lh1 = pos[0].B_Lh + 0.04m;
-        sp.Lh2 = pos[1].B_Lh + 0.04m;
-        sp.Lh3 = pos[2].B_Lh + 0.04m;
-        sp.Lh4 = pos[3].B_Lh + 0.04m;
-        sp.Lh5 = pos[4].B_Lh + 0.04m;
+        sp.Lh1 = Math.Round(pos[0].B_Lh + 0.04m, 1, MidpointRounding.AwayFromZero);
+        sp.Lh2 = Math.Round(pos[1].B_Lh + 0.04m, 1, MidpointRounding.AwayFromZero);
+        sp.Lh3 = Math.Round(pos[2].B_Lh + 0.04m, 1, MidpointRounding.AwayFromZero);
+        sp.Lh4 = Math.Round(pos[3].B_Lh + 0.04m, 1, MidpointRounding.AwayFromZero);
+        sp.Lh5 = Math.Round(pos[4].B_Lh + 0.04m, 1, MidpointRounding.AwayFromZero);
 
-        sp.Lt1 = pos[0].B_Lt + 0.04m;
-        sp.Lt2 = pos[1].B_Lt + 0.04m;
-        sp.Lt3 = pos[2].B_Lt + 0.04m;
-        sp.Lt4 = pos[3].B_Lt + 0.04m;
-        sp.Lt5 = pos[4].B_Lt + 0.04m;
+        sp.Lt1 = Math.Round(pos[0].B_Lt + 0.04m, 1, MidpointRounding.AwayFromZero);
+        sp.Lt2 = Math.Round(pos[1].B_Lt + 0.04m, 1, MidpointRounding.AwayFromZero);
+        sp.Lt3 = Math.Round(pos[2].B_Lt + 0.04m, 1, MidpointRounding.AwayFromZero);
+        sp.Lt4 = Math.Round(pos[3].B_Lt + 0.04m, 1, MidpointRounding.AwayFromZero);
+        sp.Lt5 = Math.Round(pos[4].B_Lt + 0.04m, 1, MidpointRounding.AwayFromZero);
 
-        sp.Ll1 = pos[0].B_Ll + 0.04m;
-        sp.Ll2 = pos[1].B_Ll + 0.04m;
-        sp.Ll3 = pos[2].B_Ll + 0.04m;
-        sp.Ll4 = pos[3].B_Ll + 0.04m;
-        sp.Ll5 = pos[4].B_Ll + 0.04m;
+        sp.Ll1 = Math.Round(pos[0].B_Ll + 0.04m, 1, MidpointRounding.AwayFromZero);
+        sp.Ll2 = Math.Round(pos[1].B_Ll + 0.04m, 1, MidpointRounding.AwayFromZero);
+        sp.Ll3 = Math.Round(pos[2].B_Ll + 0.04m, 1, MidpointRounding.AwayFromZero);
+        sp.Ll4 = Math.Round(pos[3].B_Ll + 0.04m, 1, MidpointRounding.AwayFromZero);
+        sp.Ll5 = Math.Round(pos[4].B_Ll + 0.04m, 1, MidpointRounding.AwayFromZero);
 
-        sp.Wl1 = (short)(pos[0].B_Wl + 0.04m);
-        sp.Wl2 = (short)(pos[1].B_Wl + 0.04m);
-        sp.Wl3 = (short)(pos[2].B_Wl + 0.04m);
-        sp.Wl4 = (short)(pos[3].B_Wl + 0.04m);
-        sp.Wl5 = (short)(pos[4].B_Wl + 0.04m);
+        sp.Wl1 = (short)(Math.Round(pos[0].B_Wl + 0.04m, 1, MidpointRounding.AwayFromZero));
+        sp.Wl2 = (short)(Math.Round(pos[1].B_Wl + 0.04m, 1, MidpointRounding.AwayFromZero));
+        sp.Wl3 = (short)(Math.Round(pos[2].B_Wl + 0.04m, 1, MidpointRounding.AwayFromZero));
+        sp.Wl4 = (short)(Math.Round(pos[3].B_Wl + 0.04m, 1, MidpointRounding.AwayFromZero));
+        sp.Wl5 = (short)(Math.Round(pos[4].B_Wl + 0.04m, 1, MidpointRounding.AwayFromZero));
 
         sp.Is1 = data.Is1;
 
@@ -225,13 +225,13 @@ public partial class Form1 {
         var front = data.Sp1;
         Position.Init();
         Position.Add(front, data.Lk1, data.Sp1, data.Lh1, data.Lt1, data.Ll1, data.Wl1);
-        front = front + data.Sp2 + 0.04m;
+        front = Math.Round(front + data.Sp2 + 0.04m, 1, MidpointRounding.AwayFromZero);
         Position.Add(front, data.Lk2, data.Sp2, data.Lh2, data.Lt2, data.Ll2, data.Wl2);
-        front = front + data.Sp3 + 0.04m;
+        front = Math.Round(front + data.Sp3 + 0.04m, 1, MidpointRounding.AwayFromZero);
         Position.Add(front, data.Lk3, data.Sp3, data.Lh3, data.Lt3, data.Ll3, data.Wl3);
-        front = front + data.Sp4 + 0.04m;
+        front = Math.Round(front + data.Sp4 + 0.04m, 1, MidpointRounding.AwayFromZero);
         Position.Add(front, data.Lk4, data.Sp4, data.Lh4, data.Lt4, data.Ll4, data.Wl4);
-        front = front + data.Sp5 + 0.04m;
+        front = Math.Round(front + data.Sp5 + 0.04m, 1, MidpointRounding.AwayFromZero);
         Position.Add(front, data.Lk5, data.Sp5, data.Lh5, data.Lt5, data.Ll5, data.Wl5);
 
         return Position.List;

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using WorkDataStudio.Component;
 
@@ -112,9 +113,9 @@ public partial class WorkData {
         var w5 = 4900 - (Sp1 + Lt1);
         var w4 = 4900 - (w2 + Lt2);
         var w3 = (w4 - w2) / 2 + w2;
-        Sp3 = decimal.Parse((w3 - w2 + 0.04m).ToString("F1"));
-        Sp4 = decimal.Parse((w4 - w3 + 0.04m).ToString("F1"));
-        Sp5 = decimal.Parse((w5 - w4 + 0.04m).ToString("F1"));
+        Sp3 = Math.Round(w3 - w2 + 0.04m, 1, MidpointRounding.AwayFromZero);
+        Sp4 = Math.Round(w4 - w3 + 0.04m, 1, MidpointRounding.AwayFromZero);
+        Sp5 = Math.Round(w5 - w4 + 0.04m, 1, MidpointRounding.AwayFromZero);
         Lh3 = 0;
         Lh4 = Lh2;
         Lh5 = Lh1;
