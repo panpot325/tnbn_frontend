@@ -88,6 +88,9 @@ public class DataGridView3 : CustomDataGridView {
             Rows[row].Cells[0].Style.Alignment = WorkDataType.List[row].Keishiki == WorkDataType.KEISHIKI_ASCII
                 ? DataGridViewContentAlignment.TopLeft
                 : DataGridViewContentAlignment.TopRight;
+            Rows[row].Cells[0].Style.Format = WorkDataType.List[row].DecNyuTani == 0.1m
+                ?  "F1"
+                :  "";
         }
 
         if (Mode.IsNew2) {
@@ -200,10 +203,11 @@ public class DataGridView3 : CustomDataGridView {
     public DataGridView3 CursorEdit(int keyAscii) {
         switch (keyAscii) {
             case (char)Keys.Enter:
-                BeginEdit(false);
+                //BeginEdit(false);
                 break;
             case (char)Keys.Back:
-                CurrentCell.Value = "";
+                //CurrentCell.Value = "";
+                Text = "";
                 BeginEdit(false);
                 break;
             case (char)Keys.Space:
