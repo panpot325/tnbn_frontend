@@ -89,16 +89,13 @@ public class DataGridView3 : CustomDataGridView {
                 ? DataGridViewContentAlignment.TopLeft
                 : DataGridViewContentAlignment.TopRight;
             Rows[row].Cells[0].Style.Format = WorkDataType.List[row].DecNyuTani == 0.1m
-                ?  "F1"
-                :  "";
-        }
-
-        if (Mode.IsNew2) {
-            foreach (var dataType in WorkDataType.List) {
-                this[0, dataType.Index].Value = dataType.Index switch {
+                ? "F1"
+                : "";
+            if (Mode.IsNew2) {
+                Rows[row].Cells[0].Value = row switch {
                     15 => 2400.0.ToString("F1"),
                     28 or 29 or 30 => 0,
-                    _ => this[0, dataType.Index].Value
+                    _ => Rows[row].Cells[0].Value
                 };
             }
         }
