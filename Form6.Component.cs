@@ -15,20 +15,18 @@ public partial class Form6 {
     /// InitComponent
     /// </summary>
     private void InitComponent() {
-        textBox1 = new CustomTextBox(0, "Text1", 67, 74, 1400, 1200, Color.Black, true);
+        textBox1 = new CustomTextBox(0, "Text1", 50, 50, 620, 620, Color.Black, true);
         SuspendLayout();
         // 
         // textBox1
         // 
-        textBox1.Font = new Font("ＭＳ ゴシック", 12);
+        textBox1.Font = new Font("ＭＳ Ｐゴシック", 12F, FontStyle.Bold);
         // 
         // Form6
         // 
         Name = @"Form6";
         Text = @"Form6";
-        ClientSize = new Size(800, 450);
-        AutoScaleMode = AutoScaleMode.Font;
-        AutoScaleDimensions = new SizeF(13F, 24F);
+        ClientSize = new Size(720, 720);
         Controls.Add(textBox1);
         Load += Form6_Load;
         Activated += Form6_Activated;
