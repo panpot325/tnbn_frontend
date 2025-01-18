@@ -19,7 +19,5 @@ public partial class Form3 : BasicForm {
     /// FormSize
     /// </summary>
     protected override void FormSize() {
-        Width = 360;
-        Height = 160;
     }
 }
