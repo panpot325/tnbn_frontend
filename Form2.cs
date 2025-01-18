@@ -22,7 +22,5 @@ public partial class Form2 : BasicForm {
     /// FormSize
     /// </summary>
     protected override void FormSize() {
-        Width = 770;
-        Height = 560;
     }
 }
