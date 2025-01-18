@@ -25,4 +25,10 @@ public partial class Form4 : BasicForm {
             comboBox2.Items.Add(sno.Trim());
         }
     }
+
+    /// <summary>
+    /// FormSize
+    /// </summary>
+    protected override void FormSize() {
+    }
 }
