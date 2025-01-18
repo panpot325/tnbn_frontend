@@ -65,7 +65,7 @@ public partial class Form7 {
         // 
         Name = @"Form7";
         Text = @"Form7";
-        ClientSize = new Size(480, 140);
+        ClientSize = new Size(440, 140);
         Controls.Add(label1);
         Controls.Add(label2);
         Controls.Add(textBox1);
