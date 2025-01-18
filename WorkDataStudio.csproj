@@ -457,6 +457,7 @@
         </Compile>
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="share\AppConfig.cs" />
         <Compile Include="share\BgColor.cs" />
         <Compile Include="share\Constants.cs" />
         <Compile Include="share\Extension.cs" />

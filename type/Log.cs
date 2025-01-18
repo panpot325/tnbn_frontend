@@ -2,6 +2,7 @@
 using System.IO;
 using System.Text;
 using WorkDataStudio.Properties;
+using WorkDataStudio.share;
 
 namespace WorkDataStudio.type;
 
@@ -22,7 +23,17 @@ public class Log {
     /// WriteLine
     /// </summary>
     /// <param name="message"></param>
-    public static void WriteLine(string message) {
-        Console.WriteLine(message);
+    /// <param name="lf"></param>
+    public static void WriteLine(string message, bool lf = true) {
+        if (!AppConfig.debugMode) {
+            return;
+        }
+
+        if (lf) {
+            Console.WriteLine(message);
+        }
+        else {
+            Console.Write(message);
+        }
     }
 }
