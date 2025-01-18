@@ -59,45 +59,52 @@ public partial class Form1 {
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitComponent() {
+        var x = 15;
         var y = 0;
-        const int step = 60;
-        label1 = new CustomLabel("label1", 15, y += step, 159, 38, BgColor.UPDATED, BorderStyle.FixedSingle);
-        label2 = new CustomLabel("label2", 15, y += step, 159, 38, BgColor.DELETED, BorderStyle.FixedSingle);
-        label3 = new CustomLabel("label3", 15, y += step, 159, 38, BgColor.INVALID, BorderStyle.FixedSingle);
-        label4 = new CustomLabel("label4", 15, y += step, 159, 38, BgColor.DISABLED, BorderStyle.FixedSingle);
-        label5 = new CustomLabel("label5", 15, y += step, 159, 38, BgColor.S_GUNWALE_N, BorderStyle.FixedSingle);
-        label6 = new CustomLabel("label6", 15, y += step, 159, 38, BgColor.S_GUNWALE_E, BorderStyle.FixedSingle);
-        label7 = new CustomLabel("label7", 15, y += step, 159, 38, BgColor.P_GUNWALE_W, BorderStyle.FixedSingle);
-        label8 = new CustomLabel("label8", 15, y += step, 159, 38, BgColor.P_GUNWALE_E, BorderStyle.FixedSingle);
-        label9 = new CustomLabel("label9", 15, y += step, 159, 38, BgColor.S_GUNWALE_W, BorderStyle.FixedSingle);
-        label10 = new CustomLabel("label10", 15, y += step, 159, 38, BgColor.SELECTED, BorderStyle.FixedSingle);
+        var width = 90;
+        var height = 22;
+        const int step = 32;
+        label1 = new CustomLabel("label1", x, y += step, width, height, BgColor.UPDATED, BorderStyle.FixedSingle);
+        label2 = new CustomLabel("label2", x, y += step, width, height, BgColor.DELETED, BorderStyle.FixedSingle);
+        label3 = new CustomLabel("label3", x, y += step, width, height, BgColor.INVALID, BorderStyle.FixedSingle);
+        label4 = new CustomLabel("label4", x, y += step, width, height, BgColor.DISABLED, BorderStyle.FixedSingle);
+        label5 = new CustomLabel("label5", x, y += step, width, height, BgColor.S_GUNWALE_N, BorderStyle.FixedSingle);
+        label6 = new CustomLabel("label6", x, y += step, width, height, BgColor.S_GUNWALE_E, BorderStyle.FixedSingle);
+        label7 = new CustomLabel("label7", x, y += step, width, height, BgColor.P_GUNWALE_W, BorderStyle.FixedSingle);
+        label8 = new CustomLabel("label8", x, y += step, width, height, BgColor.P_GUNWALE_E, BorderStyle.FixedSingle);
+        label9 = new CustomLabel("label9", x, y += step, width, height, BgColor.S_GUNWALE_W, BorderStyle.FixedSingle);
+        label10 = new CustomLabel("label10", x, y += step, width, height, BgColor.SELECTED, BorderStyle.FixedSingle);
+        x = 110;
         y = 0;
-        label11 = new CustomLabel("label11", 191, y += step, 490, 38, @"：更新対象データ");
-        label12 = new CustomLabel("label12", 191, y += step, 490, 38, @"：削除対象データ");
-        label13 = new CustomLabel("label13", 191, y += step, 490, 38, @"：入力エラーまたはキー重複");
-        label14 = new CustomLabel("label14", 191, y += step, 490, 38, @"：入力不可");
-        label15 = new CustomLabel("label15", 191, y += step, 490, 38, @"：Ｓ舷を作成しない");
-        label16 = new CustomLabel("label16", 191, y += step, 490, 38, @"：Ｓ舷を作成(東基準)");
-        label17 = new CustomLabel("label17", 191, y += step, 490, 38, @"：Ｐ舷を作成(西基準)");
-        label18 = new CustomLabel("label18", 191, y += step, 490, 38, @"：Ｐ舷を作成(東基準)");
-        label19 = new CustomLabel("label19", 191, y += step, 490, 38, @"：Ｓ舷を作成(西)/Ｐ舷を作成しない");
-        label20 = new CustomLabel("label20", 191, y += step, 490, 38, @"選択行");
+        width = 240;
+        label11 = new CustomLabel("label11", x, y += step, width, height, @"：更新対象データ");
+        label12 = new CustomLabel("label12", x, y += step, width, height, @"：削除対象データ");
+        label13 = new CustomLabel("label13", x, y += step, width, height, @"：入力エラーまたはキー重複");
+        label14 = new CustomLabel("label14", x, y += step, width, height, @"：入力不可");
+        label15 = new CustomLabel("label15", x, y += step, width, height, @"：Ｓ舷を作成しない");
+        label16 = new CustomLabel("label16", x, y += step, width, height, @"：Ｓ舷を作成(東基準)");
+        label17 = new CustomLabel("label17", x, y += step, width, height, @"：Ｐ舷を作成(西基準)");
+        label18 = new CustomLabel("label18", x, y += step, width, height, @"：Ｐ舷を作成(東基準)");
+        label19 = new CustomLabel("label19", x, y += step, width, height, @"：Ｓ舷を作成(西)/Ｐ舷を作成しない");
+        label20 = new CustomLabel("label20", x, y += step, width, height, @"選択行");
 
-        label21 = new CustomLabel("label21", 1634, 80, 175, 38, @"入力単位");
-        label22 = new CustomLabel("label22", 1825, 80, 175, 38, @"ゼロの入力");
-        label23 = new CustomLabel("label23", 1634, 200, 175, 38, @"入力範囲");
-        label24 = new CustomLabel("label24", 1634, 350, 175, 38, @"備考");
+        label21 = new CustomLabel("label21", 750, 26, 90, 30, @"入力単位");
+        Text3 = new CustomTextBox(3, "Text3", 750, 60, 90, 45); //入力単位
 
-        Text1 = new CustomTextBox(1, "Text1", 1634, 400, 695, 150, Color.Red, true); //備考
-        Text2 = new CustomTextBox(2, "Text2", 1634, 250, 350, 80, Color.Blue, true); //入力範囲
-        Text3 = new CustomTextBox(3, "Text3", 1634, 130, 150, 45); //入力単位
-        Text4 = new CustomTextBox(4, "Text4", 1634, 580, 695, 120, true); //備考(下）
-        Text6 = new CustomTextBox(6, "Text6", 1825, 130, 150, 45, HorizontalAlignment.Center); //ゼロの入力
+        label22 = new CustomLabel("label22", 850, 26, 90, 30, @"ゼロの入力");
+        Text6 = new CustomTextBox(6, "Text6", 850, 60, 90, 45, HorizontalAlignment.Center); //ゼロの入力
 
-        Frame1 = new CustomGroupBox(0, "Frame1", 1634, 735, 700, 660, @"バックカラーの説明");
-        Frame2 = new CustomGroupBox(0, "Frame2", 2050, 90, 280, 200, @"対象データ");
-        Option1_0 = new CustomRadioButton(0, "Option1_0", 10, 36, 240, 80, @"作成する");
-        Option1_1 = new CustomRadioButton(1, "Option1_1", 10, 100, 240, 80, @"作成しない");
+        label23 = new CustomLabel("label23", 750, 86, 180, 30, @"入力範囲");
+        Text2 = new CustomTextBox(2, "Text2", 750, 120, 190, 56, Color.Blue, true); //入力範囲
+
+        label24 = new CustomLabel("label24", 750, 180, 175, 30, @"備考");
+        Text1 = new CustomTextBox(1, "Text1", 750, 214, 360, 70, Color.Red, true); //備考
+        Text4 = new CustomTextBox(4, "Text4", 750, 292, 360, 70, true); //備考(下）
+
+        Frame1 = new CustomGroupBox(0, "Frame1", 750, 376, 360, 320, @"バックカラーの説明");
+        Frame2 = new CustomGroupBox(0, "Frame2", 960, 50, 150, 100, @"対象データ");
+        Option1_0 = new CustomRadioButton(0, "Option1_0", 6, 16, 120, 40, @"作成する");
+        Option1_1 = new CustomRadioButton(1, "Option1_1", 6, 52, 120, 40, @"作成しない");
 
         timer1 = new Timer();
         timer2 = new Timer();
@@ -150,9 +157,8 @@ public partial class Form1 {
 
         // Form1
         Name = "Form1";
-        AutoScaleDimensions = new SizeF(13F, 24F);
-        AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new Size(2374, 1429);
+        //AutoScaleMode = AutoScaleMode.Font;
+        ClientSize = new Size(1124, 764);
 
         Controls.Add(Text1);
         Controls.Add(Text2);
