@@ -23,16 +23,18 @@ public partial class Form9 {
         // 
         label1.Name = @"label1";
         label1.Text = @"船番";
-        label1.Location = new Point(160, 104);
-        label1.Size = new Size(100, 60);
+        label1.Location = new Point(50, 56);
+        label1.Size = new Size(60, 40);
+        label1.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Bold);
         label1.TabIndex = 1;
         // 
         // comboBox1
         // 
         comboBox1.Name = @"comboBox1";
-        comboBox1.Location = new Point(280, 100);
-        comboBox1.Size = new Size(330, 60);
+        comboBox1.Location = new Point(140, 54);
+        comboBox1.Size = new Size(160, 40);
         comboBox1.FormattingEnabled = true;
+        comboBox1.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Bold);
         comboBox1.TabIndex = 0;
         comboBox1.KeyUp += comboBox1_KeyUp;
         // 
@@ -40,9 +42,7 @@ public partial class Form9 {
         // 
         Name = @"Form9";
         Text = @"Form9";
-        ClientSize = new Size(800, 450);
-        AutoScaleMode = AutoScaleMode.Font;
-        AutoScaleDimensions = new SizeF(13F, 24F);
+        ClientSize = new Size(360, 160);
         Controls.Add(label1);
         Controls.Add(comboBox1);
         Load += Form9_Load;

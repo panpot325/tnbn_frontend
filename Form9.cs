@@ -21,4 +21,10 @@ public partial class Form9 : BasicForm {
             comboBox1.Items.Add(sno.Trim());
         }
     }
+
+    /// <summary>
+    /// FormSize
+    /// </summary>
+    protected override void FormSize() {
+    }
 }
