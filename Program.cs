@@ -49,7 +49,7 @@ internal static class Program {
         }
 
         _mainForm = new ApplicationContext();
-        _mainForm.MainForm = FormType.Form1;
+        _mainForm.MainForm = FormType.Form3;
         Application.Run(_mainForm);
         Log.Sub_LogWrite(@"Main終了");
     }
