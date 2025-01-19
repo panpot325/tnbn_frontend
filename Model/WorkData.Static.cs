@@ -91,21 +91,6 @@ public partial class WorkData {
     public static WorkData Create() {
         return new WorkData {
             ChgFlg = DRAFT,
-            YoteibiHon = 0,
-            YoteibiKyosei = 0,
-            JissibiKari = 0,
-            JissibiHon = 0,
-            JissibiKyosei = 0,
-            StatusKari = 0,
-            StatusHon = 0,
-            StatusKyosei = 0,
-            UpdateDate = 0,
-            UpdateSyain = 0,
-            JissijknKari = 0,
-            JissijknHon = 0,
-            JissijknKyosei = 0,
-            CreateDate = Convert.ToInt32(DateTime.Now.ToString("yyyyMMdd")),
-            CreateSyain = Globals.staffId,
             ErrorValidation = new Validation()
         }.DefaultField();
     }

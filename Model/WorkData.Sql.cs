@@ -1,4 +1,5 @@
-﻿using WorkDataStudio.share;
+﻿using System;
+using WorkDataStudio.share;
 
 namespace WorkDataStudio.Model;
 
@@ -21,6 +22,22 @@ public partial class WorkData {
     /// 登録
     /// </summary>
     public void Insert() {
+        YoteibiHon = 0;
+        YoteibiKyosei = 0;
+        JissibiKari = 0;
+        JissibiHon = 0;
+        JissibiKyosei = 0;
+        StatusKari = 0;
+        StatusHon = 0;
+        StatusKyosei = 0;
+        UpdateDate = 0;
+        UpdateSyain = 0;
+        JissijknKari = 0;
+        JissijknHon = 0;
+        JissijknKyosei = 0;
+        CreateDate = Convert.ToInt32(DateTime.Now.ToString("yyyyMMdd"));
+        CreateSyain = Globals.staffId;
+        
         var sql = "INSERT INTO tnbn_kakowk_data" +
                   $" (sno, blk, bzi, pcs, {SqlColumns()}) " +
                   $" values('{Sno}', '{Blk}', '{Bzi}', '{Pcs}', {SqlValues()});";
@@ -31,6 +48,9 @@ public partial class WorkData {
     /// 更新
     /// </summary>
     private void Update() {
+        UpdateDate = Convert.ToInt32(DateTime.Now.ToString("yyyyMMdd"));
+        UpdateSyain = Globals.staffId;
+
         var sql = "UPDATE tnbn_kakowk_data" +
                   $" SET({SqlColumns()}) = " +
                   $" ({SqlValues()}) {SqlWhere()};";
