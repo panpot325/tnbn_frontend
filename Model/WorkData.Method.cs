@@ -6,7 +6,7 @@ using WorkDataStudio.Component;
 namespace WorkDataStudio.Model;
 
 /// <summary>
-/// @WorkData.Methodス
+/// @WorkData.Method
 /// </summary>
 public partial class WorkData {
     /// <summary>
@@ -88,14 +88,6 @@ public partial class WorkData {
         Org = grid.IntData(57);
 
         YoteibiKari = grid.IntData(58);
-        YoteibiHon = 0;
-        YoteibiKyosei = 0;
-        JissibiKari = 0;
-        JissibiHon = 0;
-        JissibiKyosei = 0;
-        StatusKari = 0;
-        StatusHon = 0;
-        StatusKyosei = 0;
         ChgFlg = UPDATE;
 
         return this;
@@ -212,14 +204,6 @@ public partial class WorkData {
         Org = short.Parse(grid[0, 57].Value.ToString());
 
         YoteibiKari = int.Parse(grid[0, 58].Value.ToString());
-        YoteibiHon = 0;
-        YoteibiKyosei = 0;
-        JissibiKari = 0;
-        JissibiHon = 0;
-        JissibiKyosei = 0;
-        _statusKari = 0;
-        _statusHon = 0;
-        _statusKyosei = 0;
         _chgFlg = UPDATE;
 
         return this;
