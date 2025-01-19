@@ -37,7 +37,7 @@ public partial class WorkData {
         JissijknKyosei = 0;
         CreateDate = Convert.ToInt32(DateTime.Now.ToString("yyyyMMdd"));
         CreateSyain = Globals.staffId;
-        
+
         var sql = "INSERT INTO tnbn_kakowk_data" +
                   $" (sno, blk, bzi, pcs, {SqlColumns()}) " +
                   $" values('{Sno}', '{Blk}', '{Bzi}', '{Pcs}', {SqlValues()});";

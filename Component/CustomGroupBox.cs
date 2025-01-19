@@ -46,7 +46,7 @@ public class CustomGroupBox : GroupBox {
         Padding = new Padding(10);
         FlatStyle = FlatStyle.Standard;
         SetBackColor(SystemColors.ButtonFace);
-        SetStyle(ControlStyles.UserPaint, true);// 描画をオーナードローにする
+        SetStyle(ControlStyles.UserPaint, true); // 描画をオーナードローにする
     }
 
     /// <summary>

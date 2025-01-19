@@ -47,7 +47,6 @@ public partial class WorkData {
     /// <returns></returns>
     public static List<WorkData> GetAll(string where) {
         List = Fetch(where);
-        ;
 
         return List;
     }
@@ -147,10 +146,9 @@ public partial class WorkData {
     }
 
     /// <summary>
-    /// UpdateAll
-    /// @更新/削除
+    /// 更新、削除
     /// </summary>
-    /// <param name="delete" 削除を実行></param>
+    /// <param name="delete"></param>
     public static void UpdateAll(bool delete = false) {
         foreach (var workData in List) {
             switch (workData.ChgFlg) {
