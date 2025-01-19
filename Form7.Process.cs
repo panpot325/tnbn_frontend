@@ -46,6 +46,14 @@ public partial class Form7 {
         foreach (var workData in WorkData.List) {
             workData.Sno = textBox1.Text.Trim();
             workData.ChgFlg = WorkData.UPDATE;
+            workData.YoteibiHon = 0;
+            workData.YoteibiKyosei = 0;
+            workData.JissibiKari = 0;
+            workData.JissibiHon = 0;
+            workData.JissibiKyosei = 0;
+            workData.StatusKari = 0;
+            workData.StatusHon = 0;
+            workData.StatusKyosei = 0;
         }
 
         Mode.SetCopy1();
