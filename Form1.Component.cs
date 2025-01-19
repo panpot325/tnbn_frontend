@@ -138,6 +138,8 @@ public partial class Form1 {
         Frame1.Controls.Add(label18);
         Frame1.Controls.Add(label19);
         Frame1.Controls.Add(label20);
+        Frame1.TextRect = new Rectangle(10, 0, 127, 15);
+        Frame1.FrameRect = new Rectangle(0, 7, 360, 313);
 
         // 
         // Frame2
@@ -145,6 +147,8 @@ public partial class Form1 {
         Frame2.Controls.Add(Option1_0);
         Frame2.Controls.Add(Option1_1);
         Frame2.FlatStyle = FlatStyle.Standard;
+        Frame2.TextRect = new Rectangle(10, 0, 76, 15);
+        Frame2.FrameRect = new Rectangle(0, 7, 150, 93);
 
         // timer1
         timer1.SynchronizingObject = this;

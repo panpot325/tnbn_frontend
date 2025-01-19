@@ -7,7 +7,23 @@ namespace WorkDataStudio.Component;
 /// CustomGroupBox
 /// </summary>
 public class CustomGroupBox : GroupBox {
+    private Rectangle _textRect;
+    private Rectangle _frameRect;
     private readonly Color _borderColor = Color.Black;
+
+    /// <summary>
+    /// フレームRectangle
+    /// </summary>
+    public Rectangle TextRect {
+        set => _textRect = value;
+    }
+
+    /// <summary>
+    /// テキストRectangle
+    /// </summary>
+    public Rectangle FrameRect {
+        set => _frameRect = value;
+    }
 
     /// <summary>
     /// Constructor
@@ -30,31 +46,20 @@ public class CustomGroupBox : GroupBox {
         Padding = new Padding(10);
         FlatStyle = FlatStyle.Standard;
         SetBackColor(SystemColors.ButtonFace);
-        //FlatStyle = System.Windows.Forms.FlatStyle.System;
-        // グループボックスの描画をオーナードローにする
-        SetStyle(ControlStyles.UserPaint, true);
+        SetStyle(ControlStyles.UserPaint, true);// 描画をオーナードローにする
     }
 
-    // OnPrintイベント
+    /// <summary>
+    /// オーナードロー
+    /// </summary>
+    /// <param name="e"></param>
     protected override void OnPaint(PaintEventArgs e) {
-        // テキストサイズを取得
-        var tTextSize = TextRenderer.MeasureText(this.Text, this.Font);
-
-        // グループボックスの領域を取得
-        var tBorderRect = e.ClipRectangle;
-
-        // テキストを考慮（グループボックス枠線がテキスト（高さ）の真ん中に来るように）して枠を描画
-        tBorderRect.Y += tTextSize.Height / 2;
-        tBorderRect.Height -= tTextSize.Height / 2;
-        ControlPaint.DrawBorder(e.Graphics, tBorderRect, _borderColor, ButtonBorderStyle.Solid);
+        // 枠を描画
+        ControlPaint.DrawBorder(e.Graphics, _frameRect, _borderColor, ButtonBorderStyle.Solid);
 
         // テキストを描画
-        var tTextRect = e.ClipRectangle;
-        tTextRect.X += 6; // テキストの描画開始位置(X)をグループボックスの領域から6ドットずらす
-        tTextRect.Width = tTextSize.Width;
-        tTextRect.Height = tTextSize.Height;
-        e.Graphics.FillRectangle(new SolidBrush(this.BackColor), tTextRect);
-        e.Graphics.DrawString(this.Text, this.Font, new SolidBrush(this.ForeColor), tTextRect);
+        e.Graphics.FillRectangle(new SolidBrush(BackColor), _textRect);
+        e.Graphics.DrawString(Text, Font, new SolidBrush(ForeColor), _textRect);
     }
 
     /// <summary>
@@ -63,6 +68,7 @@ public class CustomGroupBox : GroupBox {
     private void SetFont() {
         Font = new Font("ＭＳ Ｐゴシック", 10.875F, FontStyle.Regular,
             GraphicsUnit.Point, 128);
+        DoubleBuffered = true;
     }
 
     /// <summary>
