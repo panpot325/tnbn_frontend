@@ -272,7 +272,7 @@ public class DataGridView3 : CustomDataGridView {
 
             if (DataType.Dm == "W71E") {
                 //MAX(皮板最大板厚)
-                this[ColIndex, RowIndex + 1].Value = text;
+                this[ColIndex, RowIndex + 1].Value = DecData(RowIndex).ToString("F1");
             }
 
             workData.ChgFlg = WorkData.UPDATE;
