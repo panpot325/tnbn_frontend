@@ -1,5 +1,6 @@
 ﻿using System;
 using WorkDataStudio.type;
+// ReSharper disable MemberCanBeMadeStatic.Local
 
 namespace WorkDataStudio;
 
@@ -37,7 +38,7 @@ public partial class Form11 {
         var value = DataGridView5.Row.Cells[1].Value.ToString().Trim();
         DataGridView5.WorkInfo.Ret = string.IsNullOrEmpty(value)
             ? "完了"
-            : " ";
+            : "";
         DataGridView5.Row.Cells[1].Value = DataGridView5.WorkInfo.Ret;
     }
 }

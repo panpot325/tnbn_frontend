@@ -62,10 +62,7 @@ public class DataGridView5 : CustomDataGridView {
     protected override void SetDefault() {
         Rows.Clear();
         foreach (var workInfo in WorkInfo.List) {
-            Rows.Add(workInfo.Sno, workInfo.Ret
-                //, workInfo.Date
-                //, workInfo.Syain
-            );
+            Rows.Add(workInfo.Sno, workInfo.Ret);
         }
     }
 

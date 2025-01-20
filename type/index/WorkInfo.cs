@@ -3,6 +3,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using WorkDataStudio.share;
+// ReSharper disable MemberCanBePrivate.Global
 
 namespace WorkDataStudio.type.index;
 
@@ -43,12 +44,12 @@ public class WorkInfo {
         sb.Append(" COALESCE(f.create_syain,0) AS syain");
         sb.Append(" FROM (select SNO from TNBN_KAKOWK_DATA group by SNO) AS k");
         sb.Append(" LEFT JOIN tnbn_fin_ship_mst AS f ON k.sno = f.sno");
-        sb.Append(" ORDER BY  k.sno DESC;");
+        sb.Append(" ORDER BY k.sno DESC;");
 
         return (from DataRow row in PgOpen.PgSelect(sb.ToString()).Rows
             select new WorkInfo {
                 Sno = (string)row["sno"],
-                Ret = (string)row["ret"] == "未完" ? " " : "完了",
+                Ret = (string)row["ret"] == "未完" ? "" : "完了",
                 Date = (int)row["date"],
                 Syain = (int)row["syain"],
             }).ToList();
