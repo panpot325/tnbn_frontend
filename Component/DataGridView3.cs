@@ -292,7 +292,9 @@ public class DataGridView3 : CustomDataGridView {
             return this;
         }
 
-        StrValue = Tag.ToString();
+        StrValue = DataType.DecNyuTani == 0.1m
+            ? DecimalFormat(Tag.ToString())
+            : Tag.ToString();
 
         return this;
     }
