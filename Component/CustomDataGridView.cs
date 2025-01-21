@@ -23,6 +23,8 @@ public class CustomDataGridView : DataGridView {
         EnableHeadersVisualStyles = false;
         EditMode = DataGridViewEditMode.EditProgrammatically;
         DefaultCellStyle.Font = new Font(FONT_FAMILY, FONT_SIZE);
+        AllowUserToResizeRows = false;
+        AllowUserToResizeColumns = false;
         SetMode();
         SetColumn();
         SetDefault();
