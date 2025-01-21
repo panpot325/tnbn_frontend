@@ -28,8 +28,8 @@ public partial class Form1 {
                 DataGrid3.CursorEdit((int)Keys.Back);
                 return;
             case (char)Keys.F2: // vbKeyF2
-                Log.WriteLine(@"[Enter]");
-                DataGrid3.CursorEdit((int)Keys.Enter);
+                Log.WriteLine(@"[F2]");
+                DataGrid3.CursorEdit((int)Keys.Space);
                 return;
             case > 127: //> 127
                 Log.WriteLine(@"[> 127]");

@@ -211,7 +211,7 @@ public class DataGridView3 : CustomDataGridView {
                 BeginEdit(false);
                 break;
             case < 32:
-                return this;
+                break;
             default:
                 Text = ((char)keyAscii).ToString();
                 BeginEdit(false);
