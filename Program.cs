@@ -61,9 +61,19 @@ internal static class Program {
         var keys = ConfigurationManager.AppSettings.AllKeys;
         foreach (SettingsProperty property in Settings.Default.Properties) {
             if (keys.Contains(property.Name)) {
-                Settings.Default[property.Name] = ConfigurationManager.AppSettings[property.Name];
+                Settings.Default[property.Name] =
+                    Convert.ChangeType(GetAppSetting(property.Name), property.PropertyType);
             }
         }
+    }
+
+    /// <summary>
+    /// GetAppSetting
+    /// </summary>
+    /// <param name="key"></param>
+    /// <returns></returns>
+    private static string GetAppSetting(string key) {
+        return ConfigurationManager.AppSettings[key];
     }
 
     /// <summary>
