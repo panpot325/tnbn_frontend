@@ -75,4 +75,33 @@ public partial class Form1 {
     /// <exception cref="NotImplementedException"></exception>
     private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
     }
+
+    /// <summary>
+    /// Closing Event
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void Form1_FormClosing(object sender, FormClosingEventArgs e) {
+        Log.Sub_LogWrite("【Form_Unload】");
+        if (MessageBox.Show(@"終了しますか？",
+                @"終了確認",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Exclamation,
+                MessageBoxDefaultButton.Button2
+            ) == DialogResult.No) {
+            e.Cancel = true;
+        }
+    }
+
+    /// <summary>
+    /// 強制終了　Control | Shift | Alt | C 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void Form1_KeyDown(object sender, KeyEventArgs e) {
+        if (e.KeyData == (Keys.Control | Keys.Shift | Keys.Alt | Keys.C)) {
+            Environment.Exit(0x8020);
+            //Application.Exit();
+        }
+    }
 }

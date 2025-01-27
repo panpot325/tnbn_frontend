@@ -161,6 +161,7 @@ public partial class Form1 {
 
         // Form1
         Name = "Form1";
+        KeyPreview = true;
         //AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(1124, 764);
 
@@ -178,8 +179,10 @@ public partial class Form1 {
         ControlBox = false;
 
         Load += Form1_Load;
+        KeyDown += Form1_KeyDown;
         Activated += Form1_Activated;
         FormClosed += Form1_FormClosed;
+        FormClosing += Form1_FormClosing;
 
         Frame2.ResumeLayout(false);
         Frame1.ResumeLayout(false);
