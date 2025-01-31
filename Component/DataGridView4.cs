@@ -88,7 +88,8 @@ public class DataGridView4 : CustomDataGridView {
         Rows.Clear();
         if (!WorkData.Exists) return;
         foreach (var row in WorkData.List.Select(workData => Rows.Add(
-                     workData.Sno, workData.Blk, workData.Bzi, workData.Pcs + $"[{workData.ChgFlg}]", //For Debug
+                     workData.Sno, workData.Blk, workData.Bzi,
+                     workData.Pcs + (AppConfig.debugMode ? $"[{workData.ChgFlg}]" : ""), //For Debug
                      workData.Gr1, workData.Gr2, workData.Gr3, workData.Gr4, workData.Gr5,
                      workData.Lk1, workData.Lk2, workData.Lk3, workData.Lk4, workData.Lk5,
                      workData.L, workData.B, workData.Tmax,
@@ -114,7 +115,7 @@ public class DataGridView4 : CustomDataGridView {
     /// </summary>
     public void ShowWorkData() {
         Row.SetValues(WorkData.GetValues().ToArray());
-        this[3, RowIndex].Value = WorkData.Pcs + $"[{WorkData.ChgFlg}]"; //For Debug
+        this[3, RowIndex].Value = WorkData.Pcs + (AppConfig.debugMode ? $"[{WorkData.ChgFlg}]" : ""); //For Debug
         SelectRowBackColor(WorkData.ChgFlg == WorkData.UPDATE
             ? BgColor.UPDATED
             : BgColor.DEFAULT

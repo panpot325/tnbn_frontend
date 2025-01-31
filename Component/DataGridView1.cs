@@ -144,7 +144,7 @@ public class DataGridView1 : CustomDataGridView {
         this[1, RowIndex].Value = workData.Blk;
         this[2, RowIndex].Value = workData.Bzi;
         this[3, RowIndex].Value = workData.Pcs;
-        this[4, RowIndex].Value = $"{WorkData.YoteibiKari}({WorkData.ChgFlg})";
+        this[4, RowIndex].Value = $"{WorkData.YoteibiKari}" + (AppConfig.debugMode ? $"({WorkData.ChgFlg})" : "");
 
         this[4, RowIndex].Style.ForeColor = WorkData.ChgFlg switch {
             WorkData.UPDATE => Color.Red,
@@ -175,7 +175,7 @@ public class DataGridView1 : CustomDataGridView {
         this[1, row].Value = WorkData.Blk;
         this[2, row].Value = WorkData.Bzi;
         this[3, row].Value = WorkData.Pcs;
-        this[4, row].Value = $"{WorkData.YoteibiKari}({WorkData.ChgFlg})";
+        this[4, row].Value = $"{WorkData.YoteibiKari}" + (AppConfig.debugMode ? $"({WorkData.ChgFlg})" : "");
 
         this[4, row].Style.ForeColor = WorkData.ChgFlg switch {
             WorkData.UPDATE => Color.Red,
@@ -204,7 +204,7 @@ public class DataGridView1 : CustomDataGridView {
                      workData.Blk,
                      workData.Bzi,
                      workData.Pcs,
-                     $"{WorkData.YoteibiKari}({WorkData.ChgFlg})"
+                     $"{WorkData.YoteibiKari}" + (AppConfig.debugMode ? $"({WorkData.ChgFlg})" : "")
                  ))) {
             this[4, row].Style.ForeColor = WorkData.ChgFlg switch {
                 WorkData.UPDATE => Color.Red,
