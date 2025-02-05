@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Timers;
 using System.Windows.Forms;
+using WorkDataStudio.Model;
 using WorkDataStudio.share;
 using WorkDataStudio.type;
 
@@ -20,6 +22,18 @@ public partial class Form1 {
     private void Form1_Load(object sender, EventArgs e) {
         Log.WriteLine(@"STEP1: Form1_Load");
         FormPosition();
+
+        /*
+        WorkData.Filter._Sno("123-01");
+        var dataList = WorkData.GetAll();
+        var workData = dataList[0];
+        var newData = WorkData.Create();
+        SetWorkData(newData, workData, "P");
+        newData.SwapLk(5);
+        Console.WriteLine($@"after1:  {workData.Lk1} {workData.Lk2} {workData.Lk3} {workData.Lk4} {workData.Lk5} ");
+        Console.WriteLine($@"after2:  {newData.Lk1} {newData.Lk2} {newData.Lk3} {newData.Lk4} {newData.Lk5} ");
+        */
+        
         OptionSet(false);
         _activate = true;
         Mode.SetNew1();

@@ -417,6 +417,7 @@
         <Compile Include="Model\WorkData.Property.Data.cs">
           <DependentUpon>WorkData.Property.cs</DependentUpon>
         </Compile>
+        <Compile Include="Model\WorkData.Property.PS.cs" />
         <Compile Include="Model\WorkData.Property.Type.cs">
           <DependentUpon>WorkData.Property.cs</DependentUpon>
         </Compile>
