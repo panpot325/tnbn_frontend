@@ -2,6 +2,8 @@
 using System.Data;
 using System.Windows.Forms;
 using Npgsql;
+using WorkDataStudio.Properties;
+using WorkDataStudio.type;
 
 namespace WorkDataStudio.share;
 
@@ -9,11 +11,6 @@ namespace WorkDataStudio.share;
 /// Postgres Openクラス
 /// </summary>
 public class PgOpen {
-    private const string HOST = "10.211.55.2";
-    private const string DATABASE = "onozo_202409";
-    private const string PORT = "5432";
-    private const string USERNAME = "postgres";
-    private const string PASSWORD = "postgres";
     private NpgsqlConnection _conn;
 
     /// Static Instance
@@ -29,12 +26,12 @@ public class PgOpen {
             return true;
         }
         catch (Exception e) {
-            Console.WriteLine(e.Message);
+            Log.WriteLine(e.Message);
             return false;
         }
         finally {
             _instance.Close();
-            Console.WriteLine(@"データベースに接続しました。");
+            Log.WriteLine(@"データベースに接続しました。");
         }
     }
 
@@ -113,8 +110,14 @@ public class PgOpen {
     /// Open
     /// </summary>
     private void Open() {
-        const string connStr = $"Host={HOST};Port={PORT};Username={USERNAME};Password={PASSWORD};Database={DATABASE}";
-        _conn = new NpgsqlConnection(connStr);
+        var connStr =
+            _conn = new NpgsqlConnection(
+                $"Host={Settings.Default.DB_Host};" +
+                $"Port={Settings.Default.DB_Port};" +
+                $"Username={Settings.Default.DB_User};" +
+                $"Password={Settings.Default.DB_Pass};" +
+                $"Database={Settings.Default.DB_Name}"
+            );
         _conn.Open();
     }
 

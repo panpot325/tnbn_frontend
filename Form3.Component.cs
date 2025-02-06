@@ -23,8 +23,8 @@ public partial class Form3 {
         // 
         label1.Name = @"label1";
         label1.Text = @"社員番号入力";
-        label1.Location = new Point(27, 50);
-        label1.Size = new Size(253, 78);
+        label1.Location = new Point(20, 54);
+        label1.Size = new Size(120, 40);
         label1.TabIndex = 0;
         label1.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Bold,
             GraphicsUnit.Point, ((byte)(128)));
@@ -32,21 +32,20 @@ public partial class Form3 {
         // textBox1
         // 
         textBox1.Name = @"textBox1";
-        textBox1.Location = new Point(327, 50);
-        textBox1.Size = new Size(287, 37);
-        textBox1.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Regular,
+        textBox1.Location = new Point(140, 54);
+        textBox1.Size = new Size(160, 40);
+        textBox1.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Bold,
             GraphicsUnit.Point, ((byte)(128)));
         textBox1.TabIndex = 1;
         textBox1.TextChanged += textBox1_TextChanged;
         textBox1.KeyUp += textBox1_KeyUp;
+        textBox1.BorderStyle = BorderStyle.None;
         // 
         // Form3
         // 
         Name = @"Form3";
         Text = @"Form3";
-        ClientSize = new Size(800, 450);
-        AutoScaleMode = AutoScaleMode.Font;
-        AutoScaleDimensions = new SizeF(13F, 24F);
+        ClientSize = new Size(360, 160);
         Controls.Add(label1);
         Controls.Add(textBox1);
         ResumeLayout(false);

@@ -3,7 +3,6 @@ using System.Windows.Forms;
 using WorkDataStudio.Model;
 using WorkDataStudio.share;
 using WorkDataStudio.type;
-using G = WorkDataStudio.share.Globals;
 
 namespace WorkDataStudio;
 
@@ -15,15 +14,11 @@ public partial class Form1 {
     /// Process_New
     /// </summary>
     private void Process_New() {
-        Console.WriteLine(@"Process_New");
+        Log.WriteLine(@"Process_New");
         WorkData.Clear();
-        WorkData.copySelectCnt = 0;
         WorkDataExclusive.Delete();
 
-        Text1.Text = "";
-        Text2.Text = "";
-        Text3.Text = "";
-        Text6.Text = "";
+        MessageClear();
         Text4.Text = @"新規登録は、そのまま右側の明細を入力して下さい。";
         Text4.ForeColor = FgColor.VALID;
 
@@ -32,47 +27,74 @@ public partial class Form1 {
             .ShowWorkData(DataGrid1.WorkData)
             .Select(0)
             .Focus();
+
+        if (Mode.IsNew2) {
+            Frame2.Enabled = false;
+            Option1_0.Checked = false;
+            Option1_1.Checked = true;
+            return;
+        }
+
+        Frame2.Enabled = true;
+        Option1_0.Checked = false;
+        Option1_1.Checked = true;
+    }
+
+    /// <summary>
+    /// 船番指定
+    /// </summary>
+    private void Process_Edit() {
+        if (!WorkData.Exists) return;
+        DataGrid1.ShowWorkDataList(); //グリッド1の表示
+        //グリッド1_Sデータ作成色設定_読込時
+        //グリッド1_Pデータ作成色設定_読込時
+        DataGrid1.SP_BackColor();
+        DataGrid1.SetTmpRowBackColor();
+        DataGrid3.ShowWorkData(DataGrid1.WorkData);
+
+        Frame2.Enabled = true;
+        Option1_0.Checked = false;
+        Option1_1.Checked = true;
+    }
+
+    /// <summary>
+    /// 船番コピー キーコピー
+    /// </summary>
+    private void Process_Copy() {
+        if (!WorkData.Exists) return;
+        DataGrid1.ShowWorkDataList(); //グリッド1の表示
+        DataGrid1.SetTmpRowBackColor();
+        DataGrid3.ShowWorkData(DataGrid1.WorkData);
+
+        Frame2.Enabled = false;
+        Option1_0.Checked = false;
+        Option1_1.Checked = true;
     }
 
     /// <summary>
     /// 今日予定
     /// </summary>
     private void Process_Yotei() {
-        WorkData.Clear();
-        Mode.SetEdit3();
-        ViewNameText();
-        WorkDataExclusive.Delete();
-
-        Frame2.Enabled = true;
-        Option1_0.Checked = true;
-        Text6.Text = "";
-        Text4.Text = "";
-        Text3.Text = "";
-        Text2.Text = "";
-        Text1.Text = "";
-
         WorkData.Filter._Yotei(Convert.ToInt32(DateTime.Now.ToString("yyyyMMdd")));
-        WorkData.GetAll();
-        DataGrid1.Clear();
-        if (WorkData.Exists) {
-            DataGrid1.ShowWorkDataList();
-            DataGrid3.ShowWorkData(DataGrid1.WorkData).Focus();
+        if (WorkData.GetCount() < 1) {
+            Text4.Text = $@"{DateTime.Now:MM/dd}の予定データはありません。";
             return;
         }
 
-        Text4.Text = $@"{DateTime.Now:MM/dd}の予定データはありません。";
-    }
+        WorkData.Clear();
+        Mode.SetEdit3();
+        OptionSet(false);
+        ViewNameText();
+        MessageClear();
+        WorkDataExclusive.Delete();
+        WorkData.GetAll();
+        DataGrid1.Clear();
+        DataGrid1.ShowWorkDataList();
+        DataGrid3.ShowWorkData(DataGrid1.WorkData).Focus();
 
-    /// <summary>
-    /// Process_Edit
-    /// </summary>
-    private void Process_Edit() {
-        if (!WorkData.Exists) return;
-        DataGrid1
-            .ShowWorkDataList() //グリッド1の表示
-            .SetSData() //グリッド1_Sデータ作成色設定_読込時
-            .SetPData(); //グリッド1_Pデータ作成色設定_読込時
-        DataGrid3.ShowWorkData(DataGrid1.WorkData);
+        Frame2.Enabled = false;
+        Option1_0.Checked = false;
+        Option1_1.Checked = true;
     }
 
     /// <summary>
@@ -88,6 +110,10 @@ public partial class Form1 {
         switch (Mode.Value) {
             case Mode.NEW_1: //新規登録
                 Save_New_1();
+                return;
+
+            case Mode.NEW_2: //新規登録2
+                Save_New_2();
                 return;
 
             case Mode.EDIT_1: //船番指定
@@ -106,7 +132,6 @@ public partial class Form1 {
                 Save_Edit_3();
                 return;
 
-            case Mode.EMode.NEW_2:
             case Mode.EMode.NEW_3:
             case Mode.EMode.EDIT_2:
             default:
@@ -124,6 +149,18 @@ public partial class Form1 {
         }
 
         var workData = DataGrid1.WorkData;
+
+        switch (workData.ChgFlg) {
+            case WorkData.UPDATE:
+                if (deleteMode != WorkData.DELETE) return;
+                break;
+            case WorkData.DELETE:
+                if (deleteMode != WorkData.UPDATE) return;
+                break;
+            default:
+                return;
+        }
+
         switch (deleteMode) {
             case WorkData.DELETE:
                 if (WorkDataExclusive.Count(workData.Sno) == 0) {
@@ -132,31 +169,21 @@ public partial class Form1 {
                     }
                 }
 
-                DataGrid1.RowBackColor = BgColor.DELETED;
-
+                //DataGrid1.RowBackColor = BgColor.DELETED;
+                DataGrid1.SelectRowBackColor(BgColor.DELETED);
                 break;
 
             default:
                 WorkDataExclusive.Delete(workData.Sno);
-                DataGrid1.RowBackColor = BgColor.DEFAULT;
+                //DataGrid1.RowBackColor = BgColor.DEFAULT;
+                DataGrid1.SelectRowBackColor(DataGrid1.GetTmpRowBackColor());
+
 
                 break;
         }
 
         workData.ChgFlg = deleteMode;
         DataGrid1.ShowWorkData();
-    }
-
-    /// <summary>
-    /// Process_Copy
-    /// </summary>
-    private void Process_Copy() {
-        if (!WorkData.Exists) return;
-        DataGrid1.ShowWorkDataList(); //グリッド1の表示
-        DataGrid3.ShowWorkData(DataGrid1.WorkData);
-
-        //Frame2.Enabled = false;
-        //Option1_1.Checked = true;
     }
 
     /// <summary>
@@ -168,10 +195,10 @@ public partial class Form1 {
         if (Frame2.Enabled) {
             switch (sp) {
                 case 0:
-                    DataGrid1.SetSData(index, Text4);
+                    DataGrid1.S_BackColor(index, Text4);
                     break;
                 case 1:
-                    DataGrid1.SetPData(index, Text4);
+                    DataGrid1.P_BackColor(index, Text4);
                     break;
             }
 

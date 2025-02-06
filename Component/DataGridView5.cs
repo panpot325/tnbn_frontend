@@ -44,12 +44,8 @@ public class DataGridView5 : CustomDataGridView {
         Columns.With(col => {
             col[0].HeaderText = @"SNO";
             col[1].HeaderText = @"状態";
-            //col[2].HeaderText = @"";
-            //col[3].HeaderText = @"";
-            col[0].Width = 100;
-            col[1].Width = 100;
-            //col[2].Width = 100;
-            //col[3].Width = 100;
+            col[0].Width = 120;
+            col[1].Width = 120;
             col[0].DataGridView.Width =
                 col[0].Width + col[1].Width +
                 SystemInformation.VerticalScrollBarWidth;
@@ -66,10 +62,7 @@ public class DataGridView5 : CustomDataGridView {
     protected override void SetDefault() {
         Rows.Clear();
         foreach (var workInfo in WorkInfo.List) {
-            Rows.Add(workInfo.Sno, workInfo.Ret
-                //, workInfo.Date
-                //, workInfo.Syain
-            );
+            Rows.Add(workInfo.Sno, workInfo.Ret);
         }
     }
 

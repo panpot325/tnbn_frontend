@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Windows.Forms;
+using WorkDataStudio.type;
 
 namespace WorkDataStudio;
 
 /// <summary>
 /// 船番単位フォーム
 /// </summary>
-public partial class Form8  {
+public partial class Form8 {
     /// <summary>
     /// @Form_Load()
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void Form8_Load(object sender, EventArgs e) {
-        Console.WriteLine(@"Form8_Load");
+        Log.WriteLine(@"Form8_Load");
     }
 
     /// <summary>
@@ -24,7 +25,7 @@ public partial class Form8  {
     private void comboBox1_KeyUp(object sender, KeyEventArgs e) {
         switch (e.KeyValue) {
             case (char)Keys.Enter:
-                Console.WriteLine(@"「決定」が選択されました。");
+                Log.WriteLine(@"「決定」が選択されました。");
                 Process();
                 break;
         }

@@ -14,12 +14,10 @@ public partial class Form3 : BasicForm {
         InitComponent();
         Init(@"社員番号入力");
     }
-    
+
     /// <summary>
     /// FormSize
     /// </summary>
     protected override void FormSize() {
-        Width = 360;
-        Height = 160;
     }
 }

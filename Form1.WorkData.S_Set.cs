@@ -27,7 +27,7 @@ public partial class Form1 {
             SetWorkData(sData, data, "S");
 
             //反転用WKへの編集(反転前)
-            var pos = GetPositions(data);
+            var pos = GetPositions(sData);
 
             //反転用WKへの編集(反転後);
             SetPositions(pos, width);

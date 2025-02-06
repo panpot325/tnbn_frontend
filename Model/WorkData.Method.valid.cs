@@ -11,15 +11,15 @@ public partial class WorkData {
     /// @キー重複チェック
     /// </summary>
     /// <returns></returns>
-    public int Duplicate() {
+    private int Duplicate() {
         var existsCount = Find();
         // ReSharper disable once InvertIf
         if (existsCount > 0) {
-            ErrorValidation.Grid1 = WorkDataType.CROSS;
-            ErrorValidation.Grid3[0] = WorkDataType.CROSS;
-            ErrorValidation.Grid3[1] = WorkDataType.CROSS;
-            ErrorValidation.Grid3[2] = WorkDataType.CROSS;
-            ErrorValidation.Grid3[3] = WorkDataType.CROSS;
+            ErrorValidation.Grid1 = true;
+            ErrorValidation.Grid3[0] = true;
+            ErrorValidation.Grid3[1] = true;
+            ErrorValidation.Grid3[2] = true;
+            ErrorValidation.Grid3[3] = true;
         }
 
         return existsCount;
@@ -30,7 +30,7 @@ public partial class WorkData {
     /// @DB更新前各項目チェック
     /// </summary>
     /// <returns></returns>
-    public int Valid() {
+    private int Valid() {
         var errCnt = 0;
 
         Check(ref errCnt, Tsno, string.IsNullOrEmpty(Sno)); //船番(半角ｽﾍﾟｰｽ6桁はｴﾗｰ)0
@@ -45,7 +45,7 @@ public partial class WorkData {
         Check(ref errCnt, Tgr5, Gr5); //GR5 規格（材質）8
 
         Check(ref errCnt, Tlk1, Lk1); //LK1 ロンジ形状（第１ロンジ）9
-        Check(ref errCnt, Tlk2, Ll2); //LK2 ロンジ形状（第２ロンジ）10
+        Check(ref errCnt, Tlk2, Lk2); //LK2 ロンジ形状（第２ロンジ）10
         Check(ref errCnt, Tlk3, Lk3); //LK3 ロンジ形状（第３ロンジ）11
         Check(ref errCnt, Tlk4, Lk4); //LK4 ロンジ形状（第４ロンジ）12
         Check(ref errCnt, Tlk5, Lk5); //LK5 ロンジ形状（第５ロンジ）13
@@ -57,7 +57,7 @@ public partial class WorkData {
             Check(ref errCnt, Tb, Tb.ZeroEntry == WorkDataType.ZERO_ENTRY_NG);
         }
         else {
-            if (Mode.Value == Mode.NEW_2) {
+            if (Mode.IsNew2) {
                 Check(ref errCnt, Tb, B > 2400);
             }
             else {
@@ -128,7 +128,7 @@ public partial class WorkData {
         Check(ref errCnt, TyoteibiKari, YoteibiKari); //YOTEIBI_KARI 仮付け予定日
 
         if (errCnt > 0) {
-            ErrorValidation.Grid1 = WorkDataType.CROSS;
+            ErrorValidation.Grid1 = true;
         }
 
         return errCnt;
@@ -137,7 +137,7 @@ public partial class WorkData {
     private void Check(ref int errCnt, WorkDataType type, bool pattern) {
         // ReSharper disable once InvertIf
         if (pattern) {
-            ErrorValidation.Grid3[type.Index] = WorkDataType.CROSS;
+            ErrorValidation.Grid3[type.Index] = true;
             errCnt++;
         }
     }

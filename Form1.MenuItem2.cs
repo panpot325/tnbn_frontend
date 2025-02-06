@@ -16,7 +16,7 @@ public partial class Form1 {
         subItem.DropDownItems.AddRange(
             new ToolStripItem[] {
                 CreateMenuItem("船番指定", MenuItem_SM2_1_1_Click),
-                CreateMenuItem("今日以降", MenuItem_SM2_1_2_Click)
+                CreateMenuItem("今日以降", MenuItem_SM2_1_2_Click, false)
             });
 
         menuItem.DropDownItems.AddRange(

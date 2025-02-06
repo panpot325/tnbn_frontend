@@ -5,7 +5,7 @@ namespace WorkDataStudio;
 /// <summary>
 /// コピー船番選択フォーム
 /// </summary>
-public partial class Form7  {
+public partial class Form7 {
     /// <summary>
     /// メニュー項目配列
     /// </summary>

@@ -14,37 +14,74 @@ public partial class Form1 {
     ///  新規登録
     /// </summary>
     private void Save_New_1() {
-        if (!WorkData.ValidAll()) {
-            ValidMessage();
+        if (WorkData.ValidAll() > 0) {
+            ValidMessage(); //入力エラーのデータを表示
             return;
         }
 
-        if (!WorkData.DuplicateAll()) {
+        if (WorkData.DuplicateAll() > 0) {
             DuplicateMessage();
+            //DataGrid1.RowIndex = 0;
+            //DataGrid3.ShowWorkData(DataGrid1.WorkData);
             return;
         }
 
-        WorkData.UpdateAll(true);
+        WorkData.UpdateAll(true); //加工ワークデータの更新
         WorkData_S_Create(); // @Sデータの作成と登録
         WorkData_S_Update(); // @加工ワークデータSの更新
         WorkData_P_Create(); // @Pデータの作成と登録
         WorkData_PS_Update(); // @CrePSFlgの更新
-        WorkDataExclusive.Delete();
+        WorkDataExclusive.Delete(); //Del_排他情報
         Mode.SetNew1();
         Process_New();
     }
 
     /// <summary>
-    ///  船番指定
+    ///  新規登録2
     /// </summary>
-    private void Save_Edit_1() {
-        WorkData.DeleteOfSno(WorkData.snoName);
-        WorkData.UpdateAll(false);
+    private void Save_New_2() {
+        DataGrid1.SetGridData(DataGrid3);
+        WorkData_E_W_Edit(); // 西東対象データ編集
+        WorkData.List[0].ChgFlg = WorkData.UPDATE;
+        WorkData.List[0].Err1Flg = 0;
+        WorkData.List[0].Err2Flg = 0;
+        //WorkData.List[0].E_W_Edit();
+
+        if (WorkData.ValidAll() > 0) {
+            ValidMessage(); //入力エラーのデータを表示
+            return;
+        }
+
+        if (WorkData.DuplicateAll() > 0) {
+            DuplicateMessage();
+            //DataGrid1.RowIndex = 0;
+            //DataGrid3.ShowWorkData(DataGrid1.WorkData);
+            return;
+        }
+
+        WorkData.UpdateAll(true); //加工ワークデータの更新
         WorkData_S_Create(); // @Sデータの作成と登録
         WorkData_S_Update(); // @加工ワークデータSの更新
         WorkData_P_Create(); // @Pデータの作成と登録
         WorkData_PS_Update(); // @CrePSFlgの更新
-        WorkDataExclusive.Delete();
+        WorkDataExclusive.Delete(); //Del_排他情報
+        Mode.SetNew2();
+
+
+        Process_New();
+    }
+
+    /// <summary>
+    /// 船番指定
+    /// </summary>
+    private void Save_Edit_1() {
+        if (WorkData.ValidAll() > 0) {
+            ValidMessage();
+            return;
+        }
+
+        WorkData.UpdateAll(true); //加工ワークデータの更新
+        WorkDataExclusive.Delete(); //Del_排他情報
         Mode.SetNew1();
         Process_New();
     }
@@ -53,13 +90,13 @@ public partial class Form1 {
     ///  船番コピー
     /// </summary>
     private void Save_Copy_1() {
-        WorkData.DeleteOfSno(WorkData.snoName);
-        WorkData.UpdateAll(false);
+        WorkData.DeleteAll(WorkData.snoName); //加工ワークデータの削除_船番
+        WorkData.UpdateAll(); //加工ワークデータの更新
         WorkData_S_Create(); // @Sデータの作成と登録
         WorkData_S_Update(); // @加工ワークデータSの更新
         WorkData_P_Create(); // @Pデータの作成と登録
         WorkData_PS_Update(); // @CrePSFlgの更新
-        WorkDataExclusive.Delete();
+        WorkDataExclusive.Delete(); //Del_排他情報
         Mode.SetNew1();
         Process_New();
     }
@@ -68,18 +105,18 @@ public partial class Form1 {
     /// キーコピー
     /// </summary>
     private void Save_Copy_2() {
-        if (!WorkData.ValidAll()) {
+        if (WorkData.ValidAll() > 0) {
             ValidMessage();
             return;
         }
 
-        if (!WorkData.DuplicateAll()) {
+        if (WorkData.DuplicateAll(true) > WorkData.Count) {
             DuplicateMessage();
             return;
         }
 
-        WorkData.InsertAll();
-        WorkDataExclusive.Delete();
+        WorkData.InsertAll(); //Ins_加工ワークデータ(i)
+        WorkDataExclusive.Delete(); //Del_排他情報
         Mode.SetNew1();
         Process_New();
     }
@@ -88,13 +125,13 @@ public partial class Form1 {
     /// 今日予定
     /// </summary>
     private void Save_Edit_3() {
-        if (!WorkData.ValidAll()) {
+        if (WorkData.ValidAll() > 0) {
             ValidMessage();
             return;
         }
 
-        WorkData.UpdateAll(true);
-        WorkDataExclusive.Delete();
+        WorkData.UpdateAll(true); //加工ワークデータの更新
+        WorkDataExclusive.Delete(); //Del_排他情報
         Mode.SetNew1();
         Process_New();
     }

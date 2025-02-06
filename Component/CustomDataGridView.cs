@@ -23,6 +23,8 @@ public class CustomDataGridView : DataGridView {
         EnableHeadersVisualStyles = false;
         EditMode = DataGridViewEditMode.EditProgrammatically;
         DefaultCellStyle.Font = new Font(FONT_FAMILY, FONT_SIZE);
+        AllowUserToResizeRows = false;
+        AllowUserToResizeColumns = false;
         SetMode();
         SetColumn();
         SetDefault();
@@ -100,6 +102,15 @@ public class CustomDataGridView : DataGridView {
     }
 
     /// <summary>
+    /// SelectionRowBackColor
+    /// </summary>
+    /// <param name="color"></param>
+    public void SelectRowBackColor(Color color) {
+        RowBackColor = color;
+        DefaultCellStyle.SelectionBackColor = color;
+    }
+
+    /// <summary>
     /// 入力文字数の設定
     /// </summary>
     public int MaxInputLength {
@@ -124,9 +135,8 @@ public class CustomDataGridView : DataGridView {
     /// <param name="row"></param>
     /// <returns></returns>
     public int IntData(int row) {
-        return Rows[row].Cells[0].Value is null
-            ? 0
-            : Convert.ToInt32(Rows[row].Cells[0].Value);
+        var value = StrData(row);
+        return int.TryParse(value, out _) ? Convert.ToInt32(value) : 0;
     }
 
     /// <summary>
@@ -135,8 +145,7 @@ public class CustomDataGridView : DataGridView {
     /// <param name="row"></param>
     /// <returns></returns>
     public decimal DecData(int row) {
-        return Rows[row].Cells[0].Value is null
-            ? 0
-            : Convert.ToDecimal(Rows[row].Cells[0].Value);
+        var value = StrData(row);
+        return decimal.TryParse(value, out _) ? Convert.ToDecimal(value) : 0;
     }
 }

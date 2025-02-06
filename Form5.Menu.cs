@@ -5,7 +5,7 @@ namespace WorkDataStudio;
 /// <summary>
 /// 仮付け予定日選択フォーム
 /// </summary>
-public partial class Form5  {
+public partial class Form5 {
     /// <summary>
     /// メニュー項目配列
     /// </summary>

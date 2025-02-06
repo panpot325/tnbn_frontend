@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using WorkDataStudio.Component;
 
 namespace WorkDataStudio.Model;
 
 /// <summary>
-/// @WorkData.Methodス
+/// @WorkData.Method
 /// </summary>
 public partial class WorkData {
     /// <summary>
@@ -87,14 +88,6 @@ public partial class WorkData {
         Org = grid.IntData(57);
 
         YoteibiKari = grid.IntData(58);
-        YoteibiHon = 0;
-        YoteibiKyosei = 0;
-        JissibiKari = 0;
-        JissibiHon = 0;
-        JissibiKyosei = 0;
-        StatusKari = 0;
-        StatusHon = 0;
-        StatusKyosei = 0;
         ChgFlg = UPDATE;
 
         return this;
@@ -108,13 +101,13 @@ public partial class WorkData {
         Lk3 = 1;
         Lk4 = Lk2;
         Lk5 = Lk1;
-        var w2 = Sp1 + Sp1 + 2;
-        var w5 = 4900 - (Sp1 + 1 + Lt1);
+        var w2 = Sp1 + Sp2;
+        var w5 = 4900 - (Sp1 + Lt1);
         var w4 = 4900 - (w2 + Lt2);
         var w3 = (w4 - w2) / 2 + w2;
-        Sp3 = decimal.Parse((w3 - w2 + 0.04m).ToString("####0.0"));
-        Sp4 = decimal.Parse((w4 - w3 + 0.04m).ToString("####0.0"));
-        Sp5 = decimal.Parse((w5 - w4 + 0.04m).ToString("####0.0"));
+        Sp3 = Math.Round(w3 - w2 + 0.04m, 1, MidpointRounding.AwayFromZero);
+        Sp4 = Math.Round(w4 - w3 + 0.04m, 1, MidpointRounding.AwayFromZero);
+        Sp5 = Math.Round(w5 - w4 + 0.04m, 1, MidpointRounding.AwayFromZero);
         Lh3 = 0;
         Lh4 = Lh2;
         Lh5 = Lh1;
@@ -211,14 +204,6 @@ public partial class WorkData {
         Org = short.Parse(grid[0, 57].Value.ToString());
 
         YoteibiKari = int.Parse(grid[0, 58].Value.ToString());
-        YoteibiHon = 0;
-        YoteibiKyosei = 0;
-        JissibiKari = 0;
-        JissibiHon = 0;
-        JissibiKyosei = 0;
-        _statusKari = 0;
-        _statusHon = 0;
-        _statusKyosei = 0;
         _chgFlg = UPDATE;
 
         return this;

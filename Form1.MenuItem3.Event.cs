@@ -1,5 +1,6 @@
 ﻿using System;
 using WorkDataStudio.share;
+using WorkDataStudio.type;
 
 // ReSharper disable MemberCanBeMadeStatic.Local
 namespace WorkDataStudio;
@@ -14,7 +15,7 @@ public partial class Form1 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void MenuItem_SM3_1_Click(object sender, EventArgs e) {
-        Console.WriteLine(@"「その他 > 今日の予定」が選択されました。");
+        Log.WriteLine(@"「その他 > 今日の予定」が選択されました。");
         Process_Yotei();
     }
 
@@ -24,7 +25,7 @@ public partial class Form1 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void MenuItem_SM3_2_Click(object sender, EventArgs e) {
-        Console.WriteLine(@"「その他 > 操作説明」が選択されました。");
+        Log.WriteLine(@"「その他 > 操作説明」が選択されました。");
         OpenDialog(FormType.Form6);
     }
 
@@ -34,7 +35,7 @@ public partial class Form1 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void MenuItem_SM3_3_Click(object sender, EventArgs e) {
-        Console.WriteLine(@"「その他 > 完了情報」が選択されました。");
+        Log.WriteLine(@"「その他 > 完了情報」が選択されました。");
         OpenDialog(FormType.Form11);
     }
 }

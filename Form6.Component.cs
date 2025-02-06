@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using WorkDataStudio.Component;
 
 // ReSharper disable InconsistentNaming
 namespace WorkDataStudio;
@@ -14,26 +15,18 @@ public partial class Form6 {
     /// InitComponent
     /// </summary>
     private void InitComponent() {
-        textBox1 = new TextBox();
+        textBox1 = new CustomTextBox(0, "Text1", 50, 50, 620, 620, Color.Black, true);
         SuspendLayout();
         // 
         // textBox1
         // 
-        textBox1.Name = @"textBox1";
-        textBox1.Location = new Point(67, 74);
-        textBox1.Size = new Size(1400, 1200);
-        textBox1.WordWrap = true;
-        textBox1.Multiline = true;
-        textBox1.TabIndex = 0;
-        textBox1.Font = new Font("ＭＳ ゴシック", 12);
+        textBox1.Font = new Font("ＭＳ Ｐゴシック", 12F, FontStyle.Bold);
         // 
         // Form6
         // 
         Name = @"Form6";
         Text = @"Form6";
-        ClientSize = new Size(800, 450);
-        AutoScaleMode = AutoScaleMode.Font;
-        AutoScaleDimensions = new SizeF(13F, 24F);
+        ClientSize = new Size(720, 720);
         Controls.Add(textBox1);
         Load += Form6_Load;
         Activated += Form6_Activated;

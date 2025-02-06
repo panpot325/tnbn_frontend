@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Timers;
+using WorkDataStudio.type;
 
 namespace WorkDataStudio;
 
@@ -14,7 +15,7 @@ public partial class Form10 {
     /// <param name="e"></param>
     /// <exception cref="NotImplementedException"></exception>
     private void Form10_Load(object sender, EventArgs e) {
-        Console.WriteLine(@"Form2_Load");
+        Log.WriteLine(@"Form2_Load");
     }
 
     /// <summary>
@@ -24,7 +25,7 @@ public partial class Form10 {
     /// <param name="e"></param>
     /// <exception cref="NotImplementedException"></exception>
     private void Form10_Activated(object sender, EventArgs e) {
-        Console.WriteLine(@"Form2_Activated");
+        Log.WriteLine(@"Form2_Activated");
     }
 
     /// <summary>
@@ -34,6 +35,6 @@ public partial class Form10 {
     /// <param name="e"></param>
     /// <exception cref="NotImplementedException"></exception>
     private void timer1_Elapsed(object sender, ElapsedEventArgs e) {
-        Console.WriteLine(@"Form2_timer1_Elapsed");
+        Log.WriteLine(@"Form2_timer1_Elapsed");
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using WorkDataStudio.Model;
+using WorkDataStudio.share;
+using WorkDataStudio.type;
 
 namespace WorkDataStudio;
 
@@ -14,9 +16,9 @@ public partial class Form2 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void Form2_Load(object sender, EventArgs e) {
-        Console.WriteLine(@"Form2_Load");
+        Log.WriteLine(@"Form2_Load");
+        _activate = true;
         WorkData.Clear();
-        WorkData.copyDataCnt = 0;
         //ScreenInit();
     }
 
@@ -26,7 +28,10 @@ public partial class Form2 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void Form2_Activated(object sender, EventArgs e) {
-        Console.WriteLine(@"Form2_Activated");
+        if (!_activate) return;
+        _activate = false;
+
+        Log.WriteLine(@"Form2_Activated");
         DataGridView4.ShowWorkDataList();
     }
 
@@ -36,7 +41,7 @@ public partial class Form2 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void DataGrid4_MouseClick(object sender, MouseEventArgs e) {
-        Console.WriteLine(@"MouseClick");
+        Log.WriteLine(@"MouseClick");
         var workData = DataGridView4.WorkData;
         if (workData is null) {
             return;
@@ -49,10 +54,19 @@ public partial class Form2 {
     }
 
     /// <summary>
+    /// SelectionChanged
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void DataGrid4_SelectionChanged(object sender, EventArgs e) {
+        Log.WriteLine("DataGrid4_SelectionChanged Event");
+        DataGridView4.DefaultCellStyle.SelectionBackColor = BgColor.CLEARED;
+    }
+
+    /// <summary>
     /// 画面初期化
     /// </summary>
     private void ScreenInit() {
-        WorkData.selected = false; //@Deprecated
         DataGridView4.Init();
     }
 }

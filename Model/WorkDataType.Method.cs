@@ -36,7 +36,7 @@ public partial class WorkDataType {
     /// <returns></returns>
     public string GetHani() {
         switch (NyuMode) {
-            case WorkDataType.NYU_MODE_NUM: {
+            case NYU_MODE_NUM: {
                 var min = "";
                 var max = "";
                 if (DecNyuTani == 0.1m) {

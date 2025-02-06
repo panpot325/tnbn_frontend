@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using WorkDataStudio.Model;
 using WorkDataStudio.share;
 using WorkDataStudio.type;
-using G = WorkDataStudio.share.Globals;
 
 // ReSharper disable MemberCanBeMadeStatic.Local
 // ReSharper disable InvertIf
@@ -83,38 +82,26 @@ public class DataGridView3 : CustomDataGridView {
     /// </summary>
     /// <param name="workData"></param>
     public DataGridView3 ShowWorkData(WorkData workData) {
-        Console.WriteLine(@"ShowWorkData");
+        Log.WriteLine(@"ShowWorkData");
         Rows.Clear();
         foreach (var row in workData.GetValues().Select(value => Rows.Add(value))) {
             Rows[row].Cells[0].Style.Alignment = WorkDataType.List[row].Keishiki == WorkDataType.KEISHIKI_ASCII
                 ? DataGridViewContentAlignment.TopLeft
                 : DataGridViewContentAlignment.TopRight;
+            Rows[row].Cells[0].Style.Format = WorkDataType.List[row].DecNyuTani == 0.1m
+                ? "F1"
+                : "";
+            if (Mode.IsNew2) {
+                Rows[row].Cells[0].Value = row switch {
+                    15 => 2400.0.ToString("F1"),
+                    28 or 29 or 30 => 0,
+                    _ => Rows[row].Cells[0].Value
+                };
+            }
         }
 
-        return this;
-    }
-
-    /// <summary>
-    /// @グリッド3入力不可バックカラー設定()
-    /// </summary>
-    public DataGridView3 SetBackColorGray() {
-        switch (Mode.Value) {
-            case Mode.NEW_1:
-                RowIndex = 1;
-                Rows[0].DefaultCellStyle.BackColor = BgColor.DISABLED; //薄灰
-                Rows[0].DefaultCellStyle.SelectionBackColor = BgColor.CLEARED;
-                break;
-            case Mode.EDIT_1 or Mode.COPY_1:
-                this[0, 0].Style.BackColor = BgColor.DISABLED;
-                break;
-            case Mode.EDIT_2 or Mode.EDIT_3:
-                this[0, 0].Style.BackColor = BgColor.DISABLED;
-                this[0, 1].Style.BackColor = BgColor.DISABLED;
-                this[0, 2].Style.BackColor = BgColor.DISABLED;
-                this[0, 3].Style.BackColor = BgColor.DISABLED;
-                break;
-        }
-
+        SelectRowBackColor(Color.White);
+        SetBackColor(workData);
         return this;
     }
 
@@ -124,13 +111,50 @@ public class DataGridView3 : CustomDataGridView {
     /// </summary>
     /// <param name="workData"></param>
     public DataGridView3 SetBackColor(WorkData workData) {
-        Console.WriteLine(@"@グリッド3バックカラー設定");
+        Log.WriteLine(@"@グリッド3バックカラー設定");
         foreach (var data in WorkDataType.List
                      .Select((value, index) => new { value, index })) {
-            this[0, data.index].Style.BackColor =
-                workData.ErrorValidation.Grid3[data.index] == WorkDataType.CROSS
-                    ? BgColor.INVALID
-                    : BgColor.DEFAULT;
+            var backColor = workData.ErrorValidation.Grid3[data.index]
+                ? BgColor.INVALID
+                : BgColor.DEFAULT;
+
+            Rows[data.index].DefaultCellStyle.BackColor = backColor;
+            Rows[data.index].DefaultCellStyle.SelectionBackColor = backColor;
+
+            DisabledBackColor();
+        }
+
+        return this;
+    }
+
+    /// <summary>
+    /// @グリッド3入力不可バックカラー設定()
+    /// </summary>
+    /// <returns></returns>
+    private DataGridView3 DisabledBackColor() {
+        switch (Mode.Value) {
+            case Mode.NEW_1:
+                if (WorkData.Count > 1) {
+                    RowIndex = 1;
+                    Rows[0].DefaultCellStyle.BackColor = BgColor.DISABLED;
+                    Rows[0].DefaultCellStyle.SelectionBackColor = Rows[0].DefaultCellStyle.BackColor;
+                }
+
+                break;
+            case Mode.EDIT_1 or Mode.COPY_1:
+                Rows[0].DefaultCellStyle.BackColor = BgColor.DISABLED;
+                Rows[0].DefaultCellStyle.SelectionBackColor = Rows[0].DefaultCellStyle.BackColor;
+                break;
+            case Mode.EDIT_2 or Mode.EDIT_3:
+                Rows[0].DefaultCellStyle.BackColor = BgColor.DISABLED;
+                Rows[1].DefaultCellStyle.BackColor = BgColor.DISABLED;
+                Rows[2].DefaultCellStyle.BackColor = BgColor.DISABLED;
+                Rows[3].DefaultCellStyle.BackColor = BgColor.DISABLED;
+                Rows[0].DefaultCellStyle.SelectionBackColor = Rows[0].DefaultCellStyle.BackColor;
+                Rows[1].DefaultCellStyle.SelectionBackColor = Rows[1].DefaultCellStyle.BackColor;
+                Rows[2].DefaultCellStyle.SelectionBackColor = Rows[2].DefaultCellStyle.BackColor;
+                Rows[3].DefaultCellStyle.SelectionBackColor = Rows[3].DefaultCellStyle.BackColor;
+                break;
         }
 
         return this;
@@ -176,21 +200,21 @@ public class DataGridView3 : CustomDataGridView {
     public DataGridView3 CursorEdit(int keyAscii) {
         switch (keyAscii) {
             case (char)Keys.Enter:
-                BeginEdit(false);
+                //BeginEdit(false);
                 break;
             case (char)Keys.Back:
-                CurrentCell.Value = "";
+                //CurrentCell.Value = "";
+                Text = "";
                 BeginEdit(false);
                 break;
             case (char)Keys.Space:
                 BeginEdit(false);
                 break;
             case < 32:
-                return this;
+                break;
             default:
                 Text = ((char)keyAscii).ToString();
                 BeginEdit(false);
-                CurrentCell.Value = "A";
                 break;
         }
 
@@ -203,18 +227,21 @@ public class DataGridView3 : CustomDataGridView {
     public DataGridView3 TextEdit(DataGridView1 dataGridView1, TextBox textBox) {
         var text = StrValue;
         var workData = dataGridView1.WorkData;
+
         switch (DataType.Keishiki) {
             case WorkDataType.KEISHIKI_ASCII:
                 break;
             default:
-                if (text == "") {
-                    text = @"0";
-                }
+                text = string.IsNullOrEmpty(text) ? @"0" : text;
+                switch (Mode.Value) {
+                    case Mode.NEW_1 or Mode.NEW_2:
+                        break;
+                    default:
+                        if (text == Tag.ToString()) {
+                            return this;
+                        }
 
-                if (Mode.Value != Mode.NEW_1
-                    && Mode.Value != Mode.NEW_2
-                   ) {
-                    return this;
+                        break;
                 }
 
                 break;
@@ -222,6 +249,7 @@ public class DataGridView3 : CustomDataGridView {
 
         //入力チェック前処理
         if (InputCheck(text, workData, textBox)) {
+            //入力チェック排他処理
             if (!Exclude_Check1(workData)
                 || !Exclude_Check2(workData, text)) {
                 textBox.Text = @"排他中のため変更できません";
@@ -233,8 +261,8 @@ public class DataGridView3 : CustomDataGridView {
             CellBackColor = BgColor.DEFAULT;
             if (DataType.NyuMode == WorkDataType.NYU_MODE_NUM) {
                 StrValue = DataType.DecNyuTani switch {
-                    0.1m => $"{StrValue: 0.0}",
-                    1 => $"{StrValue: 0}",
+                    0.1m => DecimalFormat(text),
+                    1 => IntFormat(text),
                     _ => StrValue
                 };
             }
@@ -243,7 +271,8 @@ public class DataGridView3 : CustomDataGridView {
             }
 
             if (DataType.Dm == "W71E") {
-                this[ColIndex, RowIndex + 1].Value = text;
+                //MAX(皮板最大板厚)
+                this[ColIndex, RowIndex + 1].Value = DecData(RowIndex).ToString("F1");
             }
 
             workData.ChgFlg = WorkData.UPDATE;
@@ -257,22 +286,32 @@ public class DataGridView3 : CustomDataGridView {
                 && Mode.Value != Mode.NEW_2
                 && Mode.Value != Mode.EDIT_1
                 && Mode.Value != Mode.COPY_1) {
-                dataGridView1.CellBackColor = BgColor.SELECTED;
+                //dataGridView1.CellBackColor = BgColor.SELECTED;
             }
 
             return this;
         }
 
-        StrValue = Tag.ToString();
+        StrValue = DataType.DecNyuTani == 0.1m
+            ? DecimalFormat(Tag.ToString())
+            : Tag.ToString();
+
         return this;
     }
 
+    /// <summary>
+    /// 入力チェック前処理
+    /// </summary>
+    /// <param name="text"></param>
+    /// <param name="workData"></param>
+    /// <param name="textBox"></param>
+    /// <returns></returns>
     private bool InputCheck(string text, WorkData workData, TextBox textBox) {
-        workData.ErrorValidation.Grid1 = "";
-        workData.ErrorValidation.Grid3[RowIndex] = "";
+        workData.ErrorValidation.Grid1 = false;
+        workData.ErrorValidation.Grid3[RowIndex] = false;
         if (text == "") {
             CellBackColor = BgColor.DEFAULT;
-            return false;
+            return true;
         }
 
         if (InputCheck(text, textBox)) {
@@ -283,6 +322,12 @@ public class DataGridView3 : CustomDataGridView {
         return false;
     }
 
+    /// <summary>
+    /// 入力チェック
+    /// </summary>
+    /// <param name="text"></param>
+    /// <param name="textBox"></param>
+    /// <returns></returns>
     private bool InputCheck(string text, TextBox textBox) {
         var a = RowIndex;
         switch (DataType.NyuMode) {
@@ -294,10 +339,9 @@ public class DataGridView3 : CustomDataGridView {
                 }
 
                 var dec = DecNullZero(text);
-                if (dec != 0 || DataType.ZeroEntry == WorkDataType.ZERO_ENTRY_NG) {
+                if (dec == 0 && DataType.ZeroEntry == WorkDataType.ZERO_ENTRY_OK) {
                     break;
                 }
-
 
                 if (DataType.Dm == "W72C") {
                     //[SP1]か否か判定
@@ -325,7 +369,7 @@ public class DataGridView3 : CustomDataGridView {
 
                 break;
             case WorkDataType.NYU_MODE_A:
-                if (int.TryParse(text, out var num3)) {
+                if (int.TryParse(text, out _)) {
                     textBox.Text = @"入力値エラー：数値不可";
                     textBox.ForeColor = FgColor.INVALID;
                     return false;
@@ -337,16 +381,21 @@ public class DataGridView3 : CustomDataGridView {
         return true;
     }
 
+    /// <summary>
+    /// Exclude_Check1
+    /// </summary>
+    /// <param name="workData"></param>
+    /// <returns></returns>
     private bool Exclude_Check1(WorkData workData) {
         if (workData.Sno == "") {
             return true;
         }
 
-        if (WorkDataExclusive.Count(G.staffId, G.pcName, workData.Sno) == 0) {
+        if (WorkDataExclusive.Count(workData.Sno) == 0) {
             //他の人が使用中でない場合
-            if (WorkDataExclusive.Count(G.staffId, G.pcName, workData.Sno, 1) == 0) {
+            if (WorkDataExclusive.Count(workData.Sno, 1) == 0) {
                 //自分が排他中でない場合
-                WorkDataExclusive.Insert(G.staffId, G.pcName, workData.Sno); //排他中に更新
+                WorkDataExclusive.Insert(workData.Sno); //排他中に更新
             }
 
             return true;
@@ -355,15 +404,21 @@ public class DataGridView3 : CustomDataGridView {
         return false;
     }
 
+    /// <summary>
+    /// Exclude_Check2
+    /// </summary>
+    /// <param name="workData"></param>
+    /// <param name="text"></param>
+    /// <returns></returns>
     private bool Exclude_Check2(WorkData workData, string text) {
         if (Mode.Value != Mode.COPY_2 || RowIndex != 0) {
             return true;
         }
 
-        WorkDataExclusive.Delete(G.staffId, G.pcName, text);
-        if (WorkDataExclusive.Count(G.staffId, G.pcName, text, 0) == 0) {
-            if (WorkDataExclusive.Count(G.staffId, G.pcName, text, 1) == 0) {
-                WorkDataExclusive.Insert(G.staffId, G.pcName, text); //排他中に更新
+        WorkDataExclusive.Delete(text);
+        if (WorkDataExclusive.Count(text, 0) == 0) {
+            if (WorkDataExclusive.Count(text, 1) == 0) {
+                WorkDataExclusive.Insert(text); //排他中に更新
             }
 
             return true;
@@ -372,7 +427,84 @@ public class DataGridView3 : CustomDataGridView {
         return false;
     }
 
+    /// <summary>
+    /// DecNullZero
+    /// </summary>
+    /// <param name="str"></param>
+    /// <returns></returns>
     private decimal DecNullZero(string str) {
         return str is null || str.Length == 0 ? 0m : decimal.Parse(str);
+    }
+
+    /// <summary>
+    /// DecimalFormat
+    /// </summary>
+    /// <param name="str"></param>
+    /// <param name="format"></param>
+    /// <returns></returns>
+    private string DecimalFormat(string str, string format = "F1") {
+        if (decimal.TryParse(str, out _)) {
+            return Convert.ToDecimal(str).ToString(format);
+        }
+
+        return str;
+    }
+
+    /// <summary>
+    /// IntFormat
+    /// </summary>
+    /// <param name="str"></param>
+    /// <param name="format"></param>
+    /// <returns></returns>
+    private string IntFormat(string str, string format = "0") {
+        if (int.TryParse(str, out _)) {
+            return Convert.ToInt32(str).ToString(format);
+        }
+
+        return str;
+    }
+
+    /// <summary>
+    /// 編集が可能か
+    /// </summary>
+    /// <param name="workData"></param>
+    /// <returns></returns>
+    public bool CanEdit(WorkData workData) {
+        switch (Mode.Value) {
+            //新規, 新規2 新規入力＋1件目の時は、全項目入力可
+            case Mode.NEW_1 or Mode.NEW_2:
+                if (WorkData.Count <= 1 || RowIndex > 0) {
+                    return true;
+                }
+
+                break;
+            //船番指定, 船番コピー 船番指定修正または、船番単位コピー時、船番以外を入力可
+            case Mode.EDIT_1 or Mode.COPY_1:
+                if (RowIndex > 0) {
+                    return true;
+                }
+
+                break;
+            //今日以降, 今日予定 今日以降修正または、今日予定修正時、キー項目以外のみ入力可
+            case Mode.EDIT_2 or Mode.EDIT_3:
+                if (RowIndex > 3) {
+                    return true;
+                }
+
+                break;
+            //キーコピー キーコピー時は、全項目入力可。但し、優先的にキー項目を変更させる。
+            case Mode.COPY_2:
+                if (workData.ErrorValidation.Change) {
+                    return true;
+                }
+
+                if (RowIndex < 4) {
+                    return true;
+                }
+
+                break;
+        }
+
+        return false;
     }
 }

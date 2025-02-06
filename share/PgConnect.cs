@@ -1,14 +1,9 @@
 ﻿using Npgsql;
+using WorkDataStudio.Properties;
 
 namespace WorkDataStudio.share;
 
 public class PgConnect {
-    private const string HOST = "10.211.55.2";
-    private const string DATABASE = "onozo_202409";
-    private const string PORT = "5432";
-    private const string USERNAME = "postgres";
-    private const string PASSWORD = "postgres";
-
     private static NpgsqlConnection _connection;
 
     public static PgConnect CreateInstance() {
@@ -16,7 +11,11 @@ public class PgConnect {
     }
 
     private static string GetConnectionString() {
-        return $"Host={HOST};Port={PORT};Username={USERNAME};Password={PASSWORD};Database={DATABASE}";
+        return $"Host={Settings.Default.DB_Host};" +
+               $"Port={Settings.Default.DB_Port};" +
+               $"Username={Settings.Default.DB_User};" +
+               $"Password={Settings.Default.DB_Pass};" +
+               $"Database={Settings.Default.DB_Name}";
     }
 
     /// <summary>

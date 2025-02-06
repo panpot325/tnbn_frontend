@@ -1,4 +1,5 @@
 ﻿using System;
+using WorkDataStudio.type;
 
 namespace WorkDataStudio;
 
@@ -12,7 +13,7 @@ public partial class Form5 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void Form5_Load(object sender, EventArgs e) {
-        Console.WriteLine(@"Form5_Load");
+        Log.WriteLine(@"Form5_Load");
     }
 
     /// <summary>
@@ -21,6 +22,6 @@ public partial class Form5 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void Form5_Activated(object sender, EventArgs e) {
-        Console.WriteLine(@"Form5_Activated");
+        Log.WriteLine(@"Form5_Activated");
     }
 }

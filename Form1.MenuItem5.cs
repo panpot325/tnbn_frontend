@@ -11,7 +11,7 @@ public partial class Form1 {
     /// </summary>
     /// <returns></returns>
     private ToolStripMenuItem GetMenuItem5() {
-        var menuItem = new ToolStripMenuItem() { Text = @"[P]データ(&S)" };
+        var menuItem = new ToolStripMenuItem() { Text = @"[P]データ(&P)" };
         menuItem.DropDownItems.AddRange(
             new ToolStripItem[] {
                 CreateMenuItem("自動作成しない", MenuItem_SM5_1_Click),

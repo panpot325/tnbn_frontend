@@ -73,6 +73,7 @@ public partial class WorkDataType {
     public int LenHaniMinNewTani => (_haniMin + _nyuTani).ToString(CultureInfo.InvariantCulture).Length;
 
     public int Index => _index;
+
     public bool isNyu_Mode(string nyuMode) {
         return NyuMode == nyuMode;
     }

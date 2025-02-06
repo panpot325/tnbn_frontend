@@ -31,9 +31,14 @@ public partial class Form8 {
             workData.ChgFlg = WorkData.UPDATE;
         }
 
-        Mode.SetEdit1();
+        //データが取得できた他場合
+        if (WorkData.Exists) {
+            Mode.SetEdit1();
+        }
+
         WorkDataExclusive.Delete(); //@Del_排他情報
         WorkDataExclusive.Insert(WorkData.snoName); // Ins_排他中に更新(船番)
         Close();
+        Form1.Activate();
     }
 }

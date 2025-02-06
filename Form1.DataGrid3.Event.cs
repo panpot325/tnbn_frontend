@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
-using WorkDataStudio.Model;
 using WorkDataStudio.share;
-using G = WorkDataStudio.share.Globals;
+using WorkDataStudio.type;
 
 // ReSharper disable InvertIf
 // ReSharper disable InterpolatedStringExpressionIsNotIFormattable
@@ -21,7 +20,7 @@ public partial class Form1 {
     /// <param name="e"></param>
     /// <exception cref="NotImplementedException"></exception>
     private void DataGrid3_KeyDown(object sender, KeyEventArgs e) {
-        G.Out("DataGrid3_KeyDown Event");
+        Log.WriteLine("DataGrid3_KeyDown Event");
         Grid_Edit(e.KeyValue);
     }
 
@@ -32,7 +31,7 @@ public partial class Form1 {
     /// <param name="e"></param>
     /// <exception cref="NotImplementedException"></exception>
     private void DataGrid3_KeyPress(object sender, KeyPressEventArgs e) {
-        G.Out(@"DataGrid3_KeyPress");
+        Log.WriteLine(@"DataGrid3_KeyPress");
         Grid_Edit(e.KeyChar);
     }
 
@@ -43,7 +42,7 @@ public partial class Form1 {
     /// <param name="e"></param>
     /// <exception cref="NotImplementedException"></exception>
     private void DataGrid3_Scroll(object sender, ScrollEventArgs e) {
-        G.Out("@DataGrid3_Scroll");
+        Log.WriteLine("@DataGrid3_Scroll");
         Grid_Scroll();
     }
 
@@ -62,7 +61,8 @@ public partial class Form1 {
     /// <param name="e"></param>
     /// <exception cref="NotImplementedException"></exception>
     private void DataGrid3_SelectionChanged(object sender, EventArgs e) {
-        G.Out("DataGrid3_SelectionChanged Event");
+        Log.WriteLine("DataGrid3_SelectionChanged Event");
+        DataGrid3.DefaultCellStyle.SelectionBackColor = BgColor.CLEARED;
         Grid_Change();
     }
 
@@ -87,7 +87,7 @@ public partial class Form1 {
     /// <param name="e"></param>
     /// <exception cref="NotImplementedException"></exception>
     private void DataGrid3_CellEndEdit(object sender, DataGridViewCellEventArgs e) {
-        G.Out($"DataGrid3_CellEndEdit Event: {DataGrid3.StrValue}");
+        Log.WriteLine($"DataGrid3_CellEndEdit Event: {DataGrid3.StrValue}");
         Text4.Text = "";
         DataGrid3.TextEdit(DataGrid1, Text4);
     }

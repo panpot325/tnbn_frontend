@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using WorkDataStudio.Model;
 using WorkDataStudio.share;
+using WorkDataStudio.type;
 
 namespace WorkDataStudio;
 
@@ -16,11 +17,10 @@ public partial class Form1 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void DataGrid1_MouseClick(object sender, MouseEventArgs e) {
-        Console.WriteLine(@"MouseClick");
+        Log.WriteLine(@"MouseClick");
         if (DataGrid1.RowCount == 0) return;
+        if (DataGrid1.WorkData is null) return;
         DataGrid3.ShowWorkData(DataGrid1.WorkData);
-        //DataGrid1.WorkData.Valid();
-        DataGrid3.SetBackColor(DataGrid1.WorkData);
     }
 
     /// <summary>
@@ -37,17 +37,24 @@ public partial class Form1 {
 
         switch (Mode.Value) {
             case Mode.EDIT_1 or Mode.COPY_1:
-                //case SMode.NEW_1:
-                //|| G.selMode == SMode.NEW_1 は仮
-                //WorkData.Add(WorkData.snoName);
-                //WorkData.List.Last().Sno = WorkData.snoName;
                 DataGrid1.Add(WorkData.snoName);
-                DataGrid1.ShowWorkData(); //グリッド1の表示
+                //DataGrid1.ShowWorkData(); //グリッド1の表示
                 DataGrid1.Select(WorkData.Count - 1);
                 DataGrid3.ShowWorkData(DataGrid1.WorkData);
-                //DataGrid1.SetSData(); //グリッド1_Sデータ作成色設定_読込時
-                //DataGrid1.SetPData();//グリッド1_Pデータ作成色設定_読込時
+                //グリッド1_Sデータ作成色設定_読込時
+                //グリッド1_Pデータ作成色設定_読込時
+                DataGrid1.SP_BackColor();
                 break;
         }
+    }
+
+    /// <summary>
+    /// SelectionChanged
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void DataGrid1_SelectionChanged(object sender, EventArgs e) {
+        Log.WriteLine("DataGrid1_SelectionChanged Event");
+        DataGrid1.DefaultCellStyle.SelectionBackColor = BgColor.CLEARED;
     }
 }

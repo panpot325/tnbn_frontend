@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Drawing;
-using System.Windows.Forms;
 using WorkDataStudio.Component;
 
 // ReSharper disable InconsistentNaming
@@ -28,9 +27,7 @@ public partial class Form11 {
         // 
         Name = @"Form11";
         Text = @"Form11";
-        ClientSize = new Size(320, 720);
-        AutoScaleMode = AutoScaleMode.Font;
-        AutoScaleDimensions = new SizeF(13F, 24F);
+        ClientSize = new Size(360, 720);
         Controls.Add(DataGridView5);
         Activated += Form11_Activated;
         ((ISupportInitialize)(DataGridView5)).EndInit();

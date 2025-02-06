@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 using WorkDataStudio.Model;
+using WorkDataStudio.share;
 
 namespace WorkDataStudio;
 
@@ -21,7 +22,9 @@ public partial class Form9 {
             return;
         }
 
-        WorkData.DeleteOfSno(comboBox1.Text.Trim());
+        WorkData.DeleteAll(comboBox1.Text.Trim());
+        Mode.SetNew1();
         Close();
+        Form1.Activate();
     }
 }

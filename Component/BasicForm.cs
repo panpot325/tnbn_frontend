@@ -37,25 +37,29 @@ public class BasicForm : Form {
     /// </summary>
     /// <param name="text"></param>
     /// <param name="handler"></param>
+    /// <param name="enabled"></param>
     /// <returns></returns>
-    protected ToolStripMenuItem CreateMenuItem(string text, EventHandler handler) {
-        return new ToolStripMenuItem(
+    protected ToolStripMenuItem CreateMenuItem(string text, EventHandler handler, bool enabled = true) {
+        var toolStripMenuItem = new ToolStripMenuItem(
             text,
             null,
             handler
         );
+        toolStripMenuItem.Enabled = enabled;
+        return toolStripMenuItem;
     }
 
     // @virtual
     protected virtual void FormSize() {
         Width = 400;
-        Height = 200;
+        Height = 160;
     }
 
     // @virtual
     protected virtual void FormPosition() {
         Left = (PRect.Right - PRect.Left - Width) / 2 + PRect.Left;
         Top = (PRect.Bottom - PRect.Left - Height) / 2 + PRect.Top;
+        StartPosition = FormStartPosition.CenterScreen;
     }
 
     // @virtual

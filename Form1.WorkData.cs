@@ -19,24 +19,24 @@ public partial class Form1 {
             g[0, 11].Value = data.Lk3;
             g[0, 12].Value = data.Lk4;
             g[0, 13].Value = data.Lk5;
-            g[0, 28].Value = data.Sp3.ToString("####0.0");
-            g[0, 29].Value = data.Sp4.ToString("####0.0");
-            g[0, 30].Value = data.Sp5.ToString("####0.0");
+            g[0, 28].Value = data.Sp3.ToString("F1");
+            g[0, 29].Value = data.Sp4.ToString("F1");
+            g[0, 30].Value = data.Sp5.ToString("F1");
             g[0, 33].Value = data.Lh3;
-            g[0, 34].Value = data.Lh4.ToString("####0.0");
-            g[0, 35].Value = data.Lh5.ToString("####0.0");
+            g[0, 34].Value = data.Lh4.ToString("F1");
+            g[0, 35].Value = data.Lh5.ToString("F1");
             g[0, 38].Value = data.Lt3;
-            g[0, 39].Value = data.Lt4.ToString("####0.0");
-            g[0, 40].Value = data.Lt5.ToString("####0.0");
+            g[0, 39].Value = data.Lt4.ToString("F1");
+            g[0, 40].Value = data.Lt5.ToString("F1");
             g[0, 43].Value = data.Ll3;
-            g[0, 44].Value = data.Ll4.ToString("####0.0");
-            g[0, 45].Value = data.Ll5.ToString("####0.0");
+            g[0, 44].Value = data.Ll4.ToString("F1");
+            g[0, 45].Value = data.Ll5.ToString("F1");
             g[0, 48].Value = data.Wl3;
-            g[0, 49].Value = data.Wl4.ToString("####0.0");
-            g[0, 50].Value = data.Wl5.ToString("####0.0");
+            g[0, 49].Value = data.Wl4.ToString("F1");
+            g[0, 50].Value = data.Wl5.ToString("F1");
             g[0, 54].Value = data.Stp3;
-            g[0, 55].Value = data.Stp4.ToString("####0.0");
-            g[0, 56].Value = data.Stp5.ToString("####0.0");
+            g[0, 55].Value = data.Stp4.ToString("F1");
+            g[0, 56].Value = data.Stp5.ToString("F1");
         });
     }
 

@@ -1,5 +1,5 @@
-﻿using WorkDataStudio.Component;
-using WorkDataStudio.type;
+﻿using System.Windows.Forms;
+using WorkDataStudio.Component;
 
 namespace WorkDataStudio;
 
@@ -7,6 +7,12 @@ namespace WorkDataStudio;
 /// 加工ワークデータ作成フォーム
 /// </summary>
 public partial class Form1 : BasicForm {
+    private static bool _activate;
+
+    public new static void Activate() {
+        _activate = true;
+    }
+
     /// <summary>
     /// Constructor
     /// </summary>
@@ -25,17 +31,14 @@ public partial class Form1 : BasicForm {
     /// SetPosition
     /// </summary>
     protected override void FormPosition() {
-        Left = (PRect.Right - PRect.Left - Width) / 2 + PRect.Left;
-        Top = (PRect.Bottom - PRect.Left - Height) / 2 + PRect.Top;
-        Left = 20; //仮設定
-        Top = 20; //仮設定
+        StartPosition = FormStartPosition.CenterScreen;
+        //Left = 10; //仮設定
+        //Top = 10; //仮設定
     }
 
     /// <summary>
     /// FormSize
     /// </summary>
     protected override void FormSize() {
-        Width = 1124; //1024
-        Height = 764; //734
     }
 }

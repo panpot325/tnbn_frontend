@@ -47,7 +47,6 @@ public partial class WorkData {
     /// <returns></returns>
     public static List<WorkData> GetAll(string where) {
         List = Fetch(where);
-        ;
 
         return List;
     }
@@ -120,36 +119,34 @@ public partial class WorkData {
     /// @更新チェック
     /// </summary>
     /// <returns></returns>
-    public static bool ValidAll() {
+    public static int ValidAll() {
         var cnt = 0;
-        foreach (var workData in List.Where(workData => workData.ChgFlg == WorkData.UPDATE)) {
+        foreach (var workData in List.Where(workData => workData.ChgFlg == UPDATE)) {
             cnt += workData.Valid();
             workData.Err1Flg = cnt > 0 ? 1 : 0; //入力ﾁｪｯｸｴﾗｰﾌﾗｸﾞ
         }
 
-        return cnt == 0;
+        return cnt;
     }
 
     /// <summary>
-    /// DuplicateAll
     /// @重複チェック
     /// </summary>
     /// <param name="error2"></param>
     /// <returns></returns>
-    public static bool DuplicateAll(bool error2 = false) {
+    public static int DuplicateAll(bool error2 = false) {
         var cnt = 0;
-        foreach (var workData in List.Where(workData => workData.ChgFlg == WorkData.UPDATE)) {
+        foreach (var workData in List.Where(workData => workData.ChgFlg == UPDATE)) {
             var duplicate = workData.Duplicate();
             workData.Err2Flg = error2 && duplicate > 0 ? 1 : 0;
             cnt += duplicate;
         }
 
-        return cnt == 0;
+        return cnt;
     }
 
     /// <summary>
-    /// UpdateAll
-    /// @更新/削除
+    /// 更新、削除
     /// </summary>
     /// <param name="delete"></param>
     public static void UpdateAll(bool delete = false) {
@@ -166,10 +163,10 @@ public partial class WorkData {
     }
 
     /// <summary>
-    /// DeleteOfSno
+    /// DeleteAll
     /// @加工ワークデータの削除_船番
     /// </summary>
-    public static void DeleteOfSno(string sno) {
+    public static void DeleteAll(string sno) {
         var sql = "DELETE FROM tnbn_kakowk_data" +
                   $" WHERE sno = '{sno}';";
         PgOpen.PgUpdate(sql);

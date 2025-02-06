@@ -7,7 +7,7 @@ namespace WorkDataStudio;
 /// <summary>
 /// 船番単位フォーム
 /// </summary>
-public partial class Form8  {
+public partial class Form8 {
     private Label label1;
     private ComboBox comboBox1;
 
@@ -22,17 +22,19 @@ public partial class Form8  {
         // label1
         // 
         label1.Name = @"label1";
-        label1.Text = @"label1";
-        label1.Location = new Point(56, 81);
-        label1.Size = new Size(177, 52);
+        label1.Text = @"船番";
+        label1.Location = new Point(40, 42);
+        label1.Size = new Size(60, 40);
+        label1.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Bold);
         label1.TabIndex = 1;
         // 
         // comboBox1
         // 
         comboBox1.Name = @"comboBox1";
-        comboBox1.Location = new Point(239, 81);
-        comboBox1.Size = new Size(330, 32);
+        comboBox1.Location = new Point(140, 40);
+        comboBox1.Size = new Size(180, 40);
         comboBox1.FormattingEnabled = true;
+        comboBox1.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Bold);
         comboBox1.TabIndex = 0;
         comboBox1.KeyUp += comboBox1_KeyUp;
         // 
@@ -40,9 +42,7 @@ public partial class Form8  {
         // 
         Name = @"Form8";
         Text = @"Form8";
-        ClientSize = new Size(800, 450);
-        AutoScaleMode = AutoScaleMode.Font;
-        AutoScaleDimensions = new SizeF(13F, 24F);
+        ClientSize = new Size(400, 160);
         Controls.Add(label1);
         Controls.Add(comboBox1);
         Load += Form8_Load;

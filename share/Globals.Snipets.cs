@@ -1,4 +1,3 @@
-using System;
 using System.Net;
 using System.Net.Sockets;
 
@@ -16,7 +15,7 @@ public static partial class Globals {
     private static decimal DecNullZero(string str) {
         return str is null || str.Length == 0 ? 0m : decimal.Parse(str);
     }
-    
+
     /// <summary>
     /// ホスト名取得
     /// </summary>
@@ -25,7 +24,7 @@ public static partial class Globals {
     public static string GetHostName() {
         return Dns.GetHostName();
     }
-    
+
     /// <summary>
     /// IPアドレス取得
     /// </summary>
@@ -38,13 +37,5 @@ public static partial class Globals {
         }
 
         return "";
-    }
-
-    /// <summary>
-    /// デバッグメッセージ
-    /// </summary>
-    /// <param name="message"></param>
-    public static void Out(string message) {
-        Console.WriteLine(message);
     }
 }
