@@ -97,6 +97,7 @@ public partial class Form1 {
     /// <param name="e"></param>
     private void Form1_FormClosing(object sender, FormClosingEventArgs e) {
         Log.Sub_LogWrite("【Form_Unload】");
+        PgDump.Dump();
         if (MessageBox.Show(@"終了しますか？",
                 @"終了確認",
                 MessageBoxButtons.YesNo,
@@ -117,5 +118,28 @@ public partial class Form1 {
             Environment.Exit(0x8020);
             //Application.Exit();
         }
+    }
+
+    private void BackupTest() {
+        using var process = new System.Diagnostics.Process();
+        var startInfo = new System.Diagnostics.ProcessStartInfo {
+            WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal,
+            FileName = "cmd.exe",
+           // Arguments = @"set PGPASSWORD=postgres pg_dump -Fc -v --host=localhost --username=postgres --dbname=onozo_202409 -f //Mac/Home/Documents/ONOZO/RiderProjects/Dev\database.dump",
+            Arguments = " \"C:\\Program Files\\PostgreSQL\\16\bin\\pg_dump.exe\" -U postgres -d onozo_202502 > database.dump",
+            Verb = "RunAs",
+            UseShellExecute = true
+            
+            //set PGPASSWORD=postgres c:\"Program Files\PostgreSQL\16\bin\pg_dump.exe" -d  onozo_202409 > test.sql
+
+        };
+        process.StartInfo = startInfo;
+        process.Start();
+    }
+
+    private void CsvDumpTest() {
+        const string sql = "COPY tnbn_kakowk_data  TO '/Users/kyopen/Documents/ONOZO/RiderProjects/Dev/database2.csv' WITH CSV HEADER DELIMITER ',' FORCE QUOTE *;";
+
+        PgOpen.PgDump(sql);
     }
 }
