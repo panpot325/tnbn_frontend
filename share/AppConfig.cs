@@ -10,7 +10,7 @@ public static class AppConfig {
     /// <summary>
     /// Debug_Mode
     /// </summary>
-    public static bool debugMode = Get<bool>("Debug_Mode");
+    public static bool DebugMode = Get<bool>("Debug_Mode", false);
 
     /// <summary>
     /// 設定ファイルから指定した型のデータを取得
