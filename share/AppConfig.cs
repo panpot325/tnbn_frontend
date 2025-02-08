@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+
 // ReSharper disable FieldCanBeMadeReadOnly.Global
 
 namespace WorkDataStudio.share;
@@ -11,6 +12,7 @@ public static class AppConfig {
     // AppSettings
     public static bool DebugMode = Get<bool>("Debug_Mode", false);
     public static string BackupPath = Get("Backup_Path", "C:\\tanban_renkei\\Backup");
+    public static string[] BackUpNames = Get("Backup_Names", "").Split(',');
 
     /// <summary>
     /// 設定ファイルから指定した型のデータを取得

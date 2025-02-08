@@ -3,20 +3,38 @@ using System.Text;
 
 namespace WorkDataStudio.share;
 
-// ReSharper disable once ClassNeverInstantiated.Global
-public class PgDump {
-    public static void Dump() {
-        // ReSharper disable once ConvertToConstant.Local
-        var name = "tnbn_kakowk_data";
-        var sb = new StringBuilder();
-        sb.Append($"COPY {name} TO '{AppConfig.BackupPath}/{GetFileName(name)}'");
-        sb.Append(" WITH CSV HEADER DELIMITER ',' FORCE QUOTE *;");
-        sb.Append("");
-        Console.WriteLine(sb.ToString());
-        PgOpen.PgDump(sb.ToString());
+/// <summary>
+/// PgDumpクラス
+/// </summary>
+public static class PgDump {
+    /// <summary>
+    /// DumpCsv
+    /// </summary>
+    public static void DumpCsv() {
+        foreach (var backUpName in AppConfig.BackUpNames) {
+            DumpCsv(backUpName);
+        }
     }
 
-    private static string GetFileName(string name) {
-        return $"{name}-{DateTime.Now:yyyy-MM-dd-HH-mm-ss}.csv";
+    /// <summary>
+    /// DumpCsv
+    /// </summary>
+    /// <param name="tablename"></param>
+    /// <returns></returns>
+    private static bool DumpCsv(string tablename) {
+        var sb = new StringBuilder();
+        sb.Append($"COPY tnbn_{tablename} TO '{AppConfig.BackupPath}/{CsvFileName(tablename)}'");
+        sb.Append(" WITH CSV HEADER DELIMITER ',' FORCE QUOTE *;");
+        sb.Append("");
+        return PgOpen.PgDump(sb.ToString());
+    }
+
+    /// <summary>
+    /// CSVファイル名の取得
+    /// </summary>
+    /// <param name="tableName"></param>
+    /// <returns></returns>
+    private static string CsvFileName(string tableName) {
+        return $"{tableName}-{DateTime.Now:yyyy-MM-dd}.csv"; // yyyy-MM-dd-HH-mm-ss
     }
 }
