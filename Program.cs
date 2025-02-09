@@ -6,7 +6,6 @@ using System.Windows.Forms;
 using WorkDataStudio.Model;
 using WorkDataStudio.Properties;
 using WorkDataStudio.share;
-using WorkDataStudio.type;
 using G = WorkDataStudio.share.Globals;
 
 // ReSharper disable InvertIf
@@ -34,7 +33,10 @@ internal static class Program {
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
 
-        G.ClearDebugFile();
+        if (AppConfig.DebugMode) {
+            G.ClearDebugFile();
+        }
+
         G.pcName = G.GetHostName();
         if (!PgOpen.Connect()) {
             MessageBox.Show(@"データベース接続ができませんでした。");
