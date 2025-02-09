@@ -25,7 +25,6 @@ internal static class Program {
     private static void Main() {
         AppSetting();
 
-        Log.Sub_LogWrite(@$"プログラム起動開始 {Settings.Default.Prg_Ver}");
         using var mutex = new Mutex(false, Application.ProductName);
         if (!mutex.WaitOne(0, false)) {
             MessageBox.Show(@"既に起動中です。二重起動できません。");
@@ -51,7 +50,6 @@ internal static class Program {
         _mainForm = new ApplicationContext();
         _mainForm.MainForm = FormType.Form3;
         Application.Run(_mainForm);
-        Log.Sub_LogWrite(@"Main終了");
     }
 
     /// <summary>

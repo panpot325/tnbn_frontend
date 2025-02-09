@@ -84,7 +84,6 @@ public partial class Form1 {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void Form1_FormClosing(object sender, FormClosingEventArgs e) {
-        Log.Sub_LogWrite("【Form_Unload】");
         if (MessageBox.Show(@"終了しますか？",
                 @"終了確認",
                 MessageBoxButtons.YesNo,
