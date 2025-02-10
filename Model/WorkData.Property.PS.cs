@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using WorkDataStudio.share;
 
 // ReSharper disable InconsistentNaming
 
@@ -8,7 +11,33 @@ namespace WorkDataStudio.Model;
 /// @WorkData.Property.PS
 /// </summary>
 public partial class WorkData {
-    public static WorkData CreateBalance(WorkData data) {
+    /// <summary>
+    /// 
+    /// </summary>
+    public static void CreateSData() {
+        foreach (var workData in WorkData.List
+                     .Where(data => data.Pcs == "P" && data.CreSFlg != 1 && data.ChgFlg == UPDATE)) {
+            var sData = CreateBalance(workData);
+            sData.Pcs = "S";
+            sData.Delete();
+            sData.Insert();
+        }
+    }
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    public static void CreatePData() {
+        foreach (var workData in WorkData.List
+                     .Where(data => data.Pcs == "S" && data.CrePFlg != 1 && data.ChgFlg == UPDATE)) {
+            var sData = CreateBalance(workData);
+            sData.Pcs = "P";
+            sData.Delete();
+            sData.Insert();
+        }
+    }
+
+    private static WorkData CreateBalance(WorkData data) {
         return Create()
             .Set(data)
             .Swap()
@@ -37,9 +66,21 @@ public partial class WorkData {
         SetLt(data.LtList);
         SetLl(data.LlList);
         SetWl(data.WlList);
-        It4 = data.It4;
-        //sp.SetStp(data.StpList);
-
+        Is1 = data.Is1;
+        SetStp(data.StpList);
+        YoteibiKari = data.YoteibiKari;
+        YoteibiHon = 0;
+        YoteibiKyosei = 0;
+        JissibiKari = 0;
+        JissibiHon = 0;
+        JissibiKyosei = 0;
+        StatusKari = 0;
+        StatusHon = 0;
+        StatusKyosei = 0;
+        ChgFlg = data.ChgFlg;
+        CreateDate = Convert.ToInt32(DateTime.Now.ToString("yyyyMMdd"));
+        CreateSyain = Globals.staffId;
+        
         return this;
     }
 
@@ -181,6 +222,8 @@ public partial class WorkData {
         }
 
         Org = 0;
+        CreSFlg = 0;
+        CrePFlg = 1;
 
         return this;
     }
