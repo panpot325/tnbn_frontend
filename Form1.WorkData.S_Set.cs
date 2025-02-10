@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using WorkDataStudio.Model;
+using WorkDataStudio.share;
 
 // ReSharper disable MemberCanBeMadeStatic.Local
 namespace WorkDataStudio;
@@ -14,6 +15,10 @@ public partial class Form1 {
     /// </summary>
     private void WorkData_S_Create() {
         if (!Frame2.Enabled || !Option1_0.Checked) return;
+        if (AppConfig.DebugMode) {
+            WorkData.CreateSData();
+            return;
+        }
 
         var lk = WorkDataType.DmIndex("W715"); //データタイプのLK1の配列番号
         var wl = WorkDataType.DmIndex("W745"); //データタイプのWL1の配列番号
