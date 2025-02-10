@@ -141,7 +141,6 @@ public partial class WorkData {
                 Pitch1 = Head1;
                 Pitch2 = Head2 - Head1;
                 Pitch3 = C_HEAD_PITCH;
-                ;
                 Pitch4 = C_HEAD_PITCH;
                 Pitch5 = C_HEAD_PITCH;
                 break;
@@ -172,11 +171,12 @@ public partial class WorkData {
             (Ll5, Ll4, Ll3, Ll2, Ll1) = (Ll4, Ll3, Ll2, Ll1, 0);
             (Wl5, Wl4, Wl3, Wl2, Wl1) = (Wl4, Wl3, Wl2, Wl1, 0);
 
-            (Pitch5, Pitch4, Pitch3, Pitch2, Pitch1) =
-                (Pitch4, Pitch3, Pitch2,
-                    Head1 - Pitch1 - C_HEAD_PITCH,
-                    Pitch1 - C_HEAD_PITCH);
-
+            Pitch5 = Pitch4;
+            Pitch4 = Pitch3;
+            Pitch3 = Pitch2;
+            Pitch1 -= C_HEAD_PITCH;
+            Pitch2 = Head1 - Pitch1;
+            
             Head1 = Pitch1;
             Head5 = Pitch1 + Pitch2 + Pitch3 + Pitch4 + Pitch5;
         }
@@ -191,34 +191,34 @@ public partial class WorkData {
     }
 
     private WorkData Shift() {
-        if (Lh1 == 0 && Sp1 > 7000) {
-            var sp = Sp1 - 4000;
-            Sp1 = Sp1 - sp;
-            Sp2 = Sp2 + sp;
+        if (Lh1 == 0 && Sp1 > C_HEAD_PITCH) {
+            var sp = Sp1 - 400;
+            Sp1 -= sp;
+            Sp2 += sp;
         }
 
-        if (Lh2 == 0 && Sp2 > 7000) {
-            var sp = Sp2 - 7000;
-            Sp2 = Sp2 - sp;
-            Sp3 = Sp3 + sp;
+        if (Lh2 == 0 && Sp2 > C_HEAD_PITCH) {
+            var sp = Sp2 - C_HEAD_PITCH;
+            Sp2 -= sp;
+            Sp3 += sp;
         }
 
-        if (Lh3 == 0 && Sp3 > 7000) {
-            var sp = Sp3 - 7000;
-            Sp3 = Sp3 - sp;
-            Sp4 = Sp4 + sp;
+        if (Lh3 == 0 && Sp3 > C_HEAD_PITCH) {
+            var sp = Sp3 - C_HEAD_PITCH;
+            Sp3 -= sp;
+            Sp4 += sp;
         }
 
-        if (Lh4 == 0 && Sp4 > 7000) {
-            var sp = Sp4 - 7000;
-            Sp4 = Sp4 - sp;
-            Sp5 = Sp5 + sp;
+        if (Lh4 == 0 && Sp4 > C_HEAD_PITCH) {
+            var sp = Sp4 - C_HEAD_PITCH;
+            Sp4 -= sp;
+            Sp5 += sp;
         }
 
         // ReSharper disable once InvertIf
-        if (Lh5 == 0 && Sp5 > 7000) {
-            var sp = Sp5 - 7000;
-            Sp5 = Sp5 - sp;
+        if (Lh5 == 0 && Sp5 > C_HEAD_PITCH) {
+            var sp = Sp5 - C_HEAD_PITCH;
+            Sp5 -= sp;
         }
 
         Org = 0;
