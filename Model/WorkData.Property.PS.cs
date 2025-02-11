@@ -15,7 +15,7 @@ public partial class WorkData {
     /// 
     /// </summary>
     public static void CreateSData() {
-        foreach (var workData in WorkData.List
+        foreach (var workData in List
                      .Where(data => data.Pcs == "P" && data.CreSFlg != 1 && data.ChgFlg == UPDATE)) {
             var sData = CreateBalance(workData);
             sData.Pcs = "S";
@@ -28,7 +28,7 @@ public partial class WorkData {
     /// 
     /// </summary>
     public static void CreatePData() {
-        foreach (var workData in WorkData.List
+        foreach (var workData in List
                      .Where(data => data.Pcs == "S" && data.CrePFlg != 1 && data.ChgFlg == UPDATE)) {
             var sData = CreateBalance(workData);
             sData.Pcs = "P";
@@ -327,7 +327,7 @@ public partial class WorkData {
         Stp5 = list[4];
     }
 
-   /// <summary>
+    /// <summary>
     /// Swap
     /// </summary>
     /// <param name="i"></param>

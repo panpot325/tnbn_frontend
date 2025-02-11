@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Timers;
 using System.Windows.Forms;
-using WorkDataStudio.Model;
 using WorkDataStudio.share;
 using WorkDataStudio.type;
 
