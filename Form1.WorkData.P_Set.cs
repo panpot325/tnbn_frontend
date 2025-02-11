@@ -14,7 +14,7 @@ public partial class Form1 {
     /// </summary>
     private void WorkData_P_Create() {
         if (!Frame2.Enabled || !Option1_0.Checked) return;
-
+        
         var lk = WorkDataType.DmIndex("W715"); //データタイプのLK1の配列番号
         var wl = WorkDataType.DmIndex("W745"); //データタイプのWL1の配列番号
         var sp = WorkDataType.DmIndex("W72C"); //データタイプのSP1の配列番号

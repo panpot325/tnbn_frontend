@@ -417,6 +417,7 @@
         <Compile Include="Model\WorkData.Property.Data.cs">
           <DependentUpon>WorkData.Property.cs</DependentUpon>
         </Compile>
+        <Compile Include="Model\WorkData.Property.PS.cs" />
         <Compile Include="Model\WorkData.Property.Type.cs">
           <DependentUpon>WorkData.Property.cs</DependentUpon>
         </Compile>
@@ -471,6 +472,7 @@
           <DependentUpon>Globals.cs</DependentUpon>
         </Compile>
         <Compile Include="share\PgConnect.cs" />
+        <Compile Include="share\PgDump.cs" />
         <Compile Include="share\PgOpen.cs" />
         <Compile Include="share\Mode.cs" />
         <Compile Include="type\index\SnoIndex.cs" />

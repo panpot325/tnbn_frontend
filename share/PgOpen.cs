@@ -101,6 +101,26 @@ public class PgOpen {
     }
 
     /// <summary>
+    /// static method
+    /// </summary>
+    /// <param name="sql"></param>
+    /// <returns>bool</returns>
+    public static　bool PgDump(string sql) {
+        _instance.Open();
+        try {
+            _instance.ExecuteNonQuery(sql);
+            return true;
+        }
+        catch (Exception e) {
+            MessageBox.Show(e.Message);
+            return false;
+        }
+        finally {
+            _instance.Close();
+        }
+    }
+    
+    /// <summary>
     /// Private Constructor
     /// </summary>
     private PgOpen() {
