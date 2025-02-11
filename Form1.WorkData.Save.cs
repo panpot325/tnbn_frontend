@@ -27,9 +27,19 @@ public partial class Form1 {
         }
 
         WorkData.UpdateAll(true); //加工ワークデータの更新
-        WorkData_S_Create(); // @Sデータの作成と登録
+
+        //WorkData_S_Create(); // @Sデータの作成と登録
+        if (Frame2.Enabled && Option1_0.Checked) {
+            WorkData.CreateSData();
+        }
+
         WorkData_S_Update(); // @加工ワークデータSの更新
-        WorkData_P_Create(); // @Pデータの作成と登録
+
+        //WorkData_P_Create(); // @Pデータの作成と登録
+        if (Frame2.Enabled && Option1_0.Checked) {
+            WorkData.CreatePData();
+        }
+
         WorkData_PS_Update(); // @CrePSFlgの更新
         WorkDataExclusive.Delete(); //Del_排他情報
         Mode.SetNew1();
@@ -60,9 +70,19 @@ public partial class Form1 {
         }
 
         WorkData.UpdateAll(true); //加工ワークデータの更新
-        WorkData_S_Create(); // @Sデータの作成と登録
+
+        //WorkData_S_Create(); // @Sデータの作成と登録
+        if (Frame2.Enabled && Option1_0.Checked) {
+            WorkData.CreateSData();
+        }
+
         WorkData_S_Update(); // @加工ワークデータSの更新
-        WorkData_P_Create(); // @Pデータの作成と登録
+
+        //WorkData_P_Create(); // @Pデータの作成と登録
+        if (Frame2.Enabled && Option1_0.Checked) {
+            WorkData.CreatePData();
+        }
+
         WorkData_PS_Update(); // @CrePSFlgの更新
         WorkDataExclusive.Delete(); //Del_排他情報
         Mode.SetNew2();
@@ -92,9 +112,19 @@ public partial class Form1 {
     private void Save_Copy_1() {
         WorkData.DeleteAll(WorkData.snoName); //加工ワークデータの削除_船番
         WorkData.UpdateAll(); //加工ワークデータの更新
-        WorkData_S_Create(); // @Sデータの作成と登録
+
+        //WorkData_S_Create(); // @Sデータの作成と登録
+        if (Frame2.Enabled && Option1_0.Checked) {
+            WorkData.CreateSData();
+        }
+
         WorkData_S_Update(); // @加工ワークデータSの更新
-        WorkData_P_Create(); // @Pデータの作成と登録
+
+        //WorkData_P_Create(); // @Pデータの作成と登録
+        if (Frame2.Enabled && Option1_0.Checked) {
+            WorkData.CreatePData();
+        }
+
         WorkData_PS_Update(); // @CrePSFlgの更新
         WorkDataExclusive.Delete(); //Del_排他情報
         Mode.SetNew1();
