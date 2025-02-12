@@ -23,7 +23,7 @@ public partial class WorkData {
             sData.Insert();
         }
     }
-    
+
     /// <summary>
     /// 
     /// </summary>
@@ -80,7 +80,7 @@ public partial class WorkData {
         ChgFlg = data.ChgFlg;
         CreateDate = Convert.ToInt32(DateTime.Now.ToString("yyyyMMdd"));
         CreateSyain = Globals.staffId;
-        
+
         return this;
     }
 
@@ -176,7 +176,7 @@ public partial class WorkData {
             Pitch3 = Pitch2;
             Pitch1 -= C_HEAD_PITCH;
             Pitch2 = Head1 - Pitch1;
-            
+
             Head1 = Pitch1;
             Head5 = Pitch1 + Pitch2 + Pitch3 + Pitch4 + Pitch5;
         }

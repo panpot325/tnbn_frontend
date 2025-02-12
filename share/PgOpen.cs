@@ -119,7 +119,7 @@ public class PgOpen {
             _instance.Close();
         }
     }
-    
+
     /// <summary>
     /// Private Constructor
     /// </summary>
