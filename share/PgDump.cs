@@ -24,7 +24,7 @@ public static class PgDump {
     private static bool DumpCsv(string tablename) {
         var sb = new StringBuilder();
         sb.Append($"COPY tnbn_{tablename} TO '{AppConfig.BackupPath}/{CsvFileName(tablename)}'");
-        sb.Append(" WITH CSV ENCODING 'sjis' HEADER DELIMITER ',' FORCE QUOTE *;");
+        sb.Append(" WITH CSV ENCODING 'Shift_JIS' HEADER DELIMITER ',' FORCE QUOTE *;");
         sb.Append("");
         return PgOpen.PgDump(sb.ToString());
     }
