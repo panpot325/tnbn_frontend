@@ -247,7 +247,7 @@ public partial class Form1 {
     private List<Position> SetPositions(List<Position> pos, decimal width) {
         var ix = 4;
         for (var i = 0; i < 5; i++) {
-            pos[i].Back = width - pos[ix].Front + pos[ix].F_Lt;
+            pos[i].Back = width - pos[ix].Front - pos[ix].F_Lt;
             pos[i].B_Lk = pos[ix].F_Lk;
             pos[i].B_Lh = pos[ix].F_Lh;
             pos[i].B_Lt = pos[ix].F_Lt;
