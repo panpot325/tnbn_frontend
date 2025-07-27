@@ -17,7 +17,7 @@ public partial class WorkData {
     public static void CreateSData() {
         foreach (var workData in List
                      .Where(data => data.Pcs == "P" && data.CreSFlg != 1 && data.ChgFlg == UPDATE)) {
-            var sData = CreateBalance(workData);
+            var sData = CreateBalanceBase(workData);
             sData.Pcs = "S";
             sData.Delete();
             sData.Insert();
@@ -30,7 +30,7 @@ public partial class WorkData {
     public static void CreatePData() {
         foreach (var workData in List
                      .Where(data => data.Pcs == "S" && data.CrePFlg != 1 && data.ChgFlg == UPDATE)) {
-            var sData = CreateBalance(workData);
+            var sData = CreateBalanceBase(workData);
             sData.Pcs = "P";
             sData.Delete();
             sData.Insert();
@@ -44,6 +44,13 @@ public partial class WorkData {
             .Head(data)
             .Pack()
             .Shift();
+    }
+
+    private static WorkData CreateBalanceBase(WorkData data) {
+        return Create()
+            .Set(data)
+            .SwapBase()
+            .HeadBase(data);
     }
 
     private WorkData Set(WorkData data) {
@@ -91,6 +98,34 @@ public partial class WorkData {
         SetLl(Swap(Longi, LlList));
         SetWl(Swap(Longi, WlList));
 
+        return this;
+    }
+
+    private WorkData SwapBase() {
+        if (HeadOver()) return this;
+        SetLk(Swap(LkList));
+        SetLh(Swap(LhList));
+        SetLt(Swap(LtList));
+        SetLl(Swap(LlList));
+        SetWl(Swap(WlList));
+
+        return this;
+    }
+
+    private WorkData HeadBase(WorkData data) {
+        if (HeadOver()) return this;
+        Head1 = Dwidth - Abs5 - data.Lt5;
+        Head2 = Dwidth - Abs4 - data.Lt4;
+        Head3 = Dwidth - Abs3 - data.Lt3;
+        Head4 = Dwidth - Abs2 - data.Lt2;
+        Head5 = Dwidth - Abs1 - data.Lt1;
+
+        Sp1 = Head1;
+        Sp2 = Head2 - Head1;
+        Sp3 = Head3 - Head2;
+        Sp4 = Head4 - Head3;
+        Sp5 = Head5 - Head4;
+        
         return this;
     }
 
@@ -346,6 +381,12 @@ public partial class WorkData {
         return list;
     }
 
+    private static List<T> Swap<T>(List<T> list) {
+        (list[0], list[1], list[2], list[3], list[4]) = (list[4], list[3], list[2], list[1], list[0]);
+
+        return list;
+    }
+
     //Abs1 - Abs5 
     private decimal Abs1 => Sp1;
     private decimal Abs2 => Abs1 + Sp2;
@@ -378,5 +419,9 @@ public partial class WorkData {
         }
     }
 
-    private decimal Dwidth => Org == 1 ? B : C_WIDTH;
+    private decimal Dwidth => Org == 0 ? B : C_WIDTH;
+
+    private bool HeadOver() {
+        return Abs5 > Dwidth;
+    }
 }
