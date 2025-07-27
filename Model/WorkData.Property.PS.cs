@@ -17,7 +17,7 @@ public partial class WorkData {
     public static void CreateSData() {
         foreach (var workData in List
                      .Where(data => data.Pcs == "P" && data.CreSFlg != 1 && data.ChgFlg == UPDATE)) {
-            var sData = CreateBalanceBase(workData);
+            var sData = CreateBalance(workData);
             sData.Pcs = "S";
             sData.Delete();
             sData.Insert();
@@ -30,7 +30,7 @@ public partial class WorkData {
     public static void CreatePData() {
         foreach (var workData in List
                      .Where(data => data.Pcs == "S" && data.CrePFlg != 1 && data.ChgFlg == UPDATE)) {
-            var sData = CreateBalanceBase(workData);
+            var sData = CreateBalance(workData);
             sData.Pcs = "P";
             sData.Delete();
             sData.Insert();
@@ -43,7 +43,8 @@ public partial class WorkData {
             .Swap()
             .Head(data)
             .Pack()
-            .Shift();
+            //.Shift()
+            ;
     }
 
     private static WorkData CreateBalanceBase(WorkData data) {
@@ -200,9 +201,9 @@ public partial class WorkData {
     private WorkData Pack() {
         while (Head1 >= 1000 && Lh5 == 0
                || Head5 > C_HEAD_LIMIT) {
-            (Lk5, Lk4, Lk3, Lk2, Lk1) = (Lk4, Lk3, Lk2, Lk1, 0);
+            (Lk5, Lk4, Lk3, Lk2) = (Lk4, Lk3, Lk2, Lk1);
             (Lh5, Lh4, Lh3, Lh2, Lh1) = (Lh4, Lh3, Lh2, Lh1, 0);
-            (Lt5, Lt4, Lt3, Lt2, Lt1) = (Lt4, Lt3, Lt2, Lt1, 0);
+            (Lt5, Lt4, Lt3, Lt2) = (Lt4, Lt3, Lt2, Lt1);
             (Ll5, Ll4, Ll3, Ll2, Ll1) = (Ll4, Ll3, Ll2, Ll1, 0);
             (Wl5, Wl4, Wl3, Wl2, Wl1) = (Wl4, Wl3, Wl2, Wl1, 0);
 
