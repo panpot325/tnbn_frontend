@@ -412,11 +412,11 @@ public partial class WorkData {
     //Longi
     private int Longi {
         get {
-            if (Lh5 > 0) return 5;
-            if (Lh4 > 0) return 4;
-            if (Lh3 > 0) return 3;
-            if (Lh2 > 0) return 2;
-            return Lh1 > 0 ? 1 : 0;
+            if (Lt5 > 0) return 5;
+            if (Lt4 > 0) return 4;
+            if (Lt3 > 0) return 3;
+            if (Lt2 > 0) return 2;
+            return Lt1 > 0 ? 1 : 0;
         }
     }
 
